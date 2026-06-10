@@ -1,0 +1,14 @@
+<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="亨利攝影工作室 camera logomark">
+  <rect width="120" height="120" rx="28" fill="#fbfbfa"></rect>
+  
+  <rect x="20" y="36" width="80" height="58" rx="14" fill="none" stroke="#538799" stroke-width="5"></rect>
+  
+  <path d="M44 36 L50 27 L70 27 L76 36 Z" fill="none" stroke="#538799" stroke-width="5" stroke-linejoin="round"></path>
+  
+  <rect x="82" y="30" width="11" height="6" rx="3" fill="#9dc1cc"></rect>
+  
+  <circle cx="60" cy="66" r="20" fill="#deeaee"></circle>
+  <path d="M44 78 L55 60 L62 70 L70 56 L78 78 Z" fill="none" stroke="#426e7e" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round"></path>
+  
+  <path d="M43 82 L77 82" stroke="#74a4b3" stroke-width="3" stroke-linecap="round" opacity="0.8"></path>
+</svg>

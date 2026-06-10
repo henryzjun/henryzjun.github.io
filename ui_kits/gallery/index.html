@@ -1,0 +1,62 @@
+<!-- @dsCard group="Gallery" viewport="1280x720" name="影像作品集 Gallery" subtitle="瀑布式相簿 · 分類篩選 · 燈箱 + EXIF" -->
+<!-- @startingPoint section="Gallery" subtitle="滑雪影像瀑布式作品集" viewport="1280x900" -->
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>作品集 — 亨利攝影工作室</title>
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  html, body { margin: 0; background: var(--surface-page); }
+</style>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script src="../../_ds_bundle.js"></script>
+  <script type="text/babel" src="data.jsx"></script>
+  <script type="text/babel" src="GalleryGrid.jsx"></script>
+  <script type="text/babel" src="Lightbox.jsx"></script>
+  <script type="text/babel">
+    const { Tabs, MetaRow } = window.HenryStudioRemix_704588;
+    function App(){
+      const all = window.GALLERY_ITEMS;
+      const [cat, setCat] = React.useState("all");
+      const [open, setOpen] = React.useState(null);
+      React.useEffect(() => { window.lucide && window.lucide.createIcons(); });
+      const shown = cat === "all" ? all : all.filter(i => i.cat === cat);
+      const idx = open ? shown.findIndex(i => i.id === open.id) : -1;
+      const step = (d) => { if (idx < 0) return; setOpen(shown[(idx + d + shown.length) % shown.length]); };
+
+      return (
+        <>
+          <header style={{ padding: "48px 40px 28px" }}>
+            <a href="../website/index.html" style={{ display:"inline-flex", alignItems:"center", gap:6, fontSize:"var(--text-sm)", color:"var(--text-muted)", marginBottom: 20 }}>
+              <i data-lucide="arrow-left" style={{width:16,height:16}}></i> 回首頁
+            </a>
+            <span className="ds-eyebrow">PORTFOLIO · 2026 雪季</span>
+            <h1 style={{ fontSize: "var(--text-4xl)", margin: "10px 0 6px" }}>影像作品集</h1>
+            <p style={{ color: "var(--text-muted)", fontSize: "var(--text-lg)", maxWidth: 520 }}>挑戰的汗水，與登頂的笑容。逐格收藏的雪地故事。</p>
+            <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", marginTop: 28, flexWrap:"wrap", gap:16 }}>
+              <Tabs value={cat} onChange={setCat} tabs={[
+                { value:"all", label:"全部", count: all.length },
+                { value:"powder", label:"粉雪 Powder" },
+                { value:"aerial", label:"空拍 Aerial" },
+                { value:"portrait", label:"人像 Portrait" },
+              ]} />
+              <MetaRow items={[{ value: shown.length, unit: "件作品" }]} />
+            </div>
+          </header>
+          <GalleryGrid items={shown} onOpen={setOpen} />
+          <Lightbox item={open} onClose={()=>setOpen(null)} onPrev={()=>step(-1)} onNext={()=>step(1)} />
+        </>
+      );
+    }
+    ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+  </script>
+</body>
+</html>
