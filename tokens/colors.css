@@ -1,7 +1,7 @@
 /* ============================================================
    亨利攝影工作室 — Color Tokens
-   苔蘚綠 Moss · 山岩灰 Rock · 微霧冰藍 Ice
-   Earthy, functional, in harmony with the mountain.
+   微霧冰藍 Ice (brand) · 山岩灰 Rock · 苔蘚綠 Moss (retired from brand)
+   Cool, functional, in harmony with the mountain.
    ============================================================ */
 
 :root {
@@ -58,12 +58,12 @@
      Semantic aliases — reference these in components.
      ============================================================ */
 
-  /* Brand */
-  --brand:            var(--moss-500);
-  --brand-hover:      var(--moss-600);
-  --brand-active:     var(--moss-700);
-  --brand-soft:       var(--moss-100);
-  --brand-soft-text:  var(--moss-700);
+  /* Brand — 微霧冰藍 Misty Ice Blue */
+  --brand:            var(--ice-500);
+  --brand-hover:      var(--ice-600);
+  --brand-active:     var(--ice-700);
+  --brand-soft:       var(--ice-100);
+  --brand-soft-text:  var(--ice-700);
   --accent:           var(--ice-500);
   --accent-hover:     var(--ice-600);
   --accent-soft:      var(--ice-100);
@@ -76,7 +76,7 @@
   --text-subtle:    var(--stone-400);
   --text-on-brand:  var(--snow);
   --text-on-dark:   var(--snow);
-  --text-link:      var(--moss-600);
+  --text-link:      var(--ice-600);
 
   /* Surfaces */
   --surface-page:    var(--snow);
@@ -84,19 +84,19 @@
   --surface-sunken:  var(--stone-50);
   --surface-raised:  var(--white);
   --surface-inverse: var(--stone-900);
-  --surface-brand:   var(--moss-500);
+  --surface-brand:   var(--ice-500);
   --surface-frost:   rgba(251, 251, 250, 0.72); /* glassy overlay */
 
   /* Borders / lines */
   --border-soft:    var(--stone-200);
   --border-default: var(--stone-300);
   --border-strong:  var(--stone-400);
-  --border-brand:   var(--moss-500);
+  --border-brand:   var(--ice-500);
   --divider:        var(--stone-100);
 
   /* Status */
-  --success:      var(--moss-500);
-  --success-soft: var(--moss-100);
+  --success:      var(--ice-500);
+  --success-soft: var(--ice-100);
   --warning:      var(--amber-500);
   --warning-soft: var(--amber-50);
   --danger:       var(--rust-500);

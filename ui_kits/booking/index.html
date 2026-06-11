@@ -10,6 +10,23 @@
 <style>
   html, body { margin: 0; background: var(--surface-page); }
 </style>
+<script>
+  window.A = function (p) { return (window.HENRY_ASSETS || {})[p] || p; };
+  window.HENRY_LINKS = {
+    home: "../website/index.html",
+    booking: "../booking/index.html",
+    gallery: "../gallery/index.html",
+  };
+</script>
+<template id="__bundler_thumbnail">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+    <rect width="120" height="120" fill="#365764"></rect>
+    <rect x="36" y="40" width="48" height="44" rx="8" fill="none" stroke="#deeaee" stroke-width="5"></rect>
+    <line x1="36" y1="54" x2="84" y2="54" stroke="#deeaee" stroke-width="5"></line>
+    <line x1="48" y1="34" x2="48" y2="46" stroke="#deeaee" stroke-width="5" stroke-linecap="round"></line>
+    <line x1="72" y1="34" x2="72" y2="46" stroke="#deeaee" stroke-width="5" stroke-linecap="round"></line>
+  </svg>
+</template>
 </head>
 <body>
   <div id="root"></div>
@@ -18,6 +35,7 @@
   <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   <script src="../../_ds_bundle.js"></script>
+  <script src="../shared/mobile-preview.js"></script>
   <script type="text/babel" src="Stepper.jsx"></script>
   <script type="text/babel" src="BookingSummary.jsx"></script>
   <script type="text/babel" src="Steps.jsx"></script>
@@ -32,21 +50,21 @@
       const done = step >= STEPS.length;
 
       return (
-        <div style={{ maxWidth: 1080, margin:"0 auto", padding:"40px 40px 80px" }}>
-          <a href="../website/index.html" style={{ display:"inline-flex", alignItems:"center", gap:6, fontSize:"var(--text-sm)", color:"var(--text-muted)", marginBottom: 22 }}>
+        <div style={{ maxWidth: 1080, margin:"0 auto", padding:"32px clamp(16px, 4vw, 40px) 80px" }}>
+          <a href={window.HENRY_LINKS.home} style={{ display:"inline-flex", alignItems:"center", gap:6, fontSize:"var(--text-sm)", color:"var(--text-muted)", marginBottom: 22 }}>
             <i data-lucide="arrow-left" style={{width:16,height:16}}></i> 回首頁
           </a>
           <span className="ds-eyebrow">BOOKING</span>
           <h1 style={{ fontSize:"var(--text-3xl)", margin:"8px 0 30px" }}>預約你的雪季拍攝</h1>
 
-          <div style={{ display:"flex", gap: 36, alignItems:"flex-start" }}>
-            <div style={{ flex:1, minWidth:0 }}>
+          <div style={{ display:"flex", gap: 36, alignItems:"flex-start", flexWrap:"wrap" }}>
+            <div style={{ flex:"999 1 420px", minWidth:0 }}>
               {!done && (
                 <div style={{ marginBottom: 34 }}><Stepper step={step} steps={STEPS} /></div>
               )}
               <div style={{
                 background:"var(--surface-card)", border:"1px solid var(--border-soft)",
-                borderRadius:"var(--radius-lg)", boxShadow:"var(--shadow-sm)", padding: "30px 30px 26px",
+                borderRadius:"var(--radius-lg)", boxShadow:"var(--shadow-sm)", padding: "clamp(18px, 3.5vw, 30px) clamp(18px, 3.5vw, 30px) 26px",
               }}>
                 {step === 0 && <StepChoose data={data} set={set} />}
                 {step === 1 && <StepDetails data={data} set={set} />}

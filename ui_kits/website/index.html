@@ -1,4 +1,4 @@
-<!-- @dsCard group="Website" viewport="1280x720" name="行銷／作品集網站" subtitle="首頁 — Hero · 作品集 · 方案 · 哲學" -->
+<!-- @dsCard group="Website" viewport="1280x720" name="行銷／作品集網站" subtitle="首頁 — Hero · 作品集 · 方案 · 哲學 · 響應式 + 可換圖" -->
 <!-- @startingPoint section="Website" subtitle="滑雪攝影行銷首頁" viewport="1280x900" -->
 <!DOCTYPE html>
 <html lang="zh-Hant">
@@ -7,9 +7,29 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>亨利攝影工作室 — 滑雪影像</title>
 <link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="site.css">
 <style>
   html, body { margin: 0; background: var(--surface-page); }
 </style>
+<script>
+  // 資源解析器：打包單檔時 HENRY_ASSETS 會帶入 data URL，平常直接用相對路徑
+  window.A = function (p) { return (window.HENRY_ASSETS || {})[p] || p; };
+  // 站內連結（打包成單一檔時會被改寫成根目錄檔名）
+  window.HENRY_LINKS = {
+    home: "../website/index.html",
+    booking: "../booking/index.html",
+    gallery: "../gallery/index.html",
+  };
+</script>
+<template id="__bundler_thumbnail">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+    <rect width="120" height="120" fill="#538799"></rect>
+    <circle cx="60" cy="60" r="22" fill="#deeaee"></circle>
+    <rect x="56.5" y="38" width="7" height="44" rx="3.5" fill="#365764" transform="rotate(36 60 60)"></rect>
+    <rect x="53" y="40" width="3.4" height="40" rx="1.7" fill="#538799" transform="rotate(-36 60 60)"></rect>
+    <rect x="63.6" y="40" width="3.4" height="40" rx="1.7" fill="#538799" transform="rotate(-36 60 60)"></rect>
+  </svg>
+</template>
 </head>
 <body>
   <div id="root"></div>
@@ -18,6 +38,8 @@
   <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   <script src="../../_ds_bundle.js"></script>
+  <script src="../shared/mobile-preview.js"></script>
+  <script type="text/babel" src="../shared/EditableImage.jsx"></script>
   <script type="text/babel" src="SiteNav.jsx"></script>
   <script type="text/babel" src="Hero.jsx"></script>
   <script type="text/babel" src="FeaturedWork.jsx"></script>
@@ -29,8 +51,8 @@
       React.useEffect(() => { window.lucide && window.lucide.createIcons(); });
       const nav = (id) => {
         setActive(id);
-        if (id === "book") { window.location.href = "../booking/index.html"; return; }
-        if (id === "work") { window.location.href = "../gallery/index.html"; return; }
+        if (id === "book") { window.location.href = window.HENRY_LINKS.booking; return; }
+        if (id === "work") { window.location.href = window.HENRY_LINKS.gallery; return; }
         const el = document.getElementById(id);
         if (el) window.scrollTo({ top: el.offsetTop - 70, behavior: "smooth" });
         else window.scrollTo({ top: 0, behavior: "smooth" });

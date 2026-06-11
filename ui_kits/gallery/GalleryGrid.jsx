@@ -3,7 +3,7 @@ function GalleryGrid({ items, onOpen }) {
   const { Badge, IconButton } = window.HenryStudioRemix_704588;
   return (
     <div style={{
-      columnCount: 3, columnGap: 18, padding: "0 40px 80px",
+      columnWidth: 300, columnGap: 18, padding: "0 clamp(20px, 4vw, 40px) 80px",
     }}>
       {items.map((it) => (
         <figure key={it.id} onClick={() => onOpen(it)}
@@ -14,8 +14,8 @@ function GalleryGrid({ items, onOpen }) {
           }}
           onMouseEnter={(e)=>{ e.currentTarget.style.boxShadow="var(--shadow-lg)"; e.currentTarget.querySelector(".gov").style.opacity=1; }}
           onMouseLeave={(e)=>{ e.currentTarget.style.boxShadow="var(--shadow-sm)"; e.currentTarget.querySelector(".gov").style.opacity=0; }}>
-          <img src={`../../assets/photos/${it.img}.jpg`} alt={it.title}
-            style={{ width: "100%", display: "block", aspectRatio: it.span === 2 ? "4 / 5" : "4 / 3", objectFit: "cover" }} />
+          <EditableImage id={`photo-${it.img}`} src={`../../assets/photos-web/${it.img}.jpg`} alt={it.title}
+            imgStyle={{ aspectRatio: it.span === 2 ? "4 / 5" : "4 / 3", height: "auto" }} />
           {it.video && (
             <span style={{ position: "absolute", top: 12, left: 12 }}>
               <Badge tone="accent" variant="solid"><i data-lucide="play" style={{width:12,height:12}}></i> 影片</Badge>
@@ -24,7 +24,7 @@ function GalleryGrid({ items, onOpen }) {
           <figcaption className="gov" style={{
             position: "absolute", inset: 0, opacity: 0, transition: "opacity var(--dur-base) var(--ease-out)",
             background: "linear-gradient(180deg, rgba(28,27,25,0) 40%, rgba(28,27,25,0.72) 100%)",
-            display: "flex", flexDirection: "column", justifyContent: "flex-end", padding: 16,
+            display: "flex", flexDirection: "column", justifyContent: "flex-end", padding: 16, pointerEvents: "none",
           }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
               <div>

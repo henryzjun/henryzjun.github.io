@@ -4,7 +4,7 @@ function StepChoose({ data, set }) {
   const packs = [
     { id:"個人跟拍 · 半日", icon:"user", name:"個人跟拍", meta:"半日 · 30+ 張精修", price:"NT$ 6,800" },
     { id:"團體紀錄 · 全日", icon:"users", name:"團體紀錄", meta:"全日 · 短片 + 80 張", price:"NT$ 12,000" },
-    { id:"空拍企劃 · 客製", icon:"plane", name:"空拍企劃", meta:"空拍 + 跟拍 · 客製", price:"客製報價" },
+    { id:"空拍企劃 · 客製", icon:"plane", name:"空拍企劃", meta:"空拍 + 雪場外 · 客製", price:"客製報價" },
   ];
   return (
     <div style={{ display:"flex", flexDirection:"column", gap: 16 }}>
@@ -17,7 +17,7 @@ function StepChoose({ data, set }) {
               style={{
                 display:"flex", alignItems:"center", gap:16, padding:"16px 18px", cursor:"pointer",
                 background: on ? "var(--brand-soft)" : "var(--surface-card)",
-                border: `1.5px solid ${on ? "var(--moss-400)" : "var(--border-soft)"}`,
+                border: `1.5px solid ${on ? "var(--ice-400)" : "var(--border-soft)"}`,
                 borderRadius:"var(--radius-md)", transition:"var(--transition-base)",
               }}>
               <span style={{ display:"inline-flex", alignItems:"center", justifyContent:"center", width:44, height:44, borderRadius:"var(--radius-md)", background: on ? "var(--brand)" : "var(--brand-soft)", color: on ? "var(--snow)" : "var(--brand-soft-text)" }}>
@@ -44,7 +44,7 @@ function StepDetails({ data, set }) {
   return (
     <div style={{ display:"flex", flexDirection:"column", gap: 18 }}>
       <h2 style={{ fontSize:"var(--text-2xl)" }}>拍攝細節</h2>
-      <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap: 16 }}>
+      <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit, minmax(min(100%, 220px), 1fr))", gap: 16 }}>
         <Select label="雪場地點" value={data.loc} onChange={(e)=>set({loc:e.target.value})}
           options={["NISEKO 二世谷","HAKUBA 白馬","ZAO 藏王","FURANO 富良野","其他（請備註）"]} />
         <Input label="預約日期" type="date" value={data.date} onChange={(e)=>set({date:e.target.value})} />
@@ -63,7 +63,7 @@ function StepContact({ data, set }) {
   return (
     <div style={{ display:"flex", flexDirection:"column", gap: 18 }}>
       <h2 style={{ fontSize:"var(--text-2xl)" }}>聯絡方式</h2>
-      <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap: 16 }}>
+      <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit, minmax(min(100%, 220px), 1fr))", gap: 16 }}>
         <Input label="你的名字" placeholder="王小明" value={data.name} onChange={(e)=>set({name:e.target.value})} iconLeft={<i data-lucide="user"></i>} />
         <Input label="LINE ID" placeholder="@henryphoto" iconLeft={<i data-lucide="message-circle"></i>} />
         <Input label="Email" type="email" placeholder="you@example.com" iconLeft={<i data-lucide="mail"></i>} hint="我們會寄送拍攝確認信" containerStyle={{ gridColumn:"1 / -1" }} />
@@ -81,14 +81,14 @@ function StepDone({ data }) {
       </span>
       <h2 style={{ fontSize:"var(--text-3xl)" }}>預約已送出！</h2>
       <p style={{ color:"var(--text-muted)", fontSize:"var(--text-lg)", maxWidth: 420, margin:"12px auto 0" }}>
-        感謝 {data.name || "你"} 的預約。我會在 24 小時內透過 LINE 與你確認細節，期待與你並肩在風雪中前行。
+        感謝 {data.name || "你"} 的預約。我會在 24 小時內與你確認細節，期待與你並肩在風雪中前行。
       </p>
       <div style={{ display:"flex", justifyContent:"center", marginTop: 22 }}>
         <MetaRow items={[{ label:"預約編號", value:"HP-2602-0148" }]} />
       </div>
       <div style={{ display:"flex", gap:12, justifyContent:"center", marginTop: 28 }}>
         <Button variant="secondary" iconLeft={<i data-lucide="calendar-plus"></i>}>加入行事曆</Button>
-        <Button variant="primary" iconLeft={<i data-lucide="image"></i>} onClick={()=>window.location.href="../gallery/index.html"}>先看看作品集</Button>
+        <Button variant="primary" iconLeft={<i data-lucide="image"></i>} onClick={()=>window.location.href=window.HENRY_LINKS.gallery}>先看看作品集</Button>
       </div>
     </div>
   );

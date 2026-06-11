@@ -5,12 +5,12 @@ function BookingSummary({ data }) {
   const price = priceMap[data.pkg] ?? 0;
   return (
     <aside style={{
-      width: 320, flexShrink: 0, alignSelf: "flex-start", position: "sticky", top: 32,
+      flex:"1 1 300px", maxWidth: 480, alignSelf: "flex-start", position: "sticky", top: 32,
       background: "var(--surface-card)", border: "1px solid var(--border-soft)",
       borderRadius: "var(--radius-lg)", boxShadow: "var(--shadow-sm)", overflow: "hidden",
     }}>
       <div style={{ height: 140, position: "relative" }}>
-        <img src="../../assets/photos/slope-dawn.jpg" alt="" style={{ width:"100%", height:"100%", objectFit:"cover" }} />
+        <img src={window.A ? window.A("../../assets/photos-web/slope-dawn.jpg") : "../../assets/photos-web/slope-dawn.jpg"} alt="" style={{ width:"100%", height:"100%", objectFit:"cover" }} />
         <div style={{ position:"absolute", inset:0, background:"linear-gradient(180deg,rgba(28,27,25,0) 30%,rgba(28,27,25,0.6))" }}></div>
         <span style={{ position:"absolute", bottom:12, left:16 }}>
           <Badge tone="accent" variant="solid">{data.loc || "雪場待定"}</Badge>

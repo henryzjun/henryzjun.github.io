@@ -7,16 +7,16 @@ function Services({ onNav }) {
     { icon: "plane", name: "空拍企劃", price: "客製報價", unit: "", desc: "結合空拍與地面機位，從天際到雪面的史詩感。", feat: ["空拍 + 跟拍", "4K 影片", "腳本企劃"], tone: "neutral" },
   ];
   return (
-    <section style={{ background: "var(--surface-sunken)", padding: "88px 40px" }}>
+    <section style={{ background: "var(--surface-sunken)", padding: "clamp(56px, 9vw, 88px) clamp(20px, 4vw, 40px)" }}>
       <div style={{ textAlign: "center", maxWidth: 640, margin: "0 auto 48px" }}>
         <span className="ds-eyebrow">PACKAGES</span>
-        <h2 style={{ fontSize: "var(--text-3xl)", margin: "10px 0 14px" }}>選一段，與你並肩前行的方式</h2>
+        <h2 style={{ fontSize: "clamp(26px, 4vw, var(--text-3xl))", margin: "10px 0 14px" }}>選一段，與你並肩前行的方式</h2>
         <p style={{ color: "var(--text-muted)", fontSize: "var(--text-lg)" }}>每個方案都可依雪場、天數與需求彈性調整。</p>
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 22, maxWidth: 1080, margin: "0 auto" }}>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 270px), 1fr))", gap: 22, maxWidth: 1080, margin: "0 auto" }}>
         {packs.map((p) => (
           <Card key={p.name} elevation={p.featured ? "lg" : "sm"} padding="28px"
-            style={p.featured ? { border: "1.5px solid var(--moss-300)" } : {}}>
+            style={p.featured ? { border: "1.5px solid var(--ice-300)" } : {}}>
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
               <span style={{
                 display: "inline-flex", alignItems: "center", justifyContent: "center",

@@ -1,17 +1,22 @@
 <svg width="420" height="120" viewBox="0 0 420 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="亨利攝影工作室 Henryphoto studio (ice blue base)">
-  
+
   <rect x="0" y="6" width="108" height="108" rx="26" fill="#538799"></rect>
-  
+
   <rect x="20" y="42" width="68" height="50" rx="12" fill="none" stroke="#fbfbfa" stroke-width="4.5"></rect>
-  
+
   <path d="M40 42 L45 34 L63 34 L68 42 Z" fill="none" stroke="#fbfbfa" stroke-width="4.5" stroke-linejoin="round"></path>
-  
+
   <rect x="72" y="37" width="10" height="5" rx="2.5" fill="#c2d9e0"></rect>
-  
+
   <circle cx="54" cy="68" r="17" fill="#deeaee"></circle>
-  <path d="M40 78 L50 62 L56 71 L63 59 L70 78 Z" fill="none" stroke="#426e7e" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></path>
+  <g transform="rotate(-36 54 68)">
+    <rect x="49.3" y="53.5" width="3" height="29" rx="1.5" fill="#538799"></rect>
+    <rect x="55.7" y="53.5" width="3" height="29" rx="1.5" fill="#538799"></rect>
+  </g>
+  <rect x="50.5" y="53" width="7" height="30" rx="3.5" fill="#426e7e" transform="rotate(36 54 68)"></rect>
+
   <path d="M39 81 L69 81" stroke="#74a4b3" stroke-width="2.6" stroke-linecap="round" opacity="0.85"></path>
-  
+
   <text x="132" y="56" font-family="&#39;Noto Sans TC&#39;,&#39;PingFang TC&#39;,sans-serif" font-size="36" font-weight="700" fill="#fbfbfa" letter-spacing="2">亨利攝影</text>
   <text x="133" y="92" font-family="&#39;Outfit&#39;,sans-serif" font-size="17" font-weight="500" fill="#c2d9e0" letter-spacing="3">HENRYPHOTO STUDIO</text>
 </svg>

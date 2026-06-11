@@ -13,20 +13,20 @@ function Lightbox({ item, onClose, onPrev, onNext }) {
   }, [item]);
 
   return (
-    <div style={{
+    <div className="lb-root" style={{
       position: "fixed", inset: 0, zIndex: 100, display: "flex",
       background: "rgba(18,17,16,0.86)", backdropFilter: "blur(8px)",
     }} onClick={onClose}>
-      <div style={{ flex: 1, position: "relative", display: "flex", alignItems: "center", justifyContent: "center", padding: 40 }}
+      <div className="lb-stage" style={{ flex: 1, position: "relative", display: "flex", alignItems: "center", justifyContent: "center", padding: 40 }}
         onClick={(e)=>e.stopPropagation()}>
         <IconButton icon={<i data-lucide="chevron-left"></i>} label="上一張" variant="frost" size="lg"
           onClick={onPrev} style={{ position: "absolute", left: 24 }} />
-        <img src={`../../assets/photos/${item.img}.jpg`} alt={item.title}
+        <img src={window.henryImg(`photo-${item.img}`, `../../assets/photos-web/${item.img}.jpg`)} alt={item.title}
           style={{ maxWidth: "100%", maxHeight: "100%", borderRadius: "var(--radius-md)", boxShadow: "var(--shadow-xl)" }} />
         <IconButton icon={<i data-lucide="chevron-right"></i>} label="下一張" variant="frost" size="lg"
           onClick={onNext} style={{ position: "absolute", right: 24 }} />
       </div>
-      <aside style={{
+      <aside className="lb-aside" style={{
         width: 320, flexShrink: 0, background: "var(--surface-card)",
         padding: "28px 26px", display: "flex", flexDirection: "column", gap: 20, overflowY: "auto",
       }} onClick={(e)=>e.stopPropagation()}>

@@ -9,7 +9,30 @@
 <link rel="stylesheet" href="../../styles.css">
 <style>
   html, body { margin: 0; background: var(--surface-page); }
+  @media (max-width: 760px) {
+    .lb-root { flex-direction: column !important; }
+    .lb-stage { padding: 14px !important; min-height: 0; }
+    .lb-stage img { max-height: 52svh !important; }
+    .lb-aside { width: 100% !important; flex: 1 1 auto !important; }
+  }
 </style>
+<script>
+  window.A = function (p) { return (window.HENRY_ASSETS || {})[p] || p; };
+  window.HENRY_LINKS = {
+    home: "../website/index.html",
+    booking: "../booking/index.html",
+    gallery: "../gallery/index.html",
+  };
+</script>
+<template id="__bundler_thumbnail">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+    <rect width="120" height="120" fill="#9dc1cc"></rect>
+    <rect x="34" y="34" width="24" height="34" rx="4" fill="#fbfbfa"></rect>
+    <rect x="62" y="34" width="24" height="22" rx="4" fill="#365764"></rect>
+    <rect x="34" y="72" width="24" height="14" rx="4" fill="#365764"></rect>
+    <rect x="62" y="60" width="24" height="26" rx="4" fill="#fbfbfa"></rect>
+  </svg>
+</template>
 </head>
 <body>
   <div id="root"></div>
@@ -18,6 +41,8 @@
   <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   <script src="../../_ds_bundle.js"></script>
+  <script src="../shared/mobile-preview.js"></script>
+  <script type="text/babel" src="../shared/EditableImage.jsx"></script>
   <script type="text/babel" src="data.jsx"></script>
   <script type="text/babel" src="GalleryGrid.jsx"></script>
   <script type="text/babel" src="Lightbox.jsx"></script>
@@ -34,12 +59,12 @@
 
       return (
         <>
-          <header style={{ padding: "48px 40px 28px" }}>
-            <a href="../website/index.html" style={{ display:"inline-flex", alignItems:"center", gap:6, fontSize:"var(--text-sm)", color:"var(--text-muted)", marginBottom: 20 }}>
+          <header style={{ padding: "44px clamp(20px, 4vw, 40px) 28px" }}>
+            <a href={window.HENRY_LINKS.home} style={{ display:"inline-flex", alignItems:"center", gap:6, fontSize:"var(--text-sm)", color:"var(--text-muted)", marginBottom: 20 }}>
               <i data-lucide="arrow-left" style={{width:16,height:16}}></i> 回首頁
             </a>
             <span className="ds-eyebrow">PORTFOLIO · 2026 雪季</span>
-            <h1 style={{ fontSize: "var(--text-4xl)", margin: "10px 0 6px" }}>影像作品集</h1>
+            <h1 style={{ fontSize: "clamp(30px, 5vw, var(--text-4xl))", margin: "10px 0 6px" }}>影像作品集</h1>
             <p style={{ color: "var(--text-muted)", fontSize: "var(--text-lg)", maxWidth: 520 }}>挑戰的汗水，與登頂的笑容。逐格收藏的雪地故事。</p>
             <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", marginTop: 28, flexWrap:"wrap", gap:16 }}>
               <Tabs value={cat} onChange={setCat} tabs={[

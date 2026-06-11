@@ -14,7 +14,7 @@ function Stepper({ step, steps }) {
                 fontFamily: "var(--font-mono)", fontSize: "var(--text-sm)", fontWeight: 700,
                 background: done ? "var(--brand)" : active ? "var(--brand-soft)" : "var(--surface-sunken)",
                 color: done ? "var(--snow)" : active ? "var(--brand-soft-text)" : "var(--text-subtle)",
-                border: active ? "1.5px solid var(--moss-300)" : "1.5px solid transparent",
+                border: active ? "1.5px solid var(--ice-300)" : "1.5px solid transparent",
                 transition: "var(--transition-base)",
               }}>{done ? <i data-lucide="check" style={{width:15,height:15}}></i> : i + 1}</span>
               <span style={{
@@ -24,7 +24,7 @@ function Stepper({ step, steps }) {
             </div>
             {i < steps.length - 1 && (
               <span style={{ flex: 1, height: 2, margin: "0 14px", borderRadius: 2,
-                background: done ? "var(--brand-300, var(--moss-300))" : "var(--border-soft)" }}></span>
+                background: done ? "var(--ice-300)" : "var(--border-soft)" }}></span>
             )}
           </React.Fragment>
         );

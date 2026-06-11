@@ -1,4 +1,4 @@
-/* @ds-bundle: {"format":3,"namespace":"HenryStudioRemix_704588","components":[{"name":"Button","sourcePath":"components/core/Button.jsx"},{"name":"IconButton","sourcePath":"components/core/IconButton.jsx"},{"name":"Avatar","sourcePath":"components/data/Avatar.jsx"},{"name":"Badge","sourcePath":"components/data/Badge.jsx"},{"name":"MetaRow","sourcePath":"components/data/MetaRow.jsx"},{"name":"Tag","sourcePath":"components/data/Tag.jsx"},{"name":"Input","sourcePath":"components/forms/Input.jsx"},{"name":"Select","sourcePath":"components/forms/Select.jsx"},{"name":"Tabs","sourcePath":"components/navigation/Tabs.jsx"},{"name":"Card","sourcePath":"components/surface/Card.jsx"}],"sourceHashes":{"components/core/Button.jsx":"0c30664a80a7","components/core/IconButton.jsx":"a23f89dafea6","components/data/Avatar.jsx":"57e8e325fe6e","components/data/Badge.jsx":"26f6119bbcb4","components/data/MetaRow.jsx":"c8221b101b9d","components/data/Tag.jsx":"7a6d98858ea1","components/forms/Input.jsx":"e9c65563409e","components/forms/Select.jsx":"5359b1cdfa5f","components/navigation/Tabs.jsx":"c9f9fef1fca2","components/surface/Card.jsx":"d36d118b8511","ui_kits/booking/BookingSummary.jsx":"e5a159c50ad9","ui_kits/booking/Stepper.jsx":"8b8b3679df08","ui_kits/booking/Steps.jsx":"07cfa5f0b089","ui_kits/gallery/GalleryGrid.jsx":"4aaa8192ab39","ui_kits/gallery/Lightbox.jsx":"125cc3b3bca6","ui_kits/gallery/data.jsx":"483993587f65","ui_kits/website/FeaturedWork.jsx":"b039006ab9ff","ui_kits/website/Footer.jsx":"7279d0ea5410","ui_kits/website/Hero.jsx":"62093b7861bf","ui_kits/website/Services.jsx":"5a6cbc4d809a","ui_kits/website/SiteNav.jsx":"da56ddafe4ac"},"inlinedExternals":[],"unexposedExports":[]} */
+/* @ds-bundle: {"format":3,"namespace":"HenryStudioRemix_704588","components":[{"name":"Button","sourcePath":"components/core/Button.jsx"},{"name":"IconButton","sourcePath":"components/core/IconButton.jsx"},{"name":"Avatar","sourcePath":"components/data/Avatar.jsx"},{"name":"Badge","sourcePath":"components/data/Badge.jsx"},{"name":"MetaRow","sourcePath":"components/data/MetaRow.jsx"},{"name":"Tag","sourcePath":"components/data/Tag.jsx"},{"name":"Input","sourcePath":"components/forms/Input.jsx"},{"name":"Select","sourcePath":"components/forms/Select.jsx"},{"name":"Tabs","sourcePath":"components/navigation/Tabs.jsx"},{"name":"Card","sourcePath":"components/surface/Card.jsx"}],"sourceHashes":{"components/core/Button.jsx":"ea9afb2f84c1","components/core/IconButton.jsx":"a23f89dafea6","components/data/Avatar.jsx":"c42fa22f5f54","components/data/Badge.jsx":"ded9659e30a3","components/data/MetaRow.jsx":"c8221b101b9d","components/data/Tag.jsx":"3627e8635217","components/forms/Input.jsx":"e9c65563409e","components/forms/Select.jsx":"5359b1cdfa5f","components/navigation/Tabs.jsx":"c9f9fef1fca2","components/surface/Card.jsx":"d36d118b8511","ui_kits/booking/BookingSummary.jsx":"d1c8bad52e8c","ui_kits/booking/Stepper.jsx":"8d70e610e7de","ui_kits/booking/Steps.jsx":"888de85b3cbe","ui_kits/gallery/GalleryGrid.jsx":"0f648d90d192","ui_kits/gallery/Lightbox.jsx":"8610ed200b32","ui_kits/gallery/data.jsx":"483993587f65","ui_kits/shared/EditableImage.jsx":"7e54e9fecd99","ui_kits/shared/mobile-preview.js":"a6a07169f90c","ui_kits/website/FeaturedWork.jsx":"b361ec70d18e","ui_kits/website/Footer.jsx":"f964e86756de","ui_kits/website/Hero.jsx":"d867db60beb4","ui_kits/website/Services.jsx":"c2bedecd9bbf","ui_kits/website/SiteNav.jsx":"cb3f44bba1d5"},"inlinedExternals":[],"unexposedExports":[]} */
 
 (() => {
 
@@ -13,7 +13,7 @@ try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 /**
  * Button — 亨利攝影工作室 primary action control.
- * Soft 12px corners, gentle press micro-interaction, moss-green brand fill.
+ * Soft 12px corners, gentle press micro-interaction, misty ice-blue brand fill.
  */
 function Button({
   children,
@@ -236,8 +236,8 @@ function Avatar({
       height: dim,
       borderRadius: "var(--radius-pill)",
       overflow: "hidden",
-      background: "var(--moss-200)",
-      color: "var(--moss-800)",
+      background: "var(--ice-200)",
+      color: "var(--ice-800)",
       fontFamily: "var(--font-display)",
       fontWeight: "var(--fw-semibold)",
       fontSize: dim * 0.36,
@@ -280,7 +280,7 @@ function Badge({
     brand: {
       soft: ["var(--brand-soft)", "var(--brand-soft-text)"],
       solid: ["var(--brand)", "var(--text-on-brand)"],
-      outline: ["transparent", "var(--moss-600)"]
+      outline: ["transparent", "var(--ice-600)"]
     },
     accent: {
       soft: ["var(--accent-soft)", "var(--accent-soft-text)"],
@@ -288,9 +288,9 @@ function Badge({
       outline: ["transparent", "var(--ice-600)"]
     },
     success: {
-      soft: ["var(--success-soft)", "var(--moss-700)"],
+      soft: ["var(--success-soft)", "var(--ice-700)"],
       solid: ["var(--success)", "var(--snow)"],
-      outline: ["transparent", "var(--moss-600)"]
+      outline: ["transparent", "var(--ice-600)"]
     },
     warning: {
       soft: ["var(--warning-soft)", "var(--amber-500)"],
@@ -419,7 +419,7 @@ function Tag({
       cursor: onClick ? "pointer" : "default",
       background: active ? "var(--brand-soft)" : "var(--surface-sunken)",
       color: active ? "var(--brand-soft-text)" : "var(--text-body)",
-      border: active ? "1.5px solid var(--moss-300)" : "1.5px solid var(--border-soft)",
+      border: active ? "1.5px solid var(--ice-300)" : "1.5px solid var(--border-soft)",
       transition: "var(--transition-base)",
       ...style
     }
@@ -790,8 +790,8 @@ function BookingSummary({
   const price = priceMap[data.pkg] ?? 0;
   return /*#__PURE__*/React.createElement("aside", {
     style: {
-      width: 320,
-      flexShrink: 0,
+      flex: "1 1 300px",
+      maxWidth: 480,
       alignSelf: "flex-start",
       position: "sticky",
       top: 32,
@@ -807,7 +807,7 @@ function BookingSummary({
       position: "relative"
     }
   }, /*#__PURE__*/React.createElement("img", {
-    src: "../../assets/photos/slope-dawn.jpg",
+    src: "../../assets/photos-web/slope-dawn.jpg",
     alt: "",
     style: {
       width: "100%",
@@ -941,7 +941,7 @@ function Stepper({
         fontWeight: 700,
         background: done ? "var(--brand)" : active ? "var(--brand-soft)" : "var(--surface-sunken)",
         color: done ? "var(--snow)" : active ? "var(--brand-soft-text)" : "var(--text-subtle)",
-        border: active ? "1.5px solid var(--moss-300)" : "1.5px solid transparent",
+        border: active ? "1.5px solid var(--ice-300)" : "1.5px solid transparent",
         transition: "var(--transition-base)"
       }
     }, done ? /*#__PURE__*/React.createElement("i", {
@@ -962,7 +962,7 @@ function Stepper({
         height: 2,
         margin: "0 14px",
         borderRadius: 2,
-        background: done ? "var(--brand-300, var(--moss-300))" : "var(--border-soft)"
+        background: done ? "var(--ice-300)" : "var(--border-soft)"
       }
     }));
   }));
@@ -997,7 +997,7 @@ function StepChoose({
     id: "空拍企劃 · 客製",
     icon: "plane",
     name: "空拍企劃",
-    meta: "空拍 + 跟拍 · 客製",
+    meta: "空拍 + 雪場外 · 客製",
     price: "客製報價"
   }];
   return /*#__PURE__*/React.createElement("div", {
@@ -1029,7 +1029,7 @@ function StepChoose({
         padding: "16px 18px",
         cursor: "pointer",
         background: on ? "var(--brand-soft)" : "var(--surface-card)",
-        border: `1.5px solid ${on ? "var(--moss-400)" : "var(--border-soft)"}`,
+        border: `1.5px solid ${on ? "var(--ice-400)" : "var(--border-soft)"}`,
         borderRadius: "var(--radius-md)",
         transition: "var(--transition-base)"
       }
@@ -1104,7 +1104,7 @@ function StepDetails({
   }, "\u62CD\u651D\u7D30\u7BC0"), /*#__PURE__*/React.createElement("div", {
     style: {
       display: "grid",
-      gridTemplateColumns: "1fr 1fr",
+      gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 220px), 1fr))",
       gap: 16
     }
   }, /*#__PURE__*/React.createElement(Select, {
@@ -1160,7 +1160,7 @@ function StepContact({
   }, "\u806F\u7D61\u65B9\u5F0F"), /*#__PURE__*/React.createElement("div", {
     style: {
       display: "grid",
-      gridTemplateColumns: "1fr 1fr",
+      gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 220px), 1fr))",
       gap: 16
     }
   }, /*#__PURE__*/React.createElement(Input, {
@@ -1233,7 +1233,7 @@ function StepDone({
       maxWidth: 420,
       margin: "12px auto 0"
     }
-  }, "\u611F\u8B1D ", data.name || "你", " \u7684\u9810\u7D04\u3002\u6211\u6703\u5728 24 \u5C0F\u6642\u5167\u900F\u904E LINE \u8207\u4F60\u78BA\u8A8D\u7D30\u7BC0\uFF0C\u671F\u5F85\u8207\u4F60\u4E26\u80A9\u5728\u98A8\u96EA\u4E2D\u524D\u884C\u3002"), /*#__PURE__*/React.createElement("div", {
+  }, "\u611F\u8B1D ", data.name || "你", " \u7684\u9810\u7D04\u3002\u6211\u6703\u5728 24 \u5C0F\u6642\u5167\u8207\u4F60\u78BA\u8A8D\u7D30\u7BC0\uFF0C\u671F\u5F85\u8207\u4F60\u4E26\u80A9\u5728\u98A8\u96EA\u4E2D\u524D\u884C\u3002"), /*#__PURE__*/React.createElement("div", {
     style: {
       display: "flex",
       justifyContent: "center",
@@ -1261,7 +1261,7 @@ function StepDone({
     iconLeft: /*#__PURE__*/React.createElement("i", {
       "data-lucide": "image"
     }),
-    onClick: () => window.location.href = "../gallery/index.html"
+    onClick: () => window.location.href = window.HENRY_LINKS.gallery
   }, "\u5148\u770B\u770B\u4F5C\u54C1\u96C6")));
 }
 window.StepChoose = StepChoose;
@@ -1283,9 +1283,9 @@ function GalleryGrid({
   } = window.HenryStudioRemix_704588;
   return /*#__PURE__*/React.createElement("div", {
     style: {
-      columnCount: 3,
+      columnWidth: 300,
       columnGap: 18,
-      padding: "0 40px 80px"
+      padding: "0 clamp(20px, 4vw, 40px) 80px"
     }
   }, items.map(it => /*#__PURE__*/React.createElement("figure", {
     key: it.id,
@@ -1308,14 +1308,13 @@ function GalleryGrid({
       e.currentTarget.style.boxShadow = "var(--shadow-sm)";
       e.currentTarget.querySelector(".gov").style.opacity = 0;
     }
-  }, /*#__PURE__*/React.createElement("img", {
-    src: `../../assets/photos/${it.img}.jpg`,
+  }, /*#__PURE__*/React.createElement(EditableImage, {
+    id: `photo-${it.img}`,
+    src: `../../assets/photos-web/${it.img}.jpg`,
     alt: it.title,
-    style: {
-      width: "100%",
-      display: "block",
+    imgStyle: {
       aspectRatio: it.span === 2 ? "4 / 5" : "4 / 3",
-      objectFit: "cover"
+      height: "auto"
     }
   }), it.video && /*#__PURE__*/React.createElement("span", {
     style: {
@@ -1343,7 +1342,8 @@ function GalleryGrid({
       display: "flex",
       flexDirection: "column",
       justifyContent: "flex-end",
-      padding: 16
+      padding: 16,
+      pointerEvents: "none"
     }
   }, /*#__PURE__*/React.createElement("div", {
     style: {
@@ -1401,6 +1401,7 @@ function Lightbox({
     return () => window.removeEventListener("keydown", h);
   }, [item]);
   return /*#__PURE__*/React.createElement("div", {
+    className: "lb-root",
     style: {
       position: "fixed",
       inset: 0,
@@ -1411,6 +1412,7 @@ function Lightbox({
     },
     onClick: onClose
   }, /*#__PURE__*/React.createElement("div", {
+    className: "lb-stage",
     style: {
       flex: 1,
       position: "relative",
@@ -1433,7 +1435,7 @@ function Lightbox({
       left: 24
     }
   }), /*#__PURE__*/React.createElement("img", {
-    src: `../../assets/photos/${item.img}.jpg`,
+    src: window.henryImg(`photo-${item.img}`, `../../assets/photos-web/${item.img}.jpg`),
     alt: item.title,
     style: {
       maxWidth: "100%",
@@ -1454,6 +1456,7 @@ function Lightbox({
       right: 24
     }
   })), /*#__PURE__*/React.createElement("aside", {
+    className: "lb-aside",
     style: {
       width: 320,
       flexShrink: 0,
@@ -1651,9 +1654,239 @@ window.GALLERY_ITEMS = [{
 }];
 })(); } catch (e) { __ds_ns.__errors.push({ path: "ui_kits/gallery/data.jsx", error: String((e && e.message) || e) }); }
 
+// ui_kits/shared/EditableImage.jsx
+try { (() => {
+// Shared — EditableImage：可直接上傳替換的圖片槽
+// 圖片會自動縮放 + 壓縮成適合網頁的大小，存在瀏覽器 localStorage，重新整理也會保留。
+(function () {
+  if (document.getElementById("ei-styles")) return;
+  const st = document.createElement("style");
+  st.id = "ei-styles";
+  st.textContent = `
+    .ei-wrap { position: relative; overflow: hidden; }
+    .ei-controls { position: absolute; top: 10px; right: 10px; z-index: 6; display: flex; gap: 6px;
+      opacity: 0; transition: opacity 160ms ease; }
+    .ei-wrap:hover .ei-controls, .ei-wrap:focus-within .ei-controls,
+    figure:hover .ei-controls, .hs-card:hover .ei-controls { opacity: 1; }
+    @media (hover: none) { .ei-controls { opacity: 1; } }
+    .ei-btn { display: inline-flex; align-items: center; gap: 6px; height: 30px; padding: 0 11px;
+      border-radius: 999px; border: 1px solid rgba(251,251,250,0.35);
+      background: rgba(28,27,25,0.55); color: #fbfbfa; font-size: 12px; line-height: 1;
+      font-family: var(--font-sans, sans-serif); font-weight: 500; cursor: pointer;
+      backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+      transition: background 160ms ease; white-space: nowrap; }
+    .ei-btn:hover { background: rgba(28,27,25,0.78); }
+    .ei-btn svg { width: 13px; height: 13px; flex-shrink: 0; }
+  `;
+  document.head.appendChild(st);
+})();
+
+// 讀取某個圖片槽目前的圖（自訂優先，否則用預設）— 給 Lightbox 等唯讀場景用
+window.henryImg = function (id, fallback) {
+  try {
+    return localStorage.getItem("henry-img-" + id) || fallback;
+  } catch (e) {
+    return fallback;
+  }
+};
+function EditableImage({
+  id,
+  src,
+  alt = "",
+  style = {},
+  imgStyle = {},
+  maxEdge = 1600,
+  label = "更換圖片"
+}) {
+  const key = "henry-img-" + id;
+  const [custom, setCustom] = React.useState(() => {
+    try {
+      return localStorage.getItem(key);
+    } catch (e) {
+      return null;
+    }
+  });
+  const inputRef = React.useRef(null);
+  const onFile = e => {
+    const f = e.target.files && e.target.files[0];
+    e.target.value = "";
+    if (!f) return;
+    const url = URL.createObjectURL(f);
+    const img = new Image();
+    img.onload = () => {
+      const scale = Math.min(1, maxEdge / Math.max(img.width, img.height));
+      const w = Math.max(1, Math.round(img.width * scale));
+      const h = Math.max(1, Math.round(img.height * scale));
+      const c = document.createElement("canvas");
+      c.width = w;
+      c.height = h;
+      c.getContext("2d").drawImage(img, 0, 0, w, h);
+      let q = 0.85;
+      let out = c.toDataURL("image/jpeg", q);
+      while (out.length > 700 * 1024 && q > 0.55) {
+        q -= 0.08;
+        out = c.toDataURL("image/jpeg", q);
+      }
+      URL.revokeObjectURL(url);
+      try {
+        localStorage.setItem(key, out);
+        setCustom(out);
+      } catch (err) {
+        alert("瀏覽器儲存空間不足：請先「還原」其他圖片，或改用較小的照片。");
+      }
+    };
+    img.onerror = () => {
+      URL.revokeObjectURL(url);
+      alert("無法讀取此圖片，請改用 JPG 或 PNG 檔。");
+    };
+    img.src = url;
+  };
+  const reset = e => {
+    e.stopPropagation();
+    try {
+      localStorage.removeItem(key);
+    } catch (err) {}
+    setCustom(null);
+  };
+  return /*#__PURE__*/React.createElement("div", {
+    className: "ei-wrap",
+    style: style
+  }, /*#__PURE__*/React.createElement("img", {
+    src: custom || src,
+    alt: alt,
+    style: {
+      width: "100%",
+      height: "100%",
+      objectFit: "cover",
+      display: "block",
+      ...imgStyle
+    }
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "ei-controls",
+    onClick: e => e.stopPropagation()
+  }, /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    className: "ei-btn",
+    "aria-label": label,
+    onClick: e => {
+      e.stopPropagation();
+      inputRef.current && inputRef.current.click();
+    }
+  }, /*#__PURE__*/React.createElement("svg", {
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: "2.2",
+    strokeLinecap: "round",
+    strokeLinejoin: "round"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"
+  }), /*#__PURE__*/React.createElement("polyline", {
+    points: "17 8 12 3 7 8"
+  }), /*#__PURE__*/React.createElement("line", {
+    x1: "12",
+    y1: "3",
+    x2: "12",
+    y2: "15"
+  })), label), custom && /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    className: "ei-btn",
+    onClick: reset,
+    "aria-label": "\u9084\u539F\u9810\u8A2D\u5716\u7247"
+  }, /*#__PURE__*/React.createElement("svg", {
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: "2.2",
+    strokeLinecap: "round",
+    strokeLinejoin: "round"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M3 12a9 9 0 1 0 3-6.7L3 8"
+  }), /*#__PURE__*/React.createElement("polyline", {
+    points: "3 3 3 8 8 8"
+  })), "\u9084\u539F")), /*#__PURE__*/React.createElement("input", {
+    ref: inputRef,
+    type: "file",
+    accept: "image/*",
+    style: {
+      display: "none"
+    },
+    onChange: onFile,
+    onClick: e => e.stopPropagation()
+  }));
+}
+window.EditableImage = EditableImage;
+})(); } catch (e) { __ds_ns.__errors.push({ path: "ui_kits/shared/EditableImage.jsx", error: String((e && e.message) || e) }); }
+
+// ui_kits/shared/mobile-preview.js
+try { (() => {
+// Shared — 手機預覽模式：右下角按鈕，打開 390×844 的手機外框預覽本頁
+(function () {
+  // 已經在手機預覽 iframe 裡 → 不再顯示按鈕
+  try {
+    if (window.frameElement && window.frameElement.hasAttribute("data-mp")) return;
+  } catch (e) {}
+  function init() {
+    if (document.getElementById("mp-fab")) return;
+    var css = document.createElement("style");
+    css.textContent = ["#mp-fab { position: fixed; right: 18px; bottom: 18px; z-index: 998;", "  display: inline-flex; align-items: center; gap: 8px; height: 44px; padding: 0 18px;", "  border: none; border-radius: 999px; cursor: pointer;", "  background: var(--brand, #538799); color: #fbfbfa;", "  font-family: var(--font-sans, sans-serif); font-size: 14px; font-weight: 600;", "  box-shadow: 0 6px 24px rgba(28,27,25,0.28); transition: transform 160ms ease, background 160ms ease; }", "#mp-fab:hover { background: var(--brand-hover, #426e7e); }", "#mp-fab:active { transform: scale(0.96); }", "#mp-fab svg { width: 16px; height: 16px; }", "#mp-overlay { position: fixed; inset: 0; z-index: 999; display: flex; align-items: center; justify-content: center;", "  background: rgba(20,19,18,0.82); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }", "#mp-frame { background: #1c1b19; border-radius: 52px; padding: 12px;", "  box-shadow: 0 30px 80px rgba(0,0,0,0.5); flex-shrink: 0; }", "#mp-frame iframe { display: block; width: 390px; height: 844px; border: none; border-radius: 40px; background: #fbfbfa; }", "#mp-close { position: fixed; top: 16px; right: 16px; z-index: 1000; width: 40px; height: 40px;", "  display: inline-flex; align-items: center; justify-content: center; border: 1px solid rgba(251,251,250,0.3);", "  border-radius: 999px; background: rgba(28,27,25,0.6); color: #fbfbfa; cursor: pointer; font-size: 18px; }", "#mp-close:hover { background: rgba(28,27,25,0.85); }", "#mp-label { position: fixed; bottom: 14px; left: 50%; transform: translateX(-50%); z-index: 1000;", "  color: rgba(251,251,250,0.75); font-family: var(--font-mono, monospace); font-size: 12px; letter-spacing: 0.08em; }"].join("\n");
+    document.head.appendChild(css);
+    var fab = document.createElement("button");
+    fab.id = "mp-fab";
+    fab.type = "button";
+    fab.setAttribute("aria-label", "手機預覽");
+    fab.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2.5"></rect><line x1="11" y1="18.5" x2="13" y2="18.5"></line></svg><span>手機預覽</span>';
+    document.body.appendChild(fab);
+    var overlay = null;
+    function close() {
+      if (!overlay) return;
+      overlay.remove();
+      overlay = null;
+      document.removeEventListener("keydown", onKey);
+      window.removeEventListener("resize", fit);
+      document.documentElement.style.overflow = "";
+    }
+    function onKey(e) {
+      if (e.key === "Escape") close();
+    }
+    function fit() {
+      if (!overlay) return;
+      var frame = overlay.querySelector("#mp-frame");
+      var s = Math.min(1, (window.innerHeight - 64) / 868, (window.innerWidth - 32) / 414);
+      frame.style.transform = "scale(" + s + ")";
+    }
+    function open() {
+      if (overlay) return;
+      overlay = document.createElement("div");
+      overlay.id = "mp-overlay";
+      var u;
+      try {
+        u = new URL(window.location.href);
+        u.hash = "";
+        u = u.toString();
+      } catch (e) {
+        u = window.location.href;
+      }
+      overlay.innerHTML = '<div id="mp-frame"><iframe data-mp src="' + u.replace(/"/g, "&quot;") + '"></iframe></div>' + '<button id="mp-close" type="button" aria-label="關閉預覽">✕</button>' + '<div id="mp-label">390 × 844 · MOBILE PREVIEW</div>';
+      document.body.appendChild(overlay);
+      overlay.addEventListener("click", function (e) {
+        if (e.target === overlay) close();
+      });
+      overlay.querySelector("#mp-close").addEventListener("click", close);
+      document.addEventListener("keydown", onKey);
+      window.addEventListener("resize", fit);
+      document.documentElement.style.overflow = "hidden";
+      fit();
+    }
+    fab.addEventListener("click", open);
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);else init();
+})();
+})(); } catch (e) { __ds_ns.__errors.push({ path: "ui_kits/shared/mobile-preview.js", error: String((e && e.message) || e) }); }
+
 // ui_kits/website/FeaturedWork.jsx
 try { (() => {
-// Marketing site — featured work grid
+// Marketing site — featured work grid (每張作品圖都可直接上傳更換)
 function FeaturedWork({
   onNav
 }) {
@@ -1711,7 +1944,7 @@ function FeaturedWork({
   const shown = cat === "all" ? items : items.filter(i => i.tag === cat);
   return /*#__PURE__*/React.createElement("section", {
     style: {
-      padding: "88px 40px"
+      padding: "clamp(56px, 9vw, 88px) clamp(20px, 4vw, 40px)"
     }
   }, /*#__PURE__*/React.createElement("div", {
     style: {
@@ -1726,10 +1959,15 @@ function FeaturedWork({
     className: "ds-eyebrow"
   }, "SELECTED WORK"), /*#__PURE__*/React.createElement("h2", {
     style: {
-      fontSize: "var(--text-3xl)",
+      fontSize: "clamp(26px, 4vw, var(--text-3xl))",
       marginTop: 10
     }
-  }, "\u96EA\u5730\u7684\u6545\u4E8B\uFF0C\u9010\u683C\u6536\u85CF")), /*#__PURE__*/React.createElement(Tabs, {
+  }, "\u96EA\u5730\u7684\u6545\u4E8B\uFF0C\u9010\u683C\u6536\u85CF")), /*#__PURE__*/React.createElement("div", {
+    style: {
+      maxWidth: "100%",
+      overflowX: "auto"
+    }
+  }, /*#__PURE__*/React.createElement(Tabs, {
     value: cat,
     onChange: setCat,
     tabs: [{
@@ -1746,18 +1984,26 @@ function FeaturedWork({
       value: "portrait",
       label: "人像"
     }]
-  })), /*#__PURE__*/React.createElement("div", {
+  }))), /*#__PURE__*/React.createElement("div", {
     style: {
       display: "grid",
-      gridTemplateColumns: "repeat(3, 1fr)",
+      gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 270px), 1fr))",
       gap: 22
     }
   }, shown.map(it => /*#__PURE__*/React.createElement(Card, {
     key: it.title,
-    cover: `../../assets/photos/${it.img}.jpg`,
     coverHeight: 230,
     interactive: true,
-    onClick: () => onNav && onNav("work")
+    onClick: () => onNav && onNav("work"),
+    cover: /*#__PURE__*/React.createElement(EditableImage, {
+      id: `photo-${it.img}`,
+      src: `../../assets/photos-web/${it.img}.jpg`,
+      alt: it.title,
+      style: {
+        width: "100%",
+        height: "100%"
+      }
+    })
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       display: "flex",
@@ -1804,19 +2050,20 @@ function PhilosophyBand() {
   return /*#__PURE__*/React.createElement("section", {
     style: {
       position: "relative",
-      padding: "104px 40px",
+      padding: "clamp(64px, 10vw, 104px) clamp(20px, 5vw, 40px)",
       overflow: "hidden",
       background: "var(--surface-inverse)"
     }
-  }, /*#__PURE__*/React.createElement("img", {
-    src: "../../assets/photos/summit-blue.jpg",
+  }, /*#__PURE__*/React.createElement(EditableImage, {
+    id: "philosophy-band",
+    src: "../../assets/photos-web/summit-blue.jpg",
     alt: "",
+    maxEdge: 1920,
     style: {
       position: "absolute",
-      inset: 0,
-      width: "100%",
-      height: "100%",
-      objectFit: "cover",
+      inset: 0
+    },
+    imgStyle: {
       opacity: 0.32
     }
   }), /*#__PURE__*/React.createElement("div", {
@@ -1824,7 +2071,8 @@ function PhilosophyBand() {
       position: "relative",
       maxWidth: 820,
       margin: "0 auto",
-      textAlign: "center"
+      textAlign: "center",
+      pointerEvents: "none"
     }
   }, /*#__PURE__*/React.createElement("i", {
     "data-lucide": "quote",
@@ -1838,7 +2086,7 @@ function PhilosophyBand() {
     style: {
       fontFamily: "var(--font-display)",
       color: "var(--snow)",
-      fontSize: "var(--text-3xl)",
+      fontSize: "clamp(22px, 3.6vw, var(--text-3xl))",
       lineHeight: 1.4,
       fontWeight: 500,
       letterSpacing: "0.01em"
@@ -1861,9 +2109,9 @@ function SiteFooter({
   } = window.HenryStudioRemix_704588;
   return /*#__PURE__*/React.createElement("footer", {
     style: {
-      background: "var(--moss-800)",
+      background: "var(--ice-800)",
       color: "var(--stone-200)",
-      padding: "64px 40px 36px"
+      padding: "clamp(44px, 8vw, 64px) clamp(20px, 5vw, 40px) 36px"
     }
   }, /*#__PURE__*/React.createElement("div", {
     style: {
@@ -1889,7 +2137,7 @@ function SiteFooter({
       marginTop: 18,
       fontSize: "var(--text-sm)",
       lineHeight: 1.7,
-      color: "var(--moss-200)"
+      color: "var(--ice-200)"
     }
   }, "\u6ED1\u96EA\u5F71\u50CF\u81EA\u7531\u5DE5\u4F5C\u8005\u3002\u8207\u4F60\u4E26\u80A9\u5728\u98A8\u96EA\u4E2D\u524D\u884C\u7684\u5925\u4F34\u3002")), /*#__PURE__*/React.createElement("div", {
     style: {
@@ -1917,27 +2165,28 @@ function SiteFooter({
     onClick: () => onNav && onNav("book")
   }, "\u9810\u7D04\u4F60\u7684\u96EA\u5B63"))), /*#__PURE__*/React.createElement("div", {
     style: {
-      borderTop: "1px solid var(--moss-700)",
-      marginTop: 44,
+      borderTop: "1px solid var(--ice-700)",
       paddingTop: 24,
       display: "flex",
       justifyContent: "space-between",
       flexWrap: "wrap",
-      gap: 12
+      gap: 12,
+      maxWidth: 1080,
+      margin: "44px auto 0"
     }
   }, /*#__PURE__*/React.createElement("span", {
     style: {
       fontFamily: "var(--font-mono)",
       fontSize: "var(--text-xs)",
-      color: "var(--moss-300)"
+      color: "var(--ice-300)"
     }
   }, "\xA9 2026 \u4EA8\u5229\u651D\u5F71\u5DE5\u4F5C\u5BA4 HENRYPHOTO STUDIO"), /*#__PURE__*/React.createElement("span", {
     style: {
       fontFamily: "var(--font-mono)",
       fontSize: "var(--text-xs)",
-      color: "var(--moss-300)"
+      color: "var(--ice-300)"
     }
-  }, "HOKKAIDO \xB7 NAGANO \xB7 TAIWAN")));
+  }, "Hokkaido \xB7 Niseko \xB7 Taiwan")));
 }
 function FootCol({
   title,
@@ -1962,7 +2211,7 @@ function FootCol({
     href: "#",
     onClick: e => e.preventDefault(),
     style: {
-      color: "var(--moss-200)",
+      color: "var(--ice-200)",
       fontSize: "var(--text-sm)"
     }
   }, i))));
@@ -1973,7 +2222,7 @@ window.SiteFooter = SiteFooter;
 
 // ui_kits/website/Hero.jsx
 try { (() => {
-// Marketing site — hero
+// Marketing site — hero (cover 圖可直接上傳更換)
 function Hero({
   onNav
 }) {
@@ -1984,31 +2233,32 @@ function Hero({
   return /*#__PURE__*/React.createElement("section", {
     style: {
       position: "relative",
-      minHeight: 620,
+      minHeight: "min(620px, 88svh)",
       display: "flex",
       alignItems: "flex-end",
       overflow: "hidden"
     }
-  }, /*#__PURE__*/React.createElement("img", {
-    src: "../../assets/photos/hero-ridge.jpg",
+  }, /*#__PURE__*/React.createElement(EditableImage, {
+    id: "cover-hero",
+    src: "../../assets/photos-web/hero-ridge.jpg",
     alt: "",
+    maxEdge: 1920,
+    label: "\u66F4\u63DB Cover",
     style: {
       position: "absolute",
-      inset: 0,
-      width: "100%",
-      height: "100%",
-      objectFit: "cover"
+      inset: 0
     }
   }), /*#__PURE__*/React.createElement("div", {
     style: {
       position: "absolute",
       inset: 0,
+      pointerEvents: "none",
       background: "linear-gradient(180deg, rgba(28,27,25,0.12) 0%, rgba(28,27,25,0.05) 40%, rgba(28,27,25,0.62) 100%)"
     }
   }), /*#__PURE__*/React.createElement("div", {
     style: {
       position: "relative",
-      padding: "0 40px 56px",
+      padding: "96px clamp(20px, 5vw, 40px) clamp(36px, 7vw, 56px)",
       maxWidth: 880
     }
   }, /*#__PURE__*/React.createElement("span", {
@@ -2019,17 +2269,18 @@ function Hero({
   }, "FREELANCE SKI IMAGERY \xB7 \u5317\u6D77\u9053 / \u9577\u91CE"), /*#__PURE__*/React.createElement("h1", {
     style: {
       color: "var(--snow)",
-      fontSize: "var(--text-6xl)",
-      lineHeight: 1.04,
+      fontSize: "clamp(38px, 7vw, var(--text-6xl))",
+      lineHeight: 1.06,
       margin: "16px 0 20px",
       letterSpacing: "var(--tracking-tight)",
       maxWidth: 760,
-      textShadow: "0 2px 30px rgba(28,27,25,0.35)"
+      textShadow: "0 2px 30px rgba(28,27,25,0.35)",
+      textWrap: "balance"
     }
   }, "\u6BCF\u4E00\u6B21\u51FA\u767C\uFF0C", /*#__PURE__*/React.createElement("br", null), "\u90FD\u662F\u4E00\u5834\u5C0D\u672A\u77E5\u7684\u63A2\u7D22\u3002"), /*#__PURE__*/React.createElement("p", {
     style: {
       color: "var(--stone-100)",
-      fontSize: "var(--text-xl)",
+      fontSize: "clamp(16px, 2.4vw, var(--text-xl))",
       maxWidth: 540,
       lineHeight: 1.6,
       fontWeight: 400
@@ -2039,7 +2290,8 @@ function Hero({
       display: "flex",
       gap: 14,
       marginTop: 32,
-      alignItems: "center"
+      alignItems: "center",
+      flexWrap: "wrap"
     }
   }, /*#__PURE__*/React.createElement(Button, {
     variant: "inverse",
@@ -2059,7 +2311,7 @@ function Hero({
     })
   }, "\u89C0\u770B\u5F71\u7247")), /*#__PURE__*/React.createElement("div", {
     style: {
-      marginTop: 40
+      marginTop: "clamp(24px, 5vw, 40px)"
     }
   }, /*#__PURE__*/React.createElement(MetaRow, {
     style: {
@@ -2120,7 +2372,7 @@ function Services({
   return /*#__PURE__*/React.createElement("section", {
     style: {
       background: "var(--surface-sunken)",
-      padding: "88px 40px"
+      padding: "clamp(56px, 9vw, 88px) clamp(20px, 4vw, 40px)"
     }
   }, /*#__PURE__*/React.createElement("div", {
     style: {
@@ -2132,7 +2384,7 @@ function Services({
     className: "ds-eyebrow"
   }, "PACKAGES"), /*#__PURE__*/React.createElement("h2", {
     style: {
-      fontSize: "var(--text-3xl)",
+      fontSize: "clamp(26px, 4vw, var(--text-3xl))",
       margin: "10px 0 14px"
     }
   }, "\u9078\u4E00\u6BB5\uFF0C\u8207\u4F60\u4E26\u80A9\u524D\u884C\u7684\u65B9\u5F0F"), /*#__PURE__*/React.createElement("p", {
@@ -2143,7 +2395,7 @@ function Services({
   }, "\u6BCF\u500B\u65B9\u6848\u90FD\u53EF\u4F9D\u96EA\u5834\u3001\u5929\u6578\u8207\u9700\u6C42\u5F48\u6027\u8ABF\u6574\u3002")), /*#__PURE__*/React.createElement("div", {
     style: {
       display: "grid",
-      gridTemplateColumns: "repeat(3, 1fr)",
+      gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 270px), 1fr))",
       gap: 22,
       maxWidth: 1080,
       margin: "0 auto"
@@ -2153,7 +2405,7 @@ function Services({
     elevation: p.featured ? "lg" : "sm",
     padding: "28px",
     style: p.featured ? {
-      border: "1.5px solid var(--moss-300)"
+      border: "1.5px solid var(--ice-300)"
     } : {}
   }, /*#__PURE__*/React.createElement("div", {
     style: {
@@ -2239,7 +2491,7 @@ window.Services = Services;
 
 // ui_kits/website/SiteNav.jsx
 try { (() => {
-// Marketing site — top navigation
+// Marketing site — top navigation (responsive: desktop links / mobile burger sheet)
 function SiteNav({
   onNav,
   active
@@ -2248,6 +2500,7 @@ function SiteNav({
     Button,
     IconButton
   } = window.HenryStudioRemix_704588;
+  const [open, setOpen] = React.useState(false);
   const links = [{
     id: "work",
     label: "作品集"
@@ -2261,49 +2514,26 @@ function SiteNav({
     id: "journal",
     label: "雪季手記"
   }];
+  const go = (e, id) => {
+    e.preventDefault();
+    setOpen(false);
+    onNav && onNav(id);
+  };
   return /*#__PURE__*/React.createElement("header", {
-    style: {
-      position: "sticky",
-      top: 0,
-      zIndex: 50,
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "space-between",
-      padding: "16px 40px",
-      background: "var(--surface-frost)",
-      backdropFilter: "blur(var(--blur-frost))",
-      WebkitBackdropFilter: "blur(var(--blur-frost))",
-      borderBottom: "1px solid var(--border-soft)"
-    }
+    className: "site-nav"
   }, /*#__PURE__*/React.createElement("a", {
+    className: "site-nav__logo",
     href: "#",
-    onClick: e => {
-      e.preventDefault();
-      onNav && onNav("home");
-    },
-    style: {
-      display: "flex",
-      alignItems: "center"
-    }
+    onClick: e => go(e, "home")
   }, /*#__PURE__*/React.createElement("img", {
     src: "../../assets/logo-lockup.svg",
-    alt: "\u4EA8\u5229\u651D\u5F71\u5DE5\u4F5C\u5BA4",
-    style: {
-      height: 40
-    }
+    alt: "\u4EA8\u5229\u651D\u5F71\u5DE5\u4F5C\u5BA4"
   })), /*#__PURE__*/React.createElement("nav", {
-    style: {
-      display: "flex",
-      alignItems: "center",
-      gap: 4
-    }
+    className: "site-nav__links"
   }, links.map(l => /*#__PURE__*/React.createElement("a", {
     key: l.id,
     href: `#${l.id}`,
-    onClick: e => {
-      e.preventDefault();
-      onNav && onNav(l.id);
-    },
+    onClick: e => go(e, l.id),
     style: {
       padding: "8px 16px",
       borderRadius: "var(--radius-sm)",
@@ -2314,25 +2544,95 @@ function SiteNav({
       transition: "var(--transition-base)"
     }
   }, l.label))), /*#__PURE__*/React.createElement("div", {
-    style: {
-      display: "flex",
-      alignItems: "center",
-      gap: 12
-    }
+    className: "site-nav__actions"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "site-nav__ig"
   }, /*#__PURE__*/React.createElement(IconButton, {
-    icon: /*#__PURE__*/React.createElement("i", {
-      "data-lucide": "instagram"
-    }),
+    icon: /*#__PURE__*/React.createElement("svg", {
+      viewBox: "0 0 24 24",
+      width: "16",
+      height: "16",
+      fill: "none",
+      stroke: "currentColor",
+      strokeWidth: "2",
+      strokeLinecap: "round",
+      strokeLinejoin: "round"
+    }, /*#__PURE__*/React.createElement("rect", {
+      x: "2",
+      y: "2",
+      width: "20",
+      height: "20",
+      rx: "5"
+    }), /*#__PURE__*/React.createElement("circle", {
+      cx: "12",
+      cy: "12",
+      r: "4"
+    }), /*#__PURE__*/React.createElement("circle", {
+      cx: "17.5",
+      cy: "6.5",
+      r: "0.5",
+      fill: "currentColor"
+    })),
     label: "Instagram",
     variant: "ghost",
     size: "sm"
-  }), /*#__PURE__*/React.createElement(Button, {
+  })), /*#__PURE__*/React.createElement(Button, {
     variant: "primary",
     size: "sm",
     iconLeft: /*#__PURE__*/React.createElement("i", {
       "data-lucide": "calendar"
-    })
-  }, "\u9810\u7D04\u62CD\u651D")));
+    }),
+    onClick: e => go(e, "book")
+  }, "\u9810\u7D04\u62CD\u651D"), /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    className: "site-nav__burger",
+    "aria-label": open ? "關閉選單" : "開啟選單",
+    onClick: () => setOpen(o => !o)
+  }, open ? /*#__PURE__*/React.createElement("svg", {
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: "2",
+    strokeLinecap: "round"
+  }, /*#__PURE__*/React.createElement("line", {
+    x1: "5",
+    y1: "5",
+    x2: "19",
+    y2: "19"
+  }), /*#__PURE__*/React.createElement("line", {
+    x1: "19",
+    y1: "5",
+    x2: "5",
+    y2: "19"
+  })) : /*#__PURE__*/React.createElement("svg", {
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: "2",
+    strokeLinecap: "round"
+  }, /*#__PURE__*/React.createElement("line", {
+    x1: "4",
+    y1: "7",
+    x2: "20",
+    y2: "7"
+  }), /*#__PURE__*/React.createElement("line", {
+    x1: "4",
+    y1: "12",
+    x2: "20",
+    y2: "12"
+  }), /*#__PURE__*/React.createElement("line", {
+    x1: "4",
+    y1: "17",
+    x2: "20",
+    y2: "17"
+  })))), open && /*#__PURE__*/React.createElement("nav", {
+    className: "site-nav__sheet"
+  }, links.map(l => /*#__PURE__*/React.createElement("a", {
+    key: l.id,
+    href: `#${l.id}`,
+    className: active === l.id ? "is-active" : "",
+    onClick: e => go(e, l.id)
+  }, l.label))));
 }
 window.SiteNav = SiteNav;
 })(); } catch (e) { __ds_ns.__errors.push({ path: "ui_kits/website/SiteNav.jsx", error: String((e && e.message) || e) }); }
