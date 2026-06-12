@@ -2,18 +2,17 @@
 function Services({ onNav }) {
   const { Card, Button, Badge } = window.HenryStudioRemix_704588;
   const packs = [
-    { icon: "user", name: "個人跟拍", price: "NT$ 6,800", unit: "/ 半日", desc: "貼身跟拍你的滑行，捕捉最自然的姿態與表情。", feat: ["3–4 小時", "30+ 張精修", "當日精選預覽"], tone: "neutral" },
-    { icon: "users", name: "團體紀錄", price: "NT$ 12,000", unit: "/ 全日", desc: "為你的滑雪團隊留下完整一天的影像敘事。", feat: ["6–8 小時", "80+ 張精修", "3 分鐘短片"], tone: "brand", featured: true },
-    { icon: "plane", name: "空拍企劃", price: "客製報價", unit: "", desc: "結合空拍與地面機位，從天際到雪面的史詩感。", feat: ["空拍 + 跟拍", "4K 影片", "腳本企劃"], tone: "neutral" },
+    { icon: "camera", name: "攝影紀錄（照片）", price: "NT$ 8,500", unit: "/ 1 小時", desc: "以「活動紀錄」為概念，完整捕捉精彩瞬間。", feat: ["實拍 1 小時", "照片張數不設上限", "約 5 個工作天雲端交付"], tone: "neutral" },
+    { icon: "video", name: "雪地跟拍（影片）", price: "NT$ 11,000", unit: "/ 1 小時", desc: "跟拍你的滑行，精選最佳畫面剪輯成影像記憶。", feat: ["實拍 1 小時", "精選剪輯影片", "約 5 個工作天雲端交付"], tone: "brand", featured: true },
   ];
   return (
     <section style={{ background: "var(--surface-sunken)", padding: "clamp(56px, 9vw, 88px) clamp(20px, 4vw, 40px)" }}>
       <div style={{ textAlign: "center", maxWidth: 640, margin: "0 auto 48px" }}>
         <span className="ds-eyebrow">PACKAGES</span>
         <h2 style={{ fontSize: "clamp(26px, 4vw, var(--text-3xl))", margin: "10px 0 14px" }}>選一段，與你並肩前行的方式</h2>
-        <p style={{ color: "var(--text-muted)", fontSize: "var(--text-lg)" }}>每個方案都可依雪場、天數與需求彈性調整。</p>
+        <p style={{ color: "var(--text-muted)", fontSize: "var(--text-lg)" }}>實際拍攝 1 小時，成片約五個工作天後雲端交付。</p>
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 270px), 1fr))", gap: 22, maxWidth: 1080, margin: "0 auto" }}>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 270px), 1fr))", gap: 22, maxWidth: 760, margin: "0 auto" }}>
         {packs.map((p) => (
           <Card key={p.name} elevation={p.featured ? "lg" : "sm"} padding="28px"
             style={p.featured ? { border: "1.5px solid var(--ice-300)" } : {}}>

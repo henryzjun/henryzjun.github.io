@@ -10,7 +10,7 @@
   border-bottom: 1px solid var(--border-soft);
 }
 .site-nav__logo { display: flex; align-items: center; }
-.site-nav__logo img { height: 40px; display: block; }
+.site-nav__logo img { height: 52px; display: block; }
 .site-nav__links { display: flex; align-items: center; gap: 4px; }
 .site-nav__actions { display: flex; align-items: center; gap: 12px; }
 
@@ -43,6 +43,6 @@
   .site-nav__links { display: none; }
   .site-nav__ig { display: none !important; }
   .site-nav__burger { display: inline-flex; }
-  .site-nav__logo img { height: 32px; }
+  .site-nav__logo img { height: 40px; }
   .site-nav__sheet { display: flex; }
 }

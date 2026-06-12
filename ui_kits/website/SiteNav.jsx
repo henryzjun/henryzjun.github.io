@@ -28,7 +28,7 @@ function SiteNav({ onNav, active }) {
       </nav>
       <div className="site-nav__actions">
         <span className="site-nav__ig">
-          <IconButton icon={<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"></circle></svg>} label="Instagram" variant="ghost" size="sm" />
+          <IconButton icon={<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"></circle></svg>} label="Instagram" variant="ghost" size="sm" onClick={() => window.open("https://www.instagram.com/henryzjun/", "_blank", "noopener")} />
         </span>
         <Button variant="primary" size="sm" iconLeft={<i data-lucide="calendar"></i>} onClick={(e) => go(e, "book")}>預約拍攝</Button>
         <button type="button" className="site-nav__burger" aria-label={open ? "關閉選單" : "開啟選單"}

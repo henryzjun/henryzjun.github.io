@@ -21,7 +21,7 @@ function Lightbox({ item, onClose, onPrev, onNext }) {
         onClick={(e)=>e.stopPropagation()}>
         <IconButton icon={<i data-lucide="chevron-left"></i>} label="上一張" variant="frost" size="lg"
           onClick={onPrev} style={{ position: "absolute", left: 24 }} />
-        <img src={window.henryImg(`photo-${item.img}`, `../../assets/photos-web/${item.img}.jpg`)} alt={item.title}
+        <img src={window.henryImg(`photo-${item.img}`, `../../assets/slots/photo-${item.img}.jpg`)} alt={item.title}
           style={{ maxWidth: "100%", maxHeight: "100%", borderRadius: "var(--radius-md)", boxShadow: "var(--shadow-xl)" }} />
         <IconButton icon={<i data-lucide="chevron-right"></i>} label="下一張" variant="frost" size="lg"
           onClick={onNext} style={{ position: "absolute", right: 24 }} />

@@ -1,14 +1,17 @@
 // Booking — multi-step form body
 function StepChoose({ data, set }) {
-  const { Card, Badge } = window.HenryStudioRemix_704588;
+  const { Button } = window.HenryStudioRemix_704588;
+  const [infoOpen, setInfoOpen] = React.useState(false);
   const packs = [
-    { id:"個人跟拍 · 半日", icon:"user", name:"個人跟拍", meta:"半日 · 30+ 張精修", price:"NT$ 6,800" },
-    { id:"團體紀錄 · 全日", icon:"users", name:"團體紀錄", meta:"全日 · 短片 + 80 張", price:"NT$ 12,000" },
-    { id:"空拍企劃 · 客製", icon:"plane", name:"空拍企劃", meta:"空拍 + 雪場外 · 客製", price:"客製報價" },
+    { id: "攝影紀錄（照片）", icon: "camera", name: "攝影紀錄", meta: "照片 · 1 小時 · 張數不設上限", price: "NT$ 8,500" },
+    { id: "雪地跟拍（影片）", icon: "video", name: "雪地跟拍", meta: "影片 · 1 小時 · 精選剪輯", price: "NT$ 11,000" },
   ];
   return (
     <div style={{ display:"flex", flexDirection:"column", gap: 16 }}>
-      <h2 style={{ fontSize:"var(--text-2xl)" }}>選擇拍攝方案</h2>
+      <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", gap: 12, flexWrap:"wrap" }}>
+        <h2 style={{ fontSize:"var(--text-2xl)", margin: 0 }}>選擇拍攝方案</h2>
+        <Button variant="ghost" size="sm" iconLeft={<i data-lucide="info"></i>} onClick={() => setInfoOpen(true)}>服務說明</Button>
+      </div>
       <div style={{ display:"grid", gap: 12 }}>
         {packs.map(p => {
           const on = data.pkg === p.id;
@@ -35,6 +38,8 @@ function StepChoose({ data, set }) {
           );
         })}
       </div>
+      <p className="ds-meta" style={{ margin: 0 }}>實際拍攝 1 小時；成片約五個工作天後雲端交付。詳見「服務說明」。</p>
+      <ServiceInfoModal open={infoOpen} onClose={() => setInfoOpen(false)} />
     </div>
   );
 }
@@ -45,28 +50,34 @@ function StepDetails({ data, set }) {
     <div style={{ display:"flex", flexDirection:"column", gap: 18 }}>
       <h2 style={{ fontSize:"var(--text-2xl)" }}>拍攝細節</h2>
       <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit, minmax(min(100%, 220px), 1fr))", gap: 16 }}>
-        <Select label="雪場地點" value={data.loc} onChange={(e)=>set({loc:e.target.value})}
-          options={["NISEKO 二世谷","HAKUBA 白馬","ZAO 藏王","FURANO 富良野","其他（請備註）"]} />
-        <Input label="預約日期" type="date" value={data.date} onChange={(e)=>set({date:e.target.value})} />
-        <Select label="拍攝人數" value={data.people} onChange={(e)=>set({people:e.target.value})}
-          options={["1","2","3","4","5 人以上"]} />
-        <Select label="影片需求" options={["僅照片","照片 + 短片","完整影片企劃"]} />
+        <Input label="日期 *" type="date" value={data.date} onChange={(e)=>set({date:e.target.value})} />
+        <Input label="時間 *" type="time" value={data.time} onChange={(e)=>set({time:e.target.value})} hint="請填入希望開始的時間" />
+        <Select label="會面地點 *" value={data.loc} onChange={(e)=>set({loc:e.target.value})}
+          options={["二世古 NISEKO","留壽都 RUSUTSU","喜樂樂 KIRORO","其他（請於特殊需求說明）"]}
+          hint="原則限於二世古、留壽都、喜樂樂滑雪場" />
+        <Select label="團體總人數 *" value={data.people} onChange={(e)=>set({people:e.target.value})}
+          options={["1","2","3","4","5","6","7","8","9","10"]} />
       </div>
-      <Input label="想呈現的故事 / 特殊需求" placeholder="例如：想記錄第一次挑戰黑線的過程…"
-        value={data.notes} onChange={(e)=>set({notes:e.target.value})} />
+      <Input label="您希望的攝影風格（或希望與攝影師溝通的內容）" placeholder="例如：自然抓拍為主、希望多拍滑行動態…"
+        value={data.style} onChange={(e)=>set({style:e.target.value})} />
+      <Input label="您是否有其他特殊需求（若有特殊雪場需求）" placeholder="例如：希望於其他雪場拍攝…"
+        value={data.special} onChange={(e)=>set({special:e.target.value})} />
     </div>
   );
 }
 
 function StepContact({ data, set }) {
-  const { Input } = window.HenryStudioRemix_704588;
+  const { Input, Select } = window.HenryStudioRemix_704588;
   return (
     <div style={{ display:"flex", flexDirection:"column", gap: 18 }}>
       <h2 style={{ fontSize:"var(--text-2xl)" }}>聯絡方式</h2>
       <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit, minmax(min(100%, 220px), 1fr))", gap: 16 }}>
-        <Input label="你的名字" placeholder="王小明" value={data.name} onChange={(e)=>set({name:e.target.value})} iconLeft={<i data-lucide="user"></i>} />
-        <Input label="LINE ID" placeholder="@henryphoto" iconLeft={<i data-lucide="message-circle"></i>} />
-        <Input label="Email" type="email" placeholder="you@example.com" iconLeft={<i data-lucide="mail"></i>} hint="我們會寄送拍攝確認信" containerStyle={{ gridColumn:"1 / -1" }} />
+        <Input label="訂購代表人姓名 *" placeholder="王小明 WANG, HSIAO-MING" value={data.name} onChange={(e)=>set({name:e.target.value})}
+          iconLeft={<i data-lucide="user"></i>} hint="請填護照真實中、英文姓名" containerStyle={{ gridColumn:"1 / -1" }} />
+        <Input label="訂購代表人電子郵件 *" type="email" placeholder="you@example.com" value={data.email} onChange={(e)=>set({email:e.target.value})}
+          iconLeft={<i data-lucide="mail"></i>} hint="預約確認信與付款資訊將寄送至此信箱" />
+        <Select label="訂購代表人性別 *" value={data.gender} onChange={(e)=>set({gender:e.target.value})}
+          options={["請選擇","男","女","其他"]} />
       </div>
     </div>
   );
@@ -80,11 +91,12 @@ function StepDone({ data }) {
         <i data-lucide="check" style={{ width:34, height:34 }}></i>
       </span>
       <h2 style={{ fontSize:"var(--text-3xl)" }}>預約已送出！</h2>
-      <p style={{ color:"var(--text-muted)", fontSize:"var(--text-lg)", maxWidth: 420, margin:"12px auto 0" }}>
-        感謝 {data.name || "你"} 的預約。我會在 24 小時內與你確認細節，期待與你並肩在風雪中前行。
+      <p style={{ color:"var(--text-muted)", fontSize:"var(--text-lg)", maxWidth: 480, margin:"12px auto 0", lineHeight: 1.7 }}>
+        感謝 {data.name || "你"} 的預約。JD 白金秘書將以 Email 與您聯繫，確認預約內容與付款方式
+        （信件署名 bookings@jdnisekosss.com；若 48 小時內未收到回覆，請檢查垃圾信箱）。
       </p>
       <div style={{ display:"flex", justifyContent:"center", marginTop: 22 }}>
-        <MetaRow items={[{ label:"預約編號", value:"HP-2602-0148" }]} />
+        <MetaRow items={[{ label:"預約編號", value:"HP-2606-0148" }]} />
       </div>
       <div style={{ display:"flex", gap:12, justifyContent:"center", marginTop: 28 }}>
         <Button variant="secondary" iconLeft={<i data-lucide="calendar-plus"></i>}>加入行事曆</Button>

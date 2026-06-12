@@ -5,10 +5,10 @@ function FeaturedWork({ onNav }) {
   const items = [
     { img: "peak-mist", title: "二世谷・霧中稜線", loc: "NISEKO", tag: "powder", kind: "粉雪", badge: "精選" },
     { img: "slope-dawn", title: "白馬・晨光斜坡", loc: "HAKUBA", tag: "aerial", kind: "空拍", badge: null },
-    { img: "powder-run", title: "藏王・樹冰穿行", loc: "ZAO", tag: "powder", kind: "粉雪", badge: null },
-    { img: "summit-blue", title: "立山・藍時刻登頂", loc: "TATEYAMA", tag: "portrait", kind: "人像", badge: "新作" },
-    { img: "forest-valley", title: "野澤・森間綠徑", loc: "NOZAWA", tag: "aerial", kind: "空拍", badge: null },
-    { img: "hero-ridge", title: "富良野・無人雪原", loc: "FURANO", tag: "portrait", kind: "人像", badge: null },
+    { img: "powder-run", title: "藏王・纜車時刻", loc: "ZAO", tag: "powder", kind: "粉雪", badge: null },
+    { img: "summit-blue", title: "立山・企鵝", loc: "TATEYAMA", tag: "portrait", kind: "人像", badge: "新作" },
+    { img: "forest-valley", title: "野澤・纜車風景", loc: "NOZAWA", tag: "aerial", kind: "空拍", badge: null },
+    { img: "hero-ridge", title: "富良野・山頂風景", loc: "FURANO", tag: "portrait", kind: "人像", badge: null },
   ];
   const shown = cat === "all" ? items : items.filter((i) => i.tag === cat);
 
@@ -31,7 +31,7 @@ function FeaturedWork({ onNav }) {
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 270px), 1fr))", gap: 22 }}>
         {shown.map((it) => (
           <Card key={it.title} coverHeight={230} interactive onClick={()=>onNav&&onNav("work")}
-            cover={<EditableImage id={`photo-${it.img}`} src={`../../assets/photos-web/${it.img}.jpg`} alt={it.title} style={{ width: "100%", height: "100%" }} />}>
+            cover={<EditableImage id={`photo-${it.img}`} src={`../../assets/slots/photo-${it.img}.jpg`} alt={it.title} style={{ width: "100%", height: "100%" }} />}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 8 }}>
               <h3 style={{ fontSize: "var(--text-xl)" }}>{it.title}</h3>
               {it.badge && <Badge tone="brand">{it.badge}</Badge>}

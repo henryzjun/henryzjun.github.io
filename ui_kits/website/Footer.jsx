@@ -2,7 +2,7 @@
 function PhilosophyBand() {
   return (
     <section style={{ position: "relative", padding: "clamp(64px, 10vw, 104px) clamp(20px, 5vw, 40px)", overflow: "hidden", background: "var(--surface-inverse)" }}>
-      <EditableImage id="philosophy-band" src="../../assets/photos-web/summit-blue.jpg" alt="" maxEdge={1920}
+      <EditableImage id="philosophy-band" src="../../assets/slots/philosophy-band.jpg" alt="" maxEdge={1920}
         style={{ position: "absolute", inset: 0 }} imgStyle={{ opacity: 0.32 }} />
       <div style={{ position: "relative", maxWidth: 820, margin: "0 auto", textAlign: "center", pointerEvents: "none" }}>
         <i data-lucide="quote" style={{ width: 40, height: 40, color: "var(--ice-300)", margin: "0 auto 20px" }}></i>
@@ -27,10 +27,6 @@ function SiteFooter({ onNav }) {
             滑雪影像自由工作者。與你並肩在風雪中前行的夥伴。
           </p>
         </div>
-        <div style={{ display: "flex", gap: 56, flexWrap: "wrap" }}>
-          <FootCol title="探索" items={["作品集", "拍攝方案", "雪季手記"]} />
-          <FootCol title="聯絡" items={["LINE 預約", "Instagram", "Email"]} />
-        </div>
         <div>
           <h4 style={{ color: "var(--snow)", fontSize: "var(--text-base)", marginBottom: 14 }}>準備好出發了嗎？</h4>
           <Button variant="inverse" iconRight={<i data-lucide="arrow-right"></i>} onClick={()=>onNav&&onNav("book")}>預約你的雪季</Button>
@@ -44,15 +40,5 @@ function SiteFooter({ onNav }) {
   );
 }
 
-function FootCol({ title, items }) {
-  return (
-    <div>
-      <h4 style={{ color: "var(--snow)", fontSize: "var(--text-sm)", letterSpacing: "0.06em", marginBottom: 14, textTransform: "uppercase" }}>{title}</h4>
-      <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-        {items.map((i) => <a key={i} href="#" onClick={(e)=>e.preventDefault()} style={{ color: "var(--ice-200)", fontSize: "var(--text-sm)" }}>{i}</a>)}
-      </div>
-    </div>
-  );
-}
 window.PhilosophyBand = PhilosophyBand;
 window.SiteFooter = SiteFooter;

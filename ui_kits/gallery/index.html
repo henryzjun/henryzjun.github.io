@@ -9,6 +9,8 @@
 <link rel="stylesheet" href="../../styles.css">
 <style>
   html, body { margin: 0; background: var(--surface-page); }
+  /* 保險：舊版手機預覽按鈕若被舊 bundle 注入，一律隱藏（前台不顯示） */
+  #mp-fab, #mp-overlay, #mp-close, #mp-label { display: none !important; }
   @media (max-width: 760px) {
     .lb-root { flex-direction: column !important; }
     .lb-stage { padding: 14px !important; min-height: 0; }
@@ -17,7 +19,11 @@
   }
 </style>
 <script>
-  window.A = function (p) { return (window.HENRY_ASSETS || {})[p] || p; };
+  window.A = function (p) {
+    var m = /([^\/]+)\.(jpg|jpeg|png|webp|svg)$/i.exec(p || "");
+    var el = m && document.querySelector('img[data-slot="' + m[1] + '"]');
+    return (el && el.getAttribute("src")) || p;
+  };
   window.HENRY_LINKS = {
     home: "../website/index.html",
     booking: "../booking/index.html",
@@ -36,12 +42,20 @@
 </head>
 <body>
   <div id="root"></div>
+  <!-- 圖片槽静態參照：讓打包器把已發佈圖片內嵌進單一檔案（由 window.A 讀取） -->
+  <div id="henry-assets" style="display:none" aria-hidden="true">
+    <img data-slot="photo-peak-mist" src="../../assets/slots/photo-peak-mist.jpg" alt="">
+    <img data-slot="photo-slope-dawn" src="../../assets/slots/photo-slope-dawn.jpg" alt="">
+    <img data-slot="photo-powder-run" src="../../assets/slots/photo-powder-run.jpg" alt="">
+    <img data-slot="photo-summit-blue" src="../../assets/slots/photo-summit-blue.jpg" alt="">
+    <img data-slot="photo-forest-valley" src="../../assets/slots/photo-forest-valley.jpg" alt="">
+    <img data-slot="photo-hero-ridge" src="../../assets/slots/photo-hero-ridge.jpg" alt="">
+  </div>
   <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   <script src="../../_ds_bundle.js"></script>
-  <script src="../shared/mobile-preview.js"></script>
   <script type="text/babel" src="../shared/EditableImage.jsx"></script>
   <script type="text/babel" src="data.jsx"></script>
   <script type="text/babel" src="GalleryGrid.jsx"></script>

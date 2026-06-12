@@ -14,7 +14,7 @@ function GalleryGrid({ items, onOpen }) {
           }}
           onMouseEnter={(e)=>{ e.currentTarget.style.boxShadow="var(--shadow-lg)"; e.currentTarget.querySelector(".gov").style.opacity=1; }}
           onMouseLeave={(e)=>{ e.currentTarget.style.boxShadow="var(--shadow-sm)"; e.currentTarget.querySelector(".gov").style.opacity=0; }}>
-          <EditableImage id={`photo-${it.img}`} src={`../../assets/photos-web/${it.img}.jpg`} alt={it.title}
+          <EditableImage id={`photo-${it.img}`} src={`../../assets/slots/photo-${it.img}.jpg`} alt={it.title}
             imgStyle={{ aspectRatio: it.span === 2 ? "4 / 5" : "4 / 3", height: "auto" }} />
           {it.video && (
             <span style={{ position: "absolute", top: 12, left: 12 }}>
