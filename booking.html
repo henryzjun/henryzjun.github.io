@@ -516,7 +516,7 @@ function StepDetails({ data, set }) {
         <Input label="日期 *" type="date" value={data.date} onChange={(e)=>set({date:e.target.value})} />
         <Input label="時間 *" type="time" value={data.time} onChange={(e)=>set({time:e.target.value})} hint="請填入希望開始的時間" />
         <Select label="會面地點 *" value={data.loc} onChange={(e)=>set({loc:e.target.value})}
-          options={["二世古 NISEKO","留壽都 RUSUTSU","喜樂樂 KIRORO","其他（請於特殊需求說明）"]}
+          options={["二世谷 Hirafu雪場","二世谷 Annupuri雪場","二世谷 Hanazono雪場","二世谷 Village雪場","留壽都 RUSUTSU","喜樂樂 KIRORO","其他（請於特殊需求說明）"]}
           hint="原則限於二世古、留壽都、喜樂樂滑雪場" />
         <Select label="團體總人數 *" value={data.people} onChange={(e)=>set({people:e.target.value})}
           options={["1","2","3","4","5","6","7","8","9","10"]} />
@@ -539,8 +539,8 @@ function StepContact({ data, set }) {
           iconLeft={<Icon name="user" />} hint="請填護照真實中、英文姓名" containerStyle={{ gridColumn:"1 / -1" }} />
         <Input label="訂購代表人電子郵件 *" type="email" placeholder="you@example.com" value={data.email} onChange={(e)=>set({email:e.target.value})}
           iconLeft={<Icon name="mail" />} hint="預約確認信與付款資訊將寄送至此信箱" />
-        <Select label="訂購代表人性別 *" value={data.gender} onChange={(e)=>set({gender:e.target.value})}
-          options={["請選擇","男","女","其他"]} />
+        <Input label="社群媒體帳號" value={data.social} onChange={(e)=>set({social:e.target.value})}
+          placeholder="Instagram / Facebook / LINE ID" hint="選填，方便我們聯繫與分享成品" />
       </div>
     </div>
   );
@@ -604,7 +604,7 @@ window.StepDone = StepDone;
         "特殊需求": data.special,
         "代表人姓名": data.name,
         "電子郵件": data.email,
-        "性別": data.gender,
+        "社群媒體帳號": data.social,
       };
       // 1) 本地備份：任何情況下都不遺失（可於瀏覽器主控台 localStorage 的 henry-bookings 查看）
       try {
@@ -628,7 +628,7 @@ window.StepDone = StepDone;
     function App(){
       const [step, setStep] = React.useState(0);
       const [noticeOpen, setNoticeOpen] = React.useState(false);
-      const [data, setData] = React.useState({ pkg:"攝影紀錄（照片）", date:"", time:"", loc:"二世古 NISEKO", people:"1", style:"", special:"", name:"", email:"", gender:"請選擇", bookingId:"" });
+      const [data, setData] = React.useState({ pkg:"攝影紀錄（照片）", date:"", time:"", loc:"二世谷 Hirafu雪場", people:"1", style:"", special:"", name:"", email:"", social:"", bookingId:"" });
       const set = (patch) => setData(d => ({ ...d, ...patch }));
       React.useEffect(() => { window.lucide && window.lucide.createIcons(); }, []);
       const done = step >= STEPS.length;
