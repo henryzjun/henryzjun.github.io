@@ -29,17 +29,41 @@
   --stone-800: #2e2c29;
   --stone-900: #1c1b19;
 
-  /* ---- 微霧冰藍 Misty Ice Blue (accent) ---- */
+  /* ---- 微霧冰藍 Misty Ice Blue (brand core) ---- */
   --ice-50:  #f0f5f7;
   --ice-100: #deeaee;
   --ice-200: #c2d9e0;
   --ice-300: #9dc1cc;
   --ice-400: #74a4b3;
-  --ice-500: #538799;   /* accent */
+  --ice-500: #538799;   /* brand */
   --ice-600: #426e7e;
   --ice-700: #365764;
   --ice-800: #2b444e;
   --ice-900: #1f323a;
+
+  /* ---- 霜霧藍 Frost — lighter, airier sky-ice (info) ---- */
+  --frost-50:  #eef5f8;
+  --frost-100: #e0edf2;
+  --frost-200: #c5dde7;
+  --frost-500: #6f9fb8;
+  --frost-600: #5a87a0;
+  --frost-700: #496f86;
+
+  /* ---- 鋼鐵藍 Steel — deeper, denser blue (accent) ---- */
+  --steel-50:  #eef2f6;
+  --steel-100: #dde6ef;
+  --steel-200: #bccddd;
+  --steel-500: #4f7596;
+  --steel-600: #3f6080;
+  --steel-700: #334d68;
+
+  /* ---- 冰河藍 Glacier — teal-leaning cool ice (success) ---- */
+  --glacier-50:  #edf5f4;
+  --glacier-100: #ddeeec;
+  --glacier-200: #bfe0db;
+  --glacier-500: #4f9090;
+  --glacier-600: #3e7474;
+  --glacier-700: #315c5c;
 
   /* ---- Pure surfaces ---- */
   --snow:  #fbfbfa;   /* warm paper-white background */
@@ -64,10 +88,10 @@
   --brand-active:     var(--ice-700);
   --brand-soft:       var(--ice-100);
   --brand-soft-text:  var(--ice-700);
-  --accent:           var(--ice-500);
-  --accent-hover:     var(--ice-600);
-  --accent-soft:      var(--ice-100);
-  --accent-soft-text: var(--ice-700);
+  --accent:           var(--steel-500);
+  --accent-hover:     var(--steel-600);
+  --accent-soft:      var(--steel-100);
+  --accent-soft-text: var(--steel-700);
 
   /* Text */
   --text-strong:    var(--stone-900);
@@ -94,15 +118,15 @@
   --border-brand:   var(--ice-500);
   --divider:        var(--stone-100);
 
-  /* Status */
-  --success:      var(--ice-500);
-  --success-soft: var(--ice-100);
+  /* Status — each a distinct misty-ice variant for depth */
+  --success:      var(--glacier-500);
+  --success-soft: var(--glacier-100);
   --warning:      var(--amber-500);
   --warning-soft: var(--amber-50);
   --danger:       var(--rust-500);
   --danger-soft:  var(--rust-50);
-  --info:         var(--ice-500);
-  --info-soft:    var(--ice-100);
+  --info:         var(--frost-500);
+  --info-soft:    var(--frost-100);
 
   /* Focus ring */
   --focus-ring: rgba(83, 135, 153, 0.45); /* ice-based, soft */

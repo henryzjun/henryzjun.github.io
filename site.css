@@ -46,3 +46,8 @@
   .site-nav__logo img { height: 40px; }
   .site-nav__sheet { display: flex; }
 }
+
+/* 手機單欄堆疊時，把「完整紀錄（照片＋影片）」方案排到最後 */
+@media (max-width: 600px) {
+  .packages-grid > :nth-child(2) { order: 1; }
+}

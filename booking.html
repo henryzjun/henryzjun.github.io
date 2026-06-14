@@ -273,7 +273,7 @@ window.Stepper = Stepper;
 // Booking — summary sidebar (sticky)
 function BookingSummary({ data }) {
   const { MetaRow, Badge } = window.HenryStudioRemix_704588;
-  const priceMap = { "攝影紀錄（照片）": 8500, "雪地跟拍（影片）": 11000 };
+  const priceMap = { "攝影紀錄（照片）": 8500, "雪地跟拍（影片）": 11000, "完整紀錄（照片＋影片）": 19500 };
   const price = priceMap[data.pkg] ?? 0;
   return (
     <aside style={{
@@ -468,6 +468,7 @@ function StepChoose({ data, set }) {
   const packs = [
     { id: "攝影紀錄（照片）", icon: "camera", name: "攝影紀錄", meta: "照片 · 1 小時 · 張數不設上限", price: "NT$ 8,500" },
     { id: "雪地跟拍（影片）", icon: "video", name: "雪地跟拍", meta: "影片 · 1 小時 · 精選剪輯", price: "NT$ 11,000" },
+    { id: "完整紀錄（照片＋影片）", icon: "layers", name: "完整紀錄", meta: "照片＋影片 · 2 小時 · 完整方案", price: "NT$ 19,500" },
   ];
   return (
     <div style={{ display:"flex", flexDirection:"column", gap: 16 }}>
@@ -514,7 +515,9 @@ function StepDetails({ data, set }) {
       <h2 style={{ fontSize:"var(--text-2xl)" }}>拍攝細節</h2>
       <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit, minmax(min(100%, 220px), 1fr))", gap: 16 }}>
         <Input label="日期 *" type="date" value={data.date} onChange={(e)=>set({date:e.target.value})} />
-        <Input label="時間 *" type="time" value={data.time} onChange={(e)=>set({time:e.target.value})} hint="請填入希望開始的時間" />
+        <Select label="時間 *" value={data.time} onChange={(e)=>set({time:e.target.value})}
+          options={["請選擇","09:00","09:30","10:00","10:30","11:00","11:30","12:00","12:30","13:00","13:30","14:00","14:30","15:00","15:30","16:00","16:30","17:00","17:30","18:00"]}
+          hint="開放 09:00–18:00，每半小時一個時段" />
         <Select label="會面地點 *" value={data.loc} onChange={(e)=>set({loc:e.target.value})}
           options={["二世谷 Hirafu雪場","二世谷 Annupuri雪場","二世谷 Hanazono雪場","二世谷 Village雪場","留壽都 RUSUTSU","喜樂樂 KIRORO","其他（請於特殊需求說明）"]}
           hint="原則限於二世古、留壽都、喜樂樂滑雪場" />
@@ -595,7 +598,7 @@ window.StepDone = StepDone;
         "預約編號": data.bookingId,
         "時間戳記": new Date().toLocaleString("zh-TW", { timeZone: "Asia/Tokyo", hour12: false }),
         "方案": data.pkg,
-        "金額": (data.pkg && data.pkg.indexOf("影片") > -1) ? "NT$ 11,000" : "NT$ 8,500",
+        "金額": ({ "攝影紀錄（照片）":"NT$ 8,500", "雪地跟拍（影片）":"NT$ 11,000", "完整紀錄（照片＋影片）":"NT$ 19,500" }[data.pkg] || "NT$ 8,500"),
         "日期": data.date,
         "開始時間": data.time,
         "會面地點": data.loc,

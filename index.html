@@ -1247,7 +1247,8 @@ window.FeaturedWork = FeaturedWork;
 function Services({ onNav }) {
   const { Card, Button, Badge } = window.HenryStudioRemix_704588;
   const packs = [
-    { icon: "camera", name: "攝影紀錄（照片）", price: "NT$ 8,500", unit: "/ 1 小時", desc: "精選最佳畫面，確保您獲得豐富的留念影像", feat: ["實拍 1 小時", "照片張數不設上限", "約 5 個工作天雲端交付"], tone: "brand", featured: true },
+    { icon: "camera", name: "攝影紀錄（照片）", price: "NT$ 8,500", unit: "/ 1 小時", desc: "精選最佳畫面，確保您獲得豐富的留念影像", feat: ["實拍 1 小時", "照片張數不設上限", "約 5 個工作天雲端交付"], tone: "brand", badge: "最受歡迎" },
+    { icon: "layers", name: "完整紀錄（照片＋影片）", price: "NT$ 19,500", unit: "/ 2 小時", desc: "照片與影片一次擁有，静態畫面與動態滑行完整收藏。", feat: ["實拍 2 小時", "照片不設上限 ＋ 精選影片", "約 5 個工作天雲端交付"], tone: "brand", featured: true, badge: "最完整" },
     { icon: "video", name: "雪地跟拍（影片）", price: "NT$ 11,000", unit: "/ 1 小時", desc: "跟拍你的滑行，精選最佳畫面成影像記憶。", feat: ["實拍 1 小時", "精選影片", "約 5 個工作天雲端交付"], tone: "neutral" },
   ];
   return (
@@ -1257,7 +1258,7 @@ function Services({ onNav }) {
         <h2 style={{ fontSize: "clamp(26px, 4vw, var(--text-3xl))", margin: "10px 0 14px" }}>選一段，與你並肩前行的方式</h2>
         <p style={{ color: "var(--text-muted)", fontSize: "var(--text-lg)" }}>以「紀錄旅程」為概念，完整捕捉雪上精彩瞬間</p>
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 270px), 1fr))", gap: 22, maxWidth: 760, margin: "0 auto" }}>
+      <div className="packages-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 270px), 1fr))", gap: 22, maxWidth: 1160, margin: "0 auto" }}>
         {packs.map((p) => (
           <Card key={p.name} elevation={p.featured ? "lg" : "sm"} padding="28px" interactive
             style={{ cursor: "default", ...(p.featured ? { border: "1.5px solid var(--ice-300)" } : {}) }}>
@@ -1268,12 +1269,12 @@ function Services({ onNav }) {
                 background: p.featured ? "var(--brand)" : "var(--brand-soft)",
                 color: p.featured ? "var(--snow)" : "var(--brand-soft-text)",
               }}><Icon name={p.icon} /></span>
-              {p.featured && <Badge tone="brand">最受歡迎</Badge>}
+              {p.badge && <Badge tone="brand">{p.badge}</Badge>}
             </div>
             <h3 style={{ fontSize: "var(--text-2xl)", marginTop: 8 }}>{p.name}</h3>
             <div style={{ display: "flex", alignItems: "baseline", gap: 6 }}>
               <span style={{ fontFamily: "var(--font-display)", fontSize: "var(--text-2xl)", fontWeight: 700, color: "var(--text-strong)" }}>{p.price}</span>
-              <span style={{ color: "var(--text-muted)", fontSize: "var(--text-sm)" }}>{p.unit}</span>
+              <span style={{ color: "var(--text-muted)", fontSize: "var(--text-sm)", whiteSpace: "nowrap" }}>{p.unit}</span>
             </div>
             <p style={{ color: "var(--text-muted)", fontSize: "var(--text-sm)", lineHeight: 1.7 }}>{p.desc}</p>
             <div style={{ display: "flex", flexDirection: "column", gap: 10, margin: "6px 0 4px" }}>
