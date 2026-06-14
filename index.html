@@ -1,3 +1,5 @@
+<!-- @dsCard group="Website" viewport="1280x720" name="行銷／作品集網站" subtitle="首頁 — Hero · 作品集 · 方案 · 哲學 · 響應式 + 可換圖" -->
+<!-- @startingPoint section="Website" subtitle="滑雪攝影行銷首頁" viewport="1280x900" -->
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
@@ -54,18 +56,8 @@
     gallery: "gallery.html",
   };
 </script>
-<link id="gfont-Oswald" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&amp;display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@600&amp;display=swap">
-<style>
-  /* ===== 載入動畫覆蓋層 ===== */
-  #henry-boot{position:fixed;inset:0;z-index:99999;background:#cfe2ea;display:block;overflow:hidden;transition:opacity .7s ease}
-  #henry-boot.hide{opacity:0;pointer-events:none}
-  #henry-boot svg{position:absolute;inset:0;width:100%;height:100%;display:block}
-</style>
-</head>
-<body>
-  <div id="root"></div>
-  <div id="henry-boot" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" role="img" aria-label="亨利攝影工作室 載入中">
+<template id="__bundler_thumbnail">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" role="img" aria-label="亨利攝影工作室 載入中">
   <defs>
     <linearGradient id="bsky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f2f8f9"/><stop offset="0.52" stop-color="#d4e7ed"/><stop offset="1" stop-color="#a6c9d6"/></linearGradient>
     <radialGradient id="bglow" cx="0.5" cy="0.30" r="0.62"><stop offset="0" stop-color="#ffffff" stop-opacity="0.65"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/></radialGradient>
@@ -101,16 +93,13 @@
       <circle cx="830" cy="742" r="6" fill="#538799"><animate attributeName="opacity" values="0.25;1;0.25" dur="1.2s" begin="0.4s" repeatCount="indefinite"/></circle>
     </g>
   </g>
-</svg></div>
-  <script>
-  (function(){
-    var boot=document.getElementById('henry-boot'); if(!boot) return;
-    var root=document.getElementById('root'); var done=false;
-    function hide(){ if(done) return; done=true; setTimeout(function(){ boot.classList.add('hide'); setTimeout(function(){ boot.parentNode && boot.parentNode.removeChild(boot); }, 750); }, 220); }
-    if(root){ var obs=new MutationObserver(function(){ if(root.children.length){ obs.disconnect(); hide(); } }); obs.observe(root,{childList:true}); if(root.children.length){ obs.disconnect(); hide(); } }
-    setTimeout(hide, 12000);
-  })();
-  </script>
+</svg>
+</template>
+<link id="gfont-Oswald" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@600&amp;display=swap">
+</head>
+<body>
+  <div id="root"></div>
   <!-- 圖片槽静態參照：讓打包器把已發佈圖片內嵌進單一檔案（由 window.A 讀取） -->
   <div id="henry-assets" style="display:none" aria-hidden="true">
     <img data-slot="cover-hero" src="assets/slots/cover-hero.jpg" alt="">
@@ -847,7 +836,7 @@ function SiteNav({ onNav, active }) {
   return (
     <header className="site-nav">
       <a className="site-nav__logo" href="#" onClick={(e) => go(e, "home")}>
-        <img src={window.A ? window.A("../../assets/logo-lockup.svg") : "../../assets/logo-lockup.svg"} alt="亨利攝影工作室" />
+        <img src={window.A ? window.A("assets/logo-lockup.svg") : "assets/logo-lockup.svg"} alt="亨利攝影工作室" />
       </a>
       <nav className="site-nav__links">
         {links.map((l) => (
@@ -1127,7 +1116,7 @@ function Hero({ onNav, motion = "滑刃光痕", snowStyle = "冰晶" }) {
         }
       `}</style>
 
-      <EditableImage id="cover-hero" src="../../assets/slots/cover-hero.jpg" alt="" maxEdge={1920}
+      <EditableImage id="cover-hero" src="assets/slots/cover-hero.jpg" alt="" maxEdge={1920}
         label="更換 Cover" style={{ position: "absolute", inset: 0, transform: imgTransform, transition: imgTransition, willChange: "transform" }} />
 
       {/* 滑刃光痕：一道光刃尾隨游標滑過，像雪板刻畫的雪痕 */}
@@ -1235,7 +1224,7 @@ function FeaturedWork({ onNav }) {
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 270px), 1fr))", gap: 22 }}>
         {shown.map((it) => (
           <Card key={it.title} coverHeight={230} interactive onClick={()=>onNav&&onNav("work")}
-            cover={<EditableImage id={`photo-${it.img}`} src={`../../assets/slots/photo-${it.img}.jpg`} alt={it.title} style={{ width: "100%", height: "100%" }} />}>
+            cover={<EditableImage id={`photo-${it.img}`} src={`assets/slots/photo-${it.img}.jpg`} alt={it.title} style={{ width: "100%", height: "100%" }} />}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 8 }}>
               <h3 style={{ fontSize: "var(--text-xl)" }}>{it.title}</h3>
               {it.badge && <Badge tone="brand">{it.badge}</Badge>}
@@ -1270,8 +1259,8 @@ function Services({ onNav }) {
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 270px), 1fr))", gap: 22, maxWidth: 760, margin: "0 auto" }}>
         {packs.map((p) => (
-          <Card key={p.name} elevation={p.featured ? "lg" : "sm"} padding="28px"
-            style={p.featured ? { border: "1.5px solid var(--ice-300)" } : {}}>
+          <Card key={p.name} elevation={p.featured ? "lg" : "sm"} padding="28px" interactive
+            style={{ cursor: "default", ...(p.featured ? { border: "1.5px solid var(--ice-300)" } : {}) }}>
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
               <span style={{
                 display: "inline-flex", alignItems: "center", justifyContent: "center",
@@ -1309,7 +1298,7 @@ window.Services = Services;
 function PhilosophyBand() {
   return (
     <section style={{ position: "relative", padding: "clamp(64px, 10vw, 104px) clamp(20px, 5vw, 40px)", overflow: "hidden", background: "var(--surface-inverse)" }}>
-      <EditableImage id="philosophy-band" src="../../assets/slots/philosophy-band.jpg" alt="" maxEdge={1920}
+      <EditableImage id="philosophy-band" src="assets/slots/philosophy-band.jpg" alt="" maxEdge={1920}
         style={{ position: "absolute", inset: 0 }} imgStyle={{ opacity: 0.32 }} />
       <div style={{ position: "relative", maxWidth: 820, margin: "0 auto", textAlign: "center", pointerEvents: "none" }}>
         <Icon name="quote" size={40} style={{ color: "var(--ice-300)", margin: "0 auto 20px" }} />
@@ -1329,7 +1318,7 @@ function SiteFooter({ onNav }) {
     <footer style={{ background: "var(--ice-800)", color: "var(--stone-200)", padding: "clamp(44px, 8vw, 64px) clamp(20px, 5vw, 40px) 36px" }}>
       <div style={{ display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: 40, maxWidth: 1080, margin: "0 auto" }}>
         <div style={{ maxWidth: 320 }}>
-          <img src={window.A ? window.A("../../assets/logo-lockup-inverse.svg") : "../../assets/logo-lockup-inverse.svg"} alt="亨利攝影工作室" style={{ height: 44 }} />
+          <img src={window.A ? window.A("assets/logo-lockup-inverse.svg") : "assets/logo-lockup-inverse.svg"} alt="亨利攝影工作室" style={{ height: 44 }} />
           <p style={{ marginTop: 18, fontSize: "var(--text-sm)", lineHeight: 1.7, color: "var(--ice-200)" }}>
             滑雪影像自由工作者。與你並肩在風雪中前行的夥伴。
           </p>

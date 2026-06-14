@@ -1,4 +1,4 @@
-/* @ds-bundle: {"format":3,"namespace":"HenryStudioRemix_704588","components":[{"name":"Button","sourcePath":"components/core/Button.jsx"},{"name":"IconButton","sourcePath":"components/core/IconButton.jsx"},{"name":"Avatar","sourcePath":"components/data/Avatar.jsx"},{"name":"Badge","sourcePath":"components/data/Badge.jsx"},{"name":"MetaRow","sourcePath":"components/data/MetaRow.jsx"},{"name":"Tag","sourcePath":"components/data/Tag.jsx"},{"name":"Input","sourcePath":"components/forms/Input.jsx"},{"name":"Select","sourcePath":"components/forms/Select.jsx"},{"name":"Tabs","sourcePath":"components/navigation/Tabs.jsx"},{"name":"Card","sourcePath":"components/surface/Card.jsx"}],"sourceHashes":{"components/core/Button.jsx":"ea9afb2f84c1","components/core/IconButton.jsx":"a23f89dafea6","components/data/Avatar.jsx":"c42fa22f5f54","components/data/Badge.jsx":"ded9659e30a3","components/data/MetaRow.jsx":"c8221b101b9d","components/data/Tag.jsx":"d8f4867d5a19","components/forms/Input.jsx":"e9c65563409e","components/forms/Select.jsx":"09b089727107","components/navigation/Tabs.jsx":"c9f9fef1fca2","components/surface/Card.jsx":"d36d118b8511","ui_kits/booking/BookingSummary.jsx":"a121c95d850c","ui_kits/booking/Modals.jsx":"a8c80c322a7d","ui_kits/booking/Stepper.jsx":"30e52a6532a1","ui_kits/booking/Steps.jsx":"2a137ab4b13d","ui_kits/gallery/GalleryGrid.jsx":"f6e73757b160","ui_kits/gallery/Lightbox.jsx":"28303d064562","ui_kits/gallery/data.jsx":"cd677250f1c7","ui_kits/shared/EditableImage.jsx":"f3a7bafe3d91","ui_kits/shared/Icon.jsx":"7ad1bb664a7d","ui_kits/shared/tweaks-panel.jsx":"6591467622ed","ui_kits/website/FeaturedWork.jsx":"20d252c03a3f","ui_kits/website/Footer.jsx":"c475d8791b85","ui_kits/website/Hero.jsx":"ab363bc5a1b2","ui_kits/website/Services.jsx":"105a1a4a5706","ui_kits/website/SiteNav.jsx":"f9f2fb5d35cc","後台/admin.js":"24d1787ad7b6","後台/slots.js":"ee1a23b1c678"},"inlinedExternals":[],"unexposedExports":[]} */
+/* @ds-bundle: {"format":3,"namespace":"HenryStudioRemix_704588","components":[{"name":"Button","sourcePath":"components/core/Button.jsx"},{"name":"IconButton","sourcePath":"components/core/IconButton.jsx"},{"name":"Avatar","sourcePath":"components/data/Avatar.jsx"},{"name":"Badge","sourcePath":"components/data/Badge.jsx"},{"name":"MetaRow","sourcePath":"components/data/MetaRow.jsx"},{"name":"Tag","sourcePath":"components/data/Tag.jsx"},{"name":"Input","sourcePath":"components/forms/Input.jsx"},{"name":"Select","sourcePath":"components/forms/Select.jsx"},{"name":"Tabs","sourcePath":"components/navigation/Tabs.jsx"},{"name":"Card","sourcePath":"components/surface/Card.jsx"}],"sourceHashes":{"components/core/Button.jsx":"763beae2eaa0","components/core/IconButton.jsx":"a23f89dafea6","components/data/Avatar.jsx":"c42fa22f5f54","components/data/Badge.jsx":"ded9659e30a3","components/data/MetaRow.jsx":"c8221b101b9d","components/data/Tag.jsx":"d8f4867d5a19","components/forms/Input.jsx":"e9c65563409e","components/forms/Select.jsx":"09b089727107","components/navigation/Tabs.jsx":"c9f9fef1fca2","components/surface/Card.jsx":"d36d118b8511","ui_kits/booking/BookingSummary.jsx":"a121c95d850c","ui_kits/booking/Modals.jsx":"a8c80c322a7d","ui_kits/booking/Stepper.jsx":"30e52a6532a1","ui_kits/booking/Steps.jsx":"e9e344e59852","ui_kits/gallery/GalleryGrid.jsx":"f6e73757b160","ui_kits/gallery/Lightbox.jsx":"28303d064562","ui_kits/gallery/data.jsx":"cd677250f1c7","ui_kits/shared/EditableImage.jsx":"f3a7bafe3d91","ui_kits/shared/Icon.jsx":"7ad1bb664a7d","ui_kits/shared/tweaks-panel.jsx":"6591467622ed","ui_kits/website/FeaturedWork.jsx":"20d252c03a3f","ui_kits/website/Footer.jsx":"c475d8791b85","ui_kits/website/Hero.jsx":"261105942c05","ui_kits/website/Services.jsx":"41b1c677876e","ui_kits/website/SiteNav.jsx":"f9f2fb5d35cc","後台/admin.js":"24d1787ad7b6","後台/slots.js":"ee1a23b1c678"},"inlinedExternals":[],"unexposedExports":[]} */
 
 (() => {
 
@@ -82,6 +82,23 @@ function Button({
   };
   const s = sizes[size] || sizes.md;
   const v = variants[variant] || variants.primary;
+
+  // 游標移近（或手機按下）→ 輕微浮起並加深陰影
+  const baseShadow = v.boxShadow || "none";
+  const hoverShadow = variant === "inverse" ? "var(--shadow-lg)" : variant === "ghost" ? "var(--shadow-sm)" : "var(--shadow-md)";
+  const pressShadow = variant === "inverse" ? "var(--shadow-xl, var(--shadow-lg))" : "var(--shadow-lg)";
+  const lift = el => {
+    el.style.transform = "translateY(-2px)";
+    el.style.boxShadow = hoverShadow;
+  };
+  const press = el => {
+    el.style.transform = "translateY(-3px)";
+    el.style.boxShadow = pressShadow;
+  };
+  const reset = el => {
+    el.style.transform = "translateY(0)";
+    el.style.boxShadow = baseShadow;
+  };
   return /*#__PURE__*/React.createElement("button", _extends({
     type: type,
     disabled: disabled,
@@ -108,14 +125,26 @@ function Button({
       ...v,
       ...style
     },
+    onMouseEnter: e => {
+      if (!disabled) lift(e.currentTarget);
+    },
     onMouseDown: e => {
-      if (!disabled) e.currentTarget.style.transform = "scale(0.97)";
+      if (!disabled) press(e.currentTarget);
     },
     onMouseUp: e => {
-      e.currentTarget.style.transform = "scale(1)";
+      if (!disabled) lift(e.currentTarget);
     },
     onMouseLeave: e => {
-      e.currentTarget.style.transform = "scale(1)";
+      reset(e.currentTarget);
+    },
+    onTouchStart: e => {
+      if (!disabled) press(e.currentTarget);
+    },
+    onTouchEnd: e => {
+      reset(e.currentTarget);
+    },
+    onTouchCancel: e => {
+      reset(e.currentTarget);
     }
   }, rest), iconLeft, children, iconRight);
 }
@@ -1541,7 +1570,7 @@ function StepDone({
   }, /*#__PURE__*/React.createElement(MetaRow, {
     items: [{
       label: "預約編號",
-      value: "HP-2606-0148"
+      value: data.bookingId || "HP-2606-0148"
     }]
   })), /*#__PURE__*/React.createElement("div", {
     style: {
@@ -3653,9 +3682,9 @@ function Hero({
     className: "hero-mag__title"
   }, /*#__PURE__*/React.createElement("span", {
     className: "hl-line hl-1"
-  }, "\u6BCF\u4E00\u5E40\u5F71\u50CF\uFF0C"), /*#__PURE__*/React.createElement("span", {
+  }, "\u6BCF\u4E00\u5E40\u96EA\u570B\u5F71\u50CF\uFF0C"), /*#__PURE__*/React.createElement("span", {
     className: "hl-line hl-2"
-  }, "\u90FD\u8A18\u9304\u8457", /*#__PURE__*/React.createElement("span", {
+  }, "\u8A18\u9304\u8457", /*#__PURE__*/React.createElement("span", {
     className: "hl-accent"
   }, "\u7F8E\u597D"), "\u7684\u56DE\u61B6")), /*#__PURE__*/React.createElement("div", {
     className: "hero-mag__vert",
@@ -3755,9 +3784,13 @@ function Services({
     key: p.name,
     elevation: p.featured ? "lg" : "sm",
     padding: "28px",
-    style: p.featured ? {
-      border: "1.5px solid var(--ice-300)"
-    } : {}
+    interactive: true,
+    style: {
+      cursor: "default",
+      ...(p.featured ? {
+        border: "1.5px solid var(--ice-300)"
+      } : {})
+    }
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       display: "flex",

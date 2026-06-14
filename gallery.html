@@ -1,3 +1,5 @@
+<!-- @dsCard group="Gallery" viewport="1280x720" name="影像作品集 Gallery" subtitle="故事化相簿 · 分類篩選 · 燈箱多圖瀏覽" -->
+<!-- @startingPoint section="Gallery" subtitle="滑雪影像瀑布式作品集" viewport="1280x900" -->
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
@@ -30,16 +32,8 @@
     gallery: "gallery.html",
   };
 </script>
-<style>
-  /* ===== 載入動畫覆蓋層 ===== */
-  #henry-boot{position:fixed;inset:0;z-index:99999;background:#cfe2ea;display:block;overflow:hidden;transition:opacity .7s ease}
-  #henry-boot.hide{opacity:0;pointer-events:none}
-  #henry-boot svg{position:absolute;inset:0;width:100%;height:100%;display:block}
-</style>
-</head>
-<body>
-  <div id="root"></div>
-  <div id="henry-boot" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" role="img" aria-label="亨利攝影工作室 載入中">
+<template id="__bundler_thumbnail">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" role="img" aria-label="亨利攝影工作室 載入中">
   <defs>
     <linearGradient id="bsky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f2f8f9"/><stop offset="0.52" stop-color="#d4e7ed"/><stop offset="1" stop-color="#a6c9d6"/></linearGradient>
     <radialGradient id="bglow" cx="0.5" cy="0.30" r="0.62"><stop offset="0" stop-color="#ffffff" stop-opacity="0.65"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/></radialGradient>
@@ -75,16 +69,11 @@
       <circle cx="830" cy="742" r="6" fill="#538799"><animate attributeName="opacity" values="0.25;1;0.25" dur="1.2s" begin="0.4s" repeatCount="indefinite"/></circle>
     </g>
   </g>
-</svg></div>
-  <script>
-  (function(){
-    var boot=document.getElementById('henry-boot'); if(!boot) return;
-    var root=document.getElementById('root'); var done=false;
-    function hide(){ if(done) return; done=true; setTimeout(function(){ boot.classList.add('hide'); setTimeout(function(){ boot.parentNode && boot.parentNode.removeChild(boot); }, 750); }, 220); }
-    if(root){ var obs=new MutationObserver(function(){ if(root.children.length){ obs.disconnect(); hide(); } }); obs.observe(root,{childList:true}); if(root.children.length){ obs.disconnect(); hide(); } }
-    setTimeout(hide, 12000);
-  })();
-  </script>
+</svg>
+</template>
+</head>
+<body>
+  <div id="root"></div>
   <!-- 圖片槽静態參照：讓打包器把已發佈圖片內嵌進單一檔案（由 window.A 讀取） -->
   <div id="henry-assets" style="display:none" aria-hidden="true">
     <img data-slot="photo-peak-mist" src="assets/slots/photo-peak-mist.jpg" alt="">
@@ -332,7 +321,7 @@ function GalleryGrid({ items, onOpen }) {
           }}
           onMouseEnter={(e)=>{ e.currentTarget.style.boxShadow="var(--shadow-lg)"; e.currentTarget.querySelector(".gov").style.opacity=1; }}
           onMouseLeave={(e)=>{ e.currentTarget.style.boxShadow="var(--shadow-sm)"; e.currentTarget.querySelector(".gov").style.opacity=0; }}>
-          <EditableImage id={it.shots[0]} src={`../../assets/slots/${it.shots[0]}.jpg`} alt={it.title}
+          <EditableImage id={it.shots[0]} src={`assets/slots/${it.shots[0]}.jpg`} alt={it.title}
             imgStyle={{ aspectRatio: it.span === 2 ? "4 / 5" : "4 / 3", height: "auto" }} />
           {it.video && (
             <span style={{ position: "absolute", top: 12, left: 12 }}>
@@ -380,7 +369,7 @@ function Lightbox({ item, onClose, onPrevStory, onNextStory }) {
 
   const shots = item.shots;
   const cur = shots[Math.min(shotIdx, shots.length - 1)];
-  const src = (id) => window.henryImg(id, `../../assets/slots/${id}.jpg`);
+  const src = (id) => window.henryImg(id, `assets/slots/${id}.jpg`);
 
   return (
     <div className="lb-root" style={{
