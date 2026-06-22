@@ -1,4 +1,4 @@
-<!-- @dsCard group="Gallery" viewport="1280x720" name="影像作品集 Gallery" subtitle="故事化相簿 · 分類篩選 · 燈箱多圖瀏覽" -->
+<!-- 上架部署檔（GitHub Pages）· 不在 Design System 卡片中顯示 -->
 <!-- @startingPoint section="Gallery" subtitle="滑雪影像瀑布式作品集" viewport="1280x900" -->
 <!DOCTYPE html>
 <html lang="zh-Hant">
@@ -106,6 +106,9 @@
     <img data-slot="story-night-snow-1" src="assets/slots/story-night-snow-1.jpg" alt="">
     <img data-slot="story-night-snow-2" src="assets/slots/story-night-snow-2.jpg" alt="">
     <img data-slot="story-night-snow-3" src="assets/slots/story-night-snow-3.jpg" alt="">
+    <img data-slot="niseko-yotei-xmqex3hbq" src="assets/slots/niseko-yotei-xmqex3hbq.jpg" alt="">
+    <img data-slot="niseko-yotei-xmqex3k66" src="assets/slots/niseko-yotei-xmqex3k66.jpg" alt="">
+    <img data-slot="ski-ride-mist-xmqex256k" src="assets/slots/ski-ride-mist-xmqex256k.jpg" alt="">
   </div>
   <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
@@ -271,49 +274,48 @@ window.Icon = Icon;
 // Gallery — 故事資料集（每個故事含多張照片，shots[0] 為封面）
 // 所有 shots 的字串都是「圖片槽 id」，對應 assets/slots/<id>.jpg，可在媒體管理後台更換
 window.GALLERY_STORIES = [
-  { id: 1,  slug: "mist-ridge",   title: "霧中稜線",   loc: "NISEKO",   cat: "powder",   span: 2, video: false,
-    desc: "清晨第一道光灑落稜線，霧氣尚未散去。我蹲在風口等了四十分鐘，只為等你滑進這道光裡。",
-    shots: ["photo-peak-mist", "story-mist-ridge-2", "story-mist-ridge-3"] },
-  { id: 2,  slug: "slope-dawn",   title: "晨光斜坡",   loc: "HAKUBA",   cat: "aerial",   span: 1, video: true,
-    desc: "破曉前的纜車站還沒開燈，我們踩著頭燈上山。當太陽躍出山脊，整片斜坡瞬間鍍上金色。",
-    shots: ["photo-slope-dawn", "story-slope-dawn-2", "story-slope-dawn-3"] },
-  { id: 3,  slug: "gondola",      title: "纜車時刻",   loc: "ZAO",      cat: "powder",   span: 2, video: false,
-    desc: "纜車緩緩爬升，腳下是剛壓過的雪道。這段十二分鐘的路程，是雪場一天裡最安靜的時刻。",
-    shots: ["photo-powder-run", "story-gondola-2", "story-gondola-3"] },
-  { id: 4,  slug: "penguin",      title: "企鵝",       loc: "TATEYAMA", cat: "portrait", span: 1, video: false,
-    desc: "雪場旁的小驚喜——成群的企鵝搖搖擺擺走過雪地，比任何擺拍都更有故事。",
-    shots: ["photo-summit-blue", "story-penguin-2", "story-penguin-3"] },
-  { id: 5,  slug: "gondola-view", title: "纜車風景",   loc: "NOZAWA",   cat: "aerial",   span: 1, video: true,
-    desc: "從纜車窗框望出去，樹冰與雪道交錯成幾何。每一格窗景，都是不重複的明信片。",
-    shots: ["photo-forest-valley", "story-gondola-view-2", "story-gondola-view-3"] },
-  { id: 6,  slug: "summit-view",  title: "山頂風景",   loc: "FURANO",   cat: "portrait", span: 2, video: false,
-    desc: "站上山頂的那一刻，風停了。十勝岳連峰在雲海後排開，我們什麼都沒說，先拍了再說。",
-    shots: ["photo-hero-ridge", "story-summit-view-2", "story-summit-view-3"] },
-  { id: 7,  slug: "dawn-line",    title: "破曉切線",   loc: "HAKUBA",   cat: "powder",   span: 1, video: false,
-    desc: "全場第一道刻痕。雪皮在板刃下碎開的聲音，是只有首滑者才聽得到的獎勵。",
-    shots: ["story-dawn-line-1", "story-dawn-line-2", "story-dawn-line-3"] },
-  { id: 8,  slug: "after-mist",   title: "霧散之後",   loc: "NISEKO",   cat: "aerial",   span: 1, video: false,
-    desc: "等霧散開的人不多。但霧散之後的羊蹄山，值得你把整個上午留給它。",
-    shots: ["story-after-mist-1", "story-after-mist-2", "story-after-mist-3"] },
-  { id: 9,  slug: "first-day",    title: "初雪的一天", loc: "NISEKO",   cat: "portrait", span: 1, video: false,
-    desc: "第一次站上雪板的你，跌倒七次、大笑八次。這些瞬間，比任何完美的滑行都珍貴。",
-    shots: ["story-first-day-1", "story-first-day-2", "story-first-day-3"] },
-  { id: 10, slug: "night-snow",   title: "雪夜燈火",   loc: "ZAO",      cat: "powder",   span: 2, video: false,
-    desc: "夜場燈一亮，雪道變成琥珀色的河。呼出的白霧、飄落的細雪，都被燈光接住了。",
-    shots: ["story-night-snow-1", "story-night-snow-2", "story-night-snow-3"] },
+  { id: 1,  slug: "niseko-yotei",   title: "二世谷・羊蹄山",   loc: "NISEKO",   cat: "portrait", span: 2,
+    desc: "白色雪衣、HEAD雙板，羊蹄山在身後清晰矗立。藍天無雲，新雪還沒有腳印——這樣的早晨，最適合出發。",
+    shots: ["photo-peak-mist", "story-mist-ridge-2", "story-mist-ridge-3", "niseko-yotei-xmqex3hbq", "niseko-yotei-xmqex3k66", "niseko-yotei-xmqp3xlyn", "niseko-yotei-xmqp3ymll", "niseko-yotei-xmqp3yxtx"] },
+  { id: 2,  slug: "chairlift-pair", title: "雪場合影",         loc: "Annupuri", cat: "portrait", span: 1,
+    desc: "大雪紛飛的纜椅上，兩個人靠在一起。雪打在護目鏡上，但沒有人想撐傘。這段上山的路，比山頂更值得記住。",
+    shots: ["photo-slope-dawn", "story-slope-dawn-2", "story-slope-dawn-3", "chairlift-pair-xmqp40c49", "chairlift-pair-xmqp40z4w", "chairlift-pair-xmqp41lqf", "chairlift-pair-xmqp42rl2", "chairlift-pair-xmqp4332r", "chairlift-pair-xmqp43f7a"] },
+  { id: 3,  slug: "gondola-yotei",  title: "山頂纜車時刻",     loc: "Hirafu",   cat: "portrait", span: 2,
+    desc: "纜車鋼索拉成一條斜線，羊蹄山在遠方展開。單板懸在空中，人也懸在空中——這是屬於Hirafu的一張照片。",
+    shots: ["photo-powder-run", "story-gondola-2", "story-gondola-3", "gondola-yotei-xmqp448g5", "gondola-yotei-xmqp44o5s", "gondola-yotei-xmqp44utf"] },
+  { id: 4,  slug: "sb-jump",        title: "單板・跳台時刻",   loc: "Hanazono", cat: "powder",   span: 1,
+    desc: "橘色Capita板飛離地面，纜車箱在左下角靜靜駛過。跳台旁的樹還掛著雪，按下快門的瞬間，一切都定格了。",
+    shots: ["photo-summit-blue", "story-penguin-2", "story-penguin-3", "sb-jump-xmqp4hehu", "sb-jump-xmqp4j8id", "sb-jump-xmqp4jtqi", "sb-jump-xmqp4kmoa"] },
+  { id: 5,  slug: "sb-ride-yotei",  title: "單板・滑行時刻",   loc: "NISEKO",   cat: "portrait", span: 1,
+    desc: "Cosmic Surf板豎在身邊，羊蹄山佔滿了整個天空。這個位置，是二世谷最容易找到、最難忘記的地方。",
+    shots: ["photo-forest-valley", "story-gondola-view-2", "story-gondola-view-3", "sb-ride-yotei-xmqp490k9", "sb-ride-yotei-xmqp4d1np", "sb-ride-yotei-xmqp4dh6u", "sb-ride-yotei-xmqp4dqbr", "sb-ride-yotei-xmqp4ebr2", "sb-ride-yotei-xmqp4eqzq", "sb-ride-yotei-xmqp4f195"] },
+  { id: 6,  slug: "portrait-snow",  title: "人像特寫",         loc: "Rusutsu",  cat: "portrait", span: 2,
+    desc: "粉色雪衣、Burton板躺在旁邊，她閉上眼睛攤在雪地裡。是摔了，還是累了，還是兩者都有——答案不重要，這一刻才是。",
+    shots: ["photo-hero-ridge", "story-summit-view-2", "story-summit-view-3", "portrait-snow-xmqp4nzus", "portrait-snow-xmqp4o8zn", "portrait-snow-xmqp4omuj", "portrait-snow-xmqp4pt3t", "portrait-snow-xmqp4q24s", "portrait-snow-xmqp4qi60", "portrait-snow-xmqp4rd2l", "portrait-snow-xmqp4rrep", "portrait-snow-xmqp4s1rn", "portrait-snow-xmqp4t68h", "portrait-snow-xmqp4tntx", "portrait-snow-xmqp4wef8", "portrait-snow-xmqp4wjmo", "portrait-snow-xmqp4ws7a", "portrait-snow-xmqp4wz6a", "portrait-snow-xmqp4x2wi"] },
+  { id: 7,  slug: "ski-jump",       title: "雙板・跳台時刻",   loc: "Hanazono", cat: "powder",   span: 1,
+    desc: "雙板壓上鐵欄，滑桿在腳下一閃而過。雪場燈光、纜車、霧氣全在後面——跳台的這一秒，什麼都有了。",
+    shots: ["story-dawn-line-1", "story-dawn-line-2", "story-dawn-line-3", "ski-jump-xmqp4g8y2", "ski-jump-xmqp4gtwr"] },
+  { id: 8,  slug: "ski-ride-mist",  title: "雙板・滑行時刻",   loc: "NISEKO",   cat: "powder",   span: 1,
+    desc: "霧裡的山只剩輪廓，灰色壓著灰色。看不清前方的時候，反而更專注腳下的每一個轉彎。",
+    shots: ["ski-ride-mist-xmqex256k", "ski-ride-mist-xmqp3vxi4", "ski-ride-mist-xmqp4l07v", "ski-ride-mist-xmqp4lpq5", "ski-ride-mist-xmqp4m00y", "ski-ride-mist-xmqp4mih3"] },
 ];
 
 </script>
   <script type="text/babel">
-// Gallery — masonry grid + story tile（每張卡片是一個故事的封面）
+// Gallery — masonry grid：每個故事的「封面＋全部照片」都各自成為一張可點的圖卡
+// 點任一張 → 開啟該故事燈箱（行為不變，仍是完整故事）
 function GalleryGrid({ items, onOpen }) {
   const { Badge, IconButton } = window.HenryStudioRemix_704588;
+  // 展平：每個故事的每一張 shot 都是一個 tile（si 為該故事內的索引，0 為封面）
+  const tiles = [];
+  items.forEach((it) => it.shots.forEach((shot, si) => tiles.push({ it, shot, si })));
+
   return (
     <div style={{
       columnWidth: 300, columnGap: 18, padding: "0 clamp(20px, 4vw, 40px) 80px",
     }}>
-      {items.map((it) => (
-        <figure key={it.id} onClick={() => onOpen(it)}
+      {tiles.map(({ it, shot, si }) => (
+        <figure key={it.id + "-" + shot + "-" + si} onClick={() => onOpen(it, si)}
           style={{
             breakInside: "avoid", margin: "0 0 18px", position: "relative",
             borderRadius: "var(--radius-md)", overflow: "hidden", cursor: "pointer",
@@ -321,13 +323,9 @@ function GalleryGrid({ items, onOpen }) {
           }}
           onMouseEnter={(e)=>{ e.currentTarget.style.boxShadow="var(--shadow-lg)"; e.currentTarget.querySelector(".gov").style.opacity=1; }}
           onMouseLeave={(e)=>{ e.currentTarget.style.boxShadow="var(--shadow-sm)"; e.currentTarget.querySelector(".gov").style.opacity=0; }}>
-          <EditableImage id={it.shots[0]} src={`assets/slots/${it.shots[0]}.jpg`} alt={it.title}
-            imgStyle={{ aspectRatio: it.span === 2 ? "4 / 5" : "4 / 3", height: "auto" }} />
-          {it.video && (
-            <span style={{ position: "absolute", top: 12, left: 12 }}>
-              <Badge tone="accent" variant="solid"><Icon name="play" size={12} /> 影片</Badge>
-            </span>
-          )}
+          <EditableImage id={shot} src={`assets/slots/${shot}.jpg`} alt={it.title}
+            imgStyle={{ aspectRatio: si === 0 && it.span === 2 ? "4 / 5" : "4 / 3", height: "auto" }} />
+
           <figcaption className="gov" style={{
             position: "absolute", inset: 0, opacity: 0, transition: "opacity var(--dur-base) var(--ease-out)",
             background: "linear-gradient(180deg, rgba(28,27,25,0) 40%, rgba(28,27,25,0.72) 100%)",
@@ -336,7 +334,7 @@ function GalleryGrid({ items, onOpen }) {
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
               <div>
                 <div style={{ color: "var(--snow)", fontFamily: "var(--font-display)", fontWeight: 600, fontSize: "var(--text-lg)" }}>{it.title}</div>
-                <div className="ds-meta" style={{ color: "var(--stone-200)" }}>{it.loc} · {it.shots.length} 張</div>
+                <div className="ds-meta" style={{ color: "var(--stone-200)" }}>{it.loc} · 第 {si + 1} / {it.shots.length} 張</div>
               </div>
               <IconButton icon={<Icon name="images" />} label="打開故事" variant="frost" size="sm" />
             </div>
@@ -351,10 +349,10 @@ window.GalleryGrid = GalleryGrid;
 </script>
   <script type="text/babel">
 // Gallery — 故事燈箱：主圖 + 故事內縮圖列；左右鍵切換同故事照片
-function Lightbox({ item, onClose, onPrevStory, onNextStory }) {
+function Lightbox({ item, onClose, onPrevStory, onNextStory, initialShot }) {
   const { IconButton, Badge, Button } = window.HenryStudioRemix_704588;
   const [shotIdx, setShotIdx] = React.useState(0);
-  React.useEffect(() => { setShotIdx(0); }, [item && item.id]);
+  React.useEffect(() => { setShotIdx(initialShot || 0); }, [item && item.id, initialShot]);
   React.useEffect(() => {
     if (!item) return;
     const h = (e) => {
@@ -405,7 +403,7 @@ function Lightbox({ item, onClose, onPrevStory, onNextStory }) {
         padding: "28px 26px", display: "flex", flexDirection: "column", gap: 20, overflowY: "auto",
       }} onClick={(e)=>e.stopPropagation()}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <Badge tone={item.video ? "accent" : "brand"}>{item.video ? "影片" : "故事"}</Badge>
+          <Badge tone="brand">故事</Badge>
           <IconButton icon={<Icon name="x" />} label="關閉" variant="ghost" onClick={onClose} />
         </div>
         <div>
@@ -428,15 +426,15 @@ window.Lightbox = Lightbox;
 
 </script>
   <script type="text/babel">
-    const { Tabs, MetaRow } = window.HenryStudioRemix_704588;
+    const { } = window.HenryStudioRemix_704588;
     function App(){
-      const all = window.GALLERY_STORIES;
-      const [cat, setCat] = React.useState("all");
+      const all = window.GALLERY_STORIES.filter(function(s){ return s.shots && s.shots.length > 0; });
       const [open, setOpen] = React.useState(null);
+      const [openShot, setOpenShot] = React.useState(0);
       React.useEffect(() => { window.lucide && window.lucide.createIcons(); }, []);
-      const shown = cat === "all" ? all : all.filter(i => i.cat === cat);
-      const idx = open ? shown.findIndex(i => i.id === open.id) : -1;
-      const step = (d) => { if (idx < 0) return; setOpen(shown[(idx + d + shown.length) % shown.length]); };
+      const idx = open ? all.findIndex(i => i.id === open.id) : -1;
+      const handleOpen = (it, si) => { setOpen(it); setOpenShot(si || 0); };
+      const step = (d) => { if (idx < 0) return; setOpen(all[(idx + d + all.length) % all.length]); setOpenShot(0); };
 
       return (
         <>
@@ -447,18 +445,9 @@ window.Lightbox = Lightbox;
             <span className="ds-eyebrow">PORTFOLIO · 2026 雪季</span>
             <h1 style={{ fontSize: "clamp(30px, 5vw, var(--text-4xl))", margin: "10px 0 6px" }}>影像作品集</h1>
             <p style={{ color: "var(--text-muted)", fontSize: "var(--text-lg)", maxWidth: 520 }}>挑戰的汗水，與登頂的笑容。逐格收藏的雪地故事。</p>
-            <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", marginTop: 28, flexWrap:"wrap", gap:16 }}>
-              <Tabs value={cat} onChange={setCat} tabs={[
-                { value:"all", label:"全部", count: all.length },
-                { value:"powder", label:"粉雪 Powder" },
-                { value:"aerial", label:"空拍 Aerial" },
-                { value:"portrait", label:"人像 Portrait" },
-              ]} />
-              <MetaRow items={[{ value: shown.length, unit: "個故事" }]} />
-            </div>
           </header>
-          <GalleryGrid items={shown} onOpen={setOpen} />
-          <Lightbox item={open} onClose={()=>setOpen(null)} onPrevStory={()=>step(-1)} onNextStory={()=>step(1)} />
+          <GalleryGrid items={all} onOpen={handleOpen} />
+          <Lightbox item={open} initialShot={openShot} onClose={()=>setOpen(null)} onPrevStory={()=>step(-1)} onNextStory={()=>step(1)} />
         </>
       );
     }
