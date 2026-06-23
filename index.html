@@ -832,7 +832,7 @@ function SiteNav({ onNav, active }) {
   ];
   const go = (e, id) => {
     const link = links.find((l) => l.id === id);
-    if (link && link.href) { setOpen(false); window.open(link.href, "_blank", "noopener"); return; }
+    if (link && link.href) { e.preventDefault(); setOpen(false); window.open(link.href, "_blank", "noopener"); return; }
     e.preventDefault(); setOpen(false); onNav && onNav(id);
   };
   return (
