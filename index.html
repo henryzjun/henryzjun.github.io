@@ -1242,9 +1242,9 @@ window.FeaturedWork = FeaturedWork;
 function Services({ onNav }) {
   const { Card, Button, Badge } = window.HenryStudioRemix_704588;
   const packs = [
-    { icon: "camera", name: "攝影紀錄（照片）", price: "NT$ 8,500", unit: "/ 1 小時", desc: "精選最佳畫面，確保您獲得豐富的留念影像", feat: ["實拍 1 小時", "照片張數不設上限", "約 5 個工作天雲端交付"], tone: "brand", badge: "最受歡迎" },
-    { icon: "layers", name: "完整紀錄（照片＋影片）", price: "NT$ 19,500", unit: "/ 2 小時", desc: "照片與影片一次擁有，静態畫面與動態滑行完整收藏。", feat: ["實拍 2 小時", "照片不設上限 ＋ 精選影片", "約 5 個工作天雲端交付"], tone: "brand", featured: true, badge: "最完整" },
-    { icon: "video", name: "雪地跟拍（影片）", price: "NT$ 11,000", unit: "/ 1 小時", desc: "跟拍你的滑行，精選最佳畫面成影像記憶。", feat: ["實拍 1 小時", "精選影片", "約 5 個工作天雲端交付"], tone: "neutral" },
+    { icon: "camera", name: "攝影紀錄（照片）", price: "NT$ 8,500", unit: "/ 1 小時", desc: "精選最佳畫面，確保您獲得豐富的留念影像", feat: ["實拍 1 小時", "照片張數不設上限", "Google雲端交付成品"], tone: "brand", badge: "最受歡迎" },
+    { icon: "layers", name: "完整紀錄（照片＋影片）", price: "NT$ 19,500", unit: "/ 2 小時", desc: "照片與影片一次擁有，静態畫面與動態滑行完整收藏。", feat: ["實拍 2 小時", "照片不設上限 ＋ 精選影片", "Google雲端交付成品"], tone: "brand", featured: true, badge: "最完整" },
+    { icon: "video", name: "雪地跟拍（影片）", price: "NT$ 11,000", unit: "/ 1 小時", desc: "跟拍你的滑行，精選最佳畫面成影像記憶。", feat: ["實拍 1 小時", "精選影片", "Google雲端交付成品"], tone: "neutral" },
   ];
   return (
     <section style={{ background: "var(--surface-sunken)", padding: "clamp(56px, 9vw, 88px) clamp(20px, 4vw, 40px)" }}>
@@ -1279,7 +1279,7 @@ function Services({ onNav }) {
                 </div>
               ))}
             </div>
-            <Button variant={p.featured ? "primary" : "secondary"} fullWidth onClick={()=>onNav&&onNav("book")}>選擇方案</Button>
+            <Button variant={p.featured ? "primary" : "secondary"} fullWidth onClick={()=>onNav&&onNav("book", p.name)}>選擇方案</Button>
           </Card>
         ))}
       </div>
@@ -1359,9 +1359,9 @@ window.SiteFooter = SiteFooter;
         root.dataset.hero = t.heroLayout === "滿版沉浸" ? "full" : "classic";
         root.dataset.herofont = HEROFONT_MAP[t.heroTitleFont] || "song";
       }, [t.accentColor, t.imageTone, t.heroLayout, t.heroTitleFont]);
-      const nav = (id) => {
+      const nav = (id, pkg) => {
         setActive(id);
-        if (id === "book") { window.location.href = window.HENRY_LINKS.booking; return; }
+        if (id === "book") { window.location.href = window.HENRY_LINKS.booking + (pkg ? ("?pkg=" + encodeURIComponent(pkg)) : ""); return; }
         if (id === "work") { window.location.href = window.HENRY_LINKS.gallery; return; }
         const el = document.getElementById(id);
         if (el) window.scrollTo({ top: el.offsetTop - 70, behavior: "smooth" });

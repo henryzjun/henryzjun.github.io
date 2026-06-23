@@ -281,13 +281,6 @@ function BookingSummary({ data }) {
       background: "var(--surface-card)", border: "1px solid var(--border-soft)",
       borderRadius: "var(--radius-lg)", boxShadow: "var(--shadow-sm)", overflow: "hidden",
     }}>
-      <div style={{ height: 140, position: "relative" }}>
-        <EditableImage id="booking-cover" src="assets/slots/booking-cover.jpg" alt="" style={{ position:"absolute", inset:0 }} />
-        <div style={{ position:"absolute", inset:0, background:"linear-gradient(180deg,rgba(28,27,25,0) 30%,rgba(28,27,25,0.6))" }}></div>
-        <span style={{ position:"absolute", bottom:12, left:16 }}>
-          <Badge tone="accent" variant="solid">{data.loc || "雪場待定"}</Badge>
-        </span>
-      </div>
       <div style={{ padding: 22, display:"flex", flexDirection:"column", gap: 16 }}>
         <div className="ds-eyebrow">預約摘要</div>
         <Row label="方案" value={data.pkg || "尚未選擇"} />
@@ -302,7 +295,6 @@ function BookingSummary({ data }) {
             {price ? `NT$ ${price.toLocaleString()}` : "—"}
           </span>
         </div>
-        <MetaRow items={[{ value:"拍攝 1 小時" }, { value:"約 5 個工作天交付" }]} />
       </div>
     </aside>
   );
@@ -365,7 +357,7 @@ function ServiceInfoModal({ open, onClose }) {
   return (
     <BookingModal open={open} onClose={onClose} title="基本服務資訊">
       <MTitle>拍攝時長</MTitle>
-      <MItem>實際拍攝時間為 <b>1 小時</b>（從指定預約時段開始計算，不含妝髮、交通等準備時間）。</MItem>
+      <MItem>單一方案拍攝時間為 <b>1 小時</b>（從指定預約時段開始計算，不含妝髮、交通等準備時間）。</MItem>
 
       <MTitle>拍攝內容</MTitle>
       <MItem>📸 以「活動紀錄」為概念，完整捕捉精彩瞬間，不設照片張數上限。</MItem>
@@ -502,7 +494,7 @@ function StepChoose({ data, set }) {
           );
         })}
       </div>
-      <p className="ds-meta" style={{ margin: 0 }}>實際拍攝 1 小時；成片約五個工作天後雲端交付。詳見「服務說明」。</p>
+      <p className="ds-meta" style={{ margin: 0 }}>詳見「服務說明」。</p>
       <ServiceInfoModal open={infoOpen} onClose={() => setInfoOpen(false)} />
     </div>
   );
@@ -514,7 +506,8 @@ function StepDetails({ data, set }) {
     <div style={{ display:"flex", flexDirection:"column", gap: 18 }}>
       <h2 style={{ fontSize:"var(--text-2xl)" }}>拍攝細節</h2>
       <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit, minmax(min(100%, 220px), 1fr))", gap: 16 }}>
-        <Input label="日期 *" type="date" value={data.date} onChange={(e)=>set({date:e.target.value})} />
+        <Input label="日期 *" type="date" value={data.date} onChange={(e)=>set({date:e.target.value})}
+          min="2026-12-05" max="2027-04-10" hint="可預約 2026/12/5 – 2027/4/10（雪季期間）" />
         <Select label="時間 *" value={data.time} onChange={(e)=>set({time:e.target.value})}
           options={["請選擇","09:00","09:30","10:00","10:30","11:00","11:30","12:00","12:30","13:00","13:30","14:00","14:30","15:00","15:30","16:00","16:30","17:00","17:30","18:00"]}
           hint="開放 09:00–18:00，每半小時一個時段" />
@@ -629,9 +622,12 @@ window.StepDone = StepDone;
     }
 
     function App(){
-      const [step, setStep] = React.useState(0);
+      const PKG_VALID = ["攝影紀錄（照片）","雪地跟拍（影片）","完整紀錄（照片＋影片）"];
+      const urlPkg = (() => { try { return new URLSearchParams(window.location.search).get("pkg"); } catch(e){ return null; } })();
+      const prePkg = PKG_VALID.includes(urlPkg) ? urlPkg : null;
+      const [step, setStep] = React.useState(prePkg ? 1 : 0);
       const [noticeOpen, setNoticeOpen] = React.useState(false);
-      const [data, setData] = React.useState({ pkg:"攝影紀錄（照片）", date:"", time:"", loc:"二世谷 Hirafu雪場", people:"1", style:"", special:"", name:"", email:"", social:"", bookingId:"" });
+      const [data, setData] = React.useState({ pkg: prePkg || "攝影紀錄（照片）", date:"", time:"", loc:"二世谷 Hirafu雪場", people:"1", style:"", special:"", name:"", email:"", social:"", bookingId:"" });
       const set = (patch) => setData(d => ({ ...d, ...patch }));
       React.useEffect(() => { window.lucide && window.lucide.createIcons(); }, []);
       const done = step >= STEPS.length;
