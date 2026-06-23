@@ -1,4 +1,4 @@
-<!-- 上架部署檔（GitHub Pages）· 不在 Design System 卡片中顯示 -->
+<!-- @dsCard group="02 · 編輯內容" viewport="1280x720" name="① 官網首頁" subtitle="Hero · 作品集 · 方案 · 哲學 · 響應式 + 可換圖 · 點文字即可編輯" -->
 <!-- @startingPoint section="Website" subtitle="滑雪攝影行銷首頁" viewport="1280x900" -->
 <!DOCTYPE html>
 <html lang="zh-Hant">
@@ -112,6 +112,8 @@
     <img data-slot="photo-summit-blue" src="assets/slots/photo-summit-blue.jpg" alt="">
     <img data-slot="photo-forest-valley" src="assets/slots/photo-forest-valley.jpg" alt="">
     <img data-slot="photo-hero-ridge" src="assets/slots/photo-hero-ridge.jpg" alt="">
+    <img data-slot="story-dawn-line-1" src="assets/slots/story-dawn-line-1.jpg" alt="">
+    <img data-slot="ski-ride-mist-xmqex256k" src="assets/slots/ski-ride-mist-xmqex256k.jpg" alt="">
   </div>
   <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
@@ -1193,17 +1195,17 @@ window.Hero = Hero;
   <script type="text/babel">
 // Marketing site — featured work grid (每張作品圖都可直接上傳更換)
 function FeaturedWork({ onNav }) {
-  const { Card, Badge, MetaRow, Tabs, Button } = window.HenryStudioRemix_704588;
-  const [cat, setCat] = React.useState("all");
+  const { Card, Badge, MetaRow, Button } = window.HenryStudioRemix_704588;
   const items = [
-    { img: "peak-mist", title: "二世谷・羊蹄山", loc: "NISEKO", tag: "powder", kind: "粉雪", badge: "精選" },
-    { img: "slope-dawn", title: "羊蹄山・經典日本雪場", loc: "NISEKO", tag: "aerial", kind: "山景", badge: null },
-    { img: "powder-run", title: "二世谷・纜車時刻", loc: "NISEKO", tag: "powder", kind: "粉雪", badge: null },
-    { img: "summit-blue", title: "周邊景點・", loc: "TATEYAMA", tag: "portrait", kind: "人像", badge: "新作" },
-    { img: "forest-valley", title: "滑行・雪場風景", loc: "NOZAWA", tag: "aerial", kind: "空拍", badge: null },
-    { img: "hero-ridge", title: "二世谷・山頂風景", loc: "NISEKO", tag: "portrait", kind: "人像", badge: null },
+    { slot: "photo-peak-mist",    title: "二世谷・羊蹄山",    loc: "NISEKO",   kind: "山景" },
+    { slot: "photo-slope-dawn",   title: "雪場合影",           loc: "Annupuri", kind: "情侶" },
+    { slot: "photo-powder-run",   title: "山頂纜車時刻",       loc: "Hirafu",   kind: "山景" },
+    { slot: "photo-hero-ridge",   title: "人像特寫",           loc: "Rusutsu",  kind: "人像" },
+    { slot: "photo-forest-valley",title: "單板・滑行時刻",     loc: "NISEKO",   kind: "人像" },
+    { slot: "photo-summit-blue",  title: "單板・跳台時刻",     loc: "Hanazono", kind: "人像" },
+    { slot: "story-dawn-line-1",  title: "雙板・跳台時刻",     loc: "Hanazono", kind: "人像" },
+    { slot: "ski-ride-mist-xmqex256k", title: "雙板・滑行時刻", loc: "NISEKO",   kind: "人像" },
   ];
-  const shown = cat === "all" ? items : items.filter((i) => i.tag === cat);
 
   return (
     <section style={{ padding: "clamp(56px, 9vw, 88px) clamp(20px, 4vw, 40px)" }}>
@@ -1212,19 +1214,12 @@ function FeaturedWork({ onNav }) {
           <span className="ds-eyebrow">SELECTED WORK</span>
           <h2 style={{ fontSize: "clamp(26px, 4vw, var(--text-3xl))", marginTop: 10 }}>雪地的故事，逐格收藏</h2>
         </div>
-        <div style={{ maxWidth: "100%", overflowX: "auto" }}>
-          <Tabs value={cat} onChange={setCat} tabs={[
-            { value: "all", label: "全部", count: items.length },
-            { value: "powder", label: "粉雪" },
-            { value: "aerial", label: "空拍" },
-            { value: "portrait", label: "人像" },
-          ]} />
-        </div>
+
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 270px), 1fr))", gap: 22 }}>
-        {shown.map((it) => (
+      <div className="fw-grid" style={{ display: "grid", gap: 22 }}>
+        {items.map((it) => (
           <Card key={it.title} coverHeight={230} interactive onClick={()=>onNav&&onNav("work")}
-            cover={<EditableImage id={`photo-${it.img}`} src={`assets/slots/photo-${it.img}.jpg`} alt={it.title} style={{ width: "100%", height: "100%" }} />}>
+            cover={<EditableImage id={it.slot} src={`assets/slots/${it.slot}.jpg`} alt={it.title} style={{ width: "100%", height: "100%" }} />}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 8 }}>
               <h3 style={{ fontSize: "var(--text-xl)" }}>{it.title}</h3>
               {it.badge && <Badge tone="brand">{it.badge}</Badge>}
@@ -1301,8 +1296,8 @@ function PhilosophyBand() {
     <section style={{ position: "relative", padding: "clamp(64px, 10vw, 104px) clamp(20px, 5vw, 40px)", overflow: "hidden", background: "var(--surface-inverse)" }}>
       <EditableImage id="philosophy-band" src="assets/slots/philosophy-band.jpg" alt="" maxEdge={1920}
         style={{ position: "absolute", inset: 0 }} imgStyle={{ opacity: 0.32 }} />
-      <div style={{ position: "relative", maxWidth: 820, margin: "0 auto", textAlign: "center", pointerEvents: "none" }}>
-        <Icon name="quote" size={40} style={{ color: "var(--ice-300)", margin: "0 auto 20px" }} />
+      <div style={{ position: "relative", maxWidth: 820, margin: "0 auto", textAlign: "center" }}>
+        <Icon name="quote" size={40} style={{ color: "var(--ice-300)", margin: "0 auto 20px", pointerEvents: "none" }} />
         <p style={{
           fontFamily: "var(--font-display)", color: "var(--snow)",
           fontSize: "clamp(22px, 3.6vw, var(--text-3xl))", lineHeight: 1.4, fontWeight: 500, letterSpacing: "0.01em",
@@ -1321,7 +1316,7 @@ function SiteFooter({ onNav }) {
         <div style={{ maxWidth: 320 }}>
           <img src={window.A ? window.A("assets/logo-lockup-inverse.svg") : "assets/logo-lockup-inverse.svg"} alt="亨利攝影工作室" style={{ height: 44 }} />
           <p style={{ marginTop: 18, fontSize: "var(--text-sm)", lineHeight: 1.7, color: "var(--ice-200)" }}>
-            滑雪影像自由工作者。與你並肩在風雪中前行的夥伴。
+            滑雪教練 x 影像自由工作者<br />與你並肩在風雪中前行的夥伴
           </p>
         </div>
         <div>
