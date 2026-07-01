@@ -60,3 +60,16 @@
 @media (max-width: 760px) {
   .fw-grid > :nth-child(n+5) { display: none; }
 }
+/* 手機：一個故事一格（單欄）、封面橫式、文字縮小 */
+@media (max-width: 600px) {
+  .fw-grid { grid-template-columns: 1fr; gap: 16px; }
+  .fw-grid h3 { font-size: 18px !important; }
+  .fw-grid .ds-meta { font-size: 11px; }
+}
+
+/* 手機：頁尾收緊，減少上下空隙 */
+@media (max-width: 640px) {
+  footer { padding: 30px 20px 22px !important; }
+  footer > div:first-child { gap: 24px !important; }
+  footer > div:last-child { margin-top: 24px !important; padding-top: 18px !important; }
+}

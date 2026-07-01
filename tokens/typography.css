@@ -54,3 +54,16 @@
   --role-caption-size: var(--text-sm);
   --role-meta-size:    var(--text-xs);
 }
+
+/* ---- 手機：縮小大級距字，避免標題／內文在小螢幕過大、換行不順 ---- */
+@media (max-width: 640px) {
+  :root {
+    --text-lg:   1.0625rem; /* 18 → 17 */
+    --text-xl:   1.1875rem; /* 22 → 19 */
+    --text-2xl:  1.4375rem; /* 28 → 23 */
+    --text-3xl:  1.6875rem; /* 36 → 27 */
+    --text-4xl:  2rem;      /* 48 → 32 */
+    --text-5xl:  2.5rem;    /* 64 → 40 */
+    --text-6xl:  3rem;      /* 84 → 48 */
+  }
+}
