@@ -1,0 +1,133 @@
+/* ============================================================
+   亨利攝影工作室 — Color Tokens
+   微霧冰藍 Ice (brand) · 山岩灰 Rock · 苔蘚綠 Moss (retired from brand)
+   Cool, functional, in harmony with the mountain.
+   ============================================================ */
+
+:root {
+  /* ---- 苔蘚綠 Moss Green (primary / brand) ---- */
+  --moss-50:  #f1f4ee;
+  --moss-100: #e0e7d9;
+  --moss-200: #c3d0b6;
+  --moss-300: #9fb18c;
+  --moss-400: #7e9268;
+  --moss-500: #647a4f;   /* brand primary */
+  --moss-600: #4f633d;
+  --moss-700: #3e4e30;
+  --moss-800: #2f3b25;
+  --moss-900: #222b1b;
+
+  /* ---- 山岩灰 Rock Gray (neutrals, warm stone) ---- */
+  --stone-50:  #f7f7f4;
+  --stone-100: #ecebe7;
+  --stone-200: #d8d6d0;
+  --stone-300: #bbb8af;
+  --stone-400: #97938a;
+  --stone-500: #76726a;
+  --stone-600: #5c5852;
+  --stone-700: #45423d;
+  --stone-800: #2e2c29;
+  --stone-900: #1c1b19;
+
+  /* ---- 微霧冰藍 Misty Ice Blue (brand core) ---- */
+  --ice-50:  #f0f5f7;
+  --ice-100: #deeaee;
+  --ice-200: #c2d9e0;
+  --ice-300: #9dc1cc;
+  --ice-400: #74a4b3;
+  --ice-500: #538799;   /* brand */
+  --ice-600: #426e7e;
+  --ice-700: #365764;
+  --ice-800: #2b444e;
+  --ice-900: #1f323a;
+
+  /* ---- 霜霧藍 Frost — lighter, airier sky-ice (info) ---- */
+  --frost-50:  #eef5f8;
+  --frost-100: #e0edf2;
+  --frost-200: #c5dde7;
+  --frost-500: #6f9fb8;
+  --frost-600: #5a87a0;
+  --frost-700: #496f86;
+
+  /* ---- 鋼鐵藍 Steel — deeper, denser blue (accent) ---- */
+  --steel-50:  #eef2f6;
+  --steel-100: #dde6ef;
+  --steel-200: #bccddd;
+  --steel-500: #4f7596;
+  --steel-600: #3f6080;
+  --steel-700: #334d68;
+
+  /* ---- 冰河藍 Glacier — teal-leaning cool ice (success) ---- */
+  --glacier-50:  #edf5f4;
+  --glacier-100: #ddeeec;
+  --glacier-200: #bfe0db;
+  --glacier-500: #4f9090;
+  --glacier-600: #3e7474;
+  --glacier-700: #315c5c;
+
+  /* ---- Pure surfaces ---- */
+  --snow:  #fbfbfa;   /* warm paper-white background */
+  --white: #ffffff;
+  --ink:   #1c1b19;   /* near-black, matches stone-900 */
+
+  /* ---- Status hues (muted, outdoor-toned) ---- */
+  --amber-400: #d59a4c;
+  --amber-500: #c2843a;
+  --amber-50:  #f8f0e2;
+  --rust-400:  #c4634c;
+  --rust-500:  #b0503b;
+  --rust-50:   #f7e9e5;
+
+  /* ============================================================
+     Semantic aliases — reference these in components.
+     ============================================================ */
+
+  /* Brand — 微霧冰藍 Misty Ice Blue */
+  --brand:            var(--ice-500);
+  --brand-hover:      var(--ice-600);
+  --brand-active:     var(--ice-700);
+  --brand-soft:       var(--ice-100);
+  --brand-soft-text:  var(--ice-700);
+  --accent:           var(--steel-500);
+  --accent-hover:     var(--steel-600);
+  --accent-soft:      var(--steel-100);
+  --accent-soft-text: var(--steel-700);
+
+  /* Text */
+  --text-strong:    var(--stone-900);
+  --text-body:      var(--stone-700);
+  --text-muted:     var(--stone-500);
+  --text-subtle:    var(--stone-400);
+  --text-on-brand:  var(--snow);
+  --text-on-dark:   var(--snow);
+  --text-link:      var(--ice-600);
+
+  /* Surfaces */
+  --surface-page:    var(--snow);
+  --surface-card:    var(--white);
+  --surface-sunken:  var(--stone-50);
+  --surface-raised:  var(--white);
+  --surface-inverse: var(--stone-900);
+  --surface-brand:   var(--ice-500);
+  --surface-frost:   rgba(251, 251, 250, 0.72); /* glassy overlay */
+
+  /* Borders / lines */
+  --border-soft:    var(--stone-200);
+  --border-default: var(--stone-300);
+  --border-strong:  var(--stone-400);
+  --border-brand:   var(--ice-500);
+  --divider:        var(--stone-100);
+
+  /* Status — each a distinct misty-ice variant for depth */
+  --success:      var(--glacier-500);
+  --success-soft: var(--glacier-100);
+  --warning:      var(--amber-500);
+  --warning-soft: var(--amber-50);
+  --danger:       var(--rust-500);
+  --danger-soft:  var(--rust-50);
+  --info:         var(--frost-500);
+  --info-soft:    var(--frost-100);
+
+  /* Focus ring */
+  --focus-ring: rgba(83, 135, 153, 0.45); /* ice-based, soft */
+}

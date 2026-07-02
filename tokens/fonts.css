@@ -1,0 +1,13 @@
+/* ============================================================
+   亨利攝影工作室 — Webfonts
+   NOTE: No brand font files were provided. These are Google Fonts
+   substitutions chosen to match the brief (rounded-modern sans +
+   繁體中文 support + technical mono). Swap for licensed brand fonts
+   if/when available.
+     · Outfit       — rounded geometric display
+     · Noto Sans TC — Traditional Chinese body/UI
+     · Manrope      — Latin body fallback
+     · Space Mono   — EXIF / metadata captions
+   ============================================================ */
+
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap");
