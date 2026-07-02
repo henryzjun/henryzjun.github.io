@@ -1,0 +1,20 @@
+<svg width="420" height="120" viewBox="0 0 420 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="亨利攝影工作室 Henryphoto studio (ice blue base)">
+
+  <rect x="0" y="6" width="108" height="108" rx="26" fill="#538799"></rect>
+
+  <g transform="translate(0 6) scale(0.9)">
+    <path d="M34 47 L40 33 L57 33 L63 47" fill="none" stroke="#fbfbfa" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"></path>
+    <rect x="75" y="35" width="15" height="10" rx="3" fill="#cfe2ea"></rect>
+    <rect x="18" y="46" width="84" height="53" rx="13" fill="none" stroke="#fbfbfa" stroke-width="5"></rect>
+    <circle cx="60" cy="73" r="19.5" fill="#e7f1f4" stroke="#fbfbfa" stroke-width="5"></circle>
+    <circle cx="60" cy="73" r="12.5" fill="none" stroke="#bcd6df" stroke-width="2.4"></circle>
+    <g transform="rotate(-34 60 73)">
+      <rect x="57.3" y="62" width="2.6" height="22" rx="1.3" fill="#4d7e90"></rect>
+      <rect x="60.1" y="62" width="2.6" height="22" rx="1.3" fill="#4d7e90"></rect>
+    </g>
+    <rect x="56.75" y="62" width="6.5" height="22" rx="3.25" fill="#2f5562" transform="rotate(34 60 73)"></rect>
+  </g>
+
+  <text x="132" y="56" font-family="&#39;Noto Sans TC&#39;,&#39;PingFang TC&#39;,sans-serif" font-size="36" font-weight="700" fill="#fbfbfa" letter-spacing="2">亨利攝影</text>
+  <text x="133" y="92" font-family="&#39;Outfit&#39;,sans-serif" font-size="17" font-weight="500" fill="#c2d9e0" letter-spacing="3">HENRYPHOTO STUDIO</text>
+</svg>

@@ -1,5 +1,3 @@
-<!-- @dsCard group="02 · 編輯內容" viewport="1280x720" name="② 作品集 Gallery" subtitle="故事化相簿 · 分類篩選 · 燈箱多圖瀏覽" -->
-<!-- @startingPoint section="Gallery" subtitle="滑雪影像瀑布式作品集" viewport="1280x900" -->
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
@@ -7,11 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20width%3D%22120%22%20height%3D%22120%22%20viewBox%3D%220%200%20120%20120%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20role%3D%22img%22%20aria-label%3D%22%E4%BA%A8%E5%88%A9%E6%94%9D%E5%BD%B1%E5%B7%A5%E4%BD%9C%E5%AE%A4%20camera%20logomark%22%3E%20%3Crect%20width%3D%22120%22%20height%3D%22120%22%20rx%3D%2228%22%20fill%3D%22%23fbfbfa%22%3E%3C%2Frect%3E%20%3Crect%20x%3D%2220%22%20y%3D%2236%22%20width%3D%2280%22%20height%3D%2258%22%20rx%3D%2214%22%20fill%3D%22none%22%20stroke%3D%22%23538799%22%20stroke-width%3D%225%22%3E%3C%2Frect%3E%20%3Cpath%20d%3D%22M44%2036%20L50%2027%20L70%2027%20L76%2036%20Z%22%20fill%3D%22none%22%20stroke%3D%22%23538799%22%20stroke-width%3D%225%22%20stroke-linejoin%3D%22round%22%3E%3C%2Fpath%3E%20%3Crect%20x%3D%2282%22%20y%3D%2230%22%20width%3D%2211%22%20height%3D%226%22%20rx%3D%223%22%20fill%3D%22%239dc1cc%22%3E%3C%2Frect%3E%20%3Ccircle%20cx%3D%2260%22%20cy%3D%2266%22%20r%3D%2220%22%20fill%3D%22%23deeaee%22%3E%3C%2Fcircle%3E%20%3Cg%20transform%3D%22rotate(-36%2060%2066)%22%3E%20%3Crect%20x%3D%2254.4%22%20y%3D%2249%22%20width%3D%223.6%22%20height%3D%2234%22%20rx%3D%221.8%22%20fill%3D%22%23538799%22%3E%3C%2Frect%3E%20%3Crect%20x%3D%2262%22%20y%3D%2249%22%20width%3D%223.6%22%20height%3D%2234%22%20rx%3D%221.8%22%20fill%3D%22%23538799%22%3E%3C%2Frect%3E%20%3C%2Fg%3E%20%3Crect%20x%3D%2256%22%20y%3D%2248%22%20width%3D%228%22%20height%3D%2236%22%20rx%3D%224%22%20fill%3D%22%23426e7e%22%20transform%3D%22rotate(36%2060%2066)%22%3E%3C%2Frect%3E%20%3Cpath%20d%3D%22M43%2082%20L77%2082%22%20stroke%3D%22%2374a4b3%22%20stroke-width%3D%223%22%20stroke-linecap%3D%22round%22%20opacity%3D%220.8%22%3E%3C%2Fpath%3E%20%3C%2Fsvg%3E">
 <title>作品集 — 亨利攝影工作室</title>
-<link rel="stylesheet" href="styles.css?v=20260701c">
+<link rel="preconnect" href="https://unpkg.com" crossorigin>
+<link rel="stylesheet" href="styles.css">
 <style>
   html, body { margin: 0; background: var(--surface-page); }
   /* 保險：舊版手機預覽按鈕若被舊 bundle 注入，一律隱藏（前台不顯示） */
   #mp-fab, #mp-overlay, #mp-close, #mp-label { display: none !important; }
+  .henry-boot { min-height: 100svh; display: flex; align-items: center; justify-content: center; background: var(--surface-page, #fbfbfa); }
+  .henry-boot__mark { width: 44px; height: 44px; border-radius: 50%; border: 3px solid rgba(83,135,153,0.16); border-top-color: #538799; animation: henry-boot-spin 0.85s linear infinite; }
+  @keyframes henry-boot-spin { to { transform: rotate(360deg); } }
   @media (max-width: 760px) {
     .lb-root { flex-direction: column !important; }
     .lb-stage { padding: 14px !important; min-height: 0; }
@@ -21,16 +23,19 @@
   }
   /* 手機：作品集圖片依原檔比例顯示（不裁切成固定比例）、兩欄堆積木式縮圖，點圖放大 */
   @media (max-width: 640px) {
-    #root .ei-wrap img { aspect-ratio: auto !important; height: auto !important; object-fit: contain !important; }
+    #root .ei-wrap img { aspect-ratio: var(--ar-real, auto) !important; height: auto !important; object-fit: contain !important; }
     .gallery-masonry { column-width: auto !important; column-count: 2 !important; column-gap: 10px !important; padding: 0 12px 60px !important; }
     .gallery-masonry figure { margin-bottom: 10px !important; }
   }
 </style>
 <script>
-  window.A = function (p) {
+  window.A = function (p, variant) {
     var m = /([^\/]+)\.(jpg|jpeg|png|webp|svg)$/i.exec(p || "");
-    var el = m && document.querySelector('img[data-slot="' + m[1] + '"]');
-    return (el && el.getAttribute("src")) || p;
+    if (!m) return p;
+    if (m[2].toLowerCase() === "svg") return "assets/" + m[1] + ".svg";
+    var folder = variant === "thumb" ? "thumbnails" : variant === "hero" ? "hero" : "full";
+    if (folder === "hero" && ["cover-hero","philosophy-band","booking-cover"].indexOf(m[1]) < 0) folder = "full";
+    return "assets/images/" + folder + "/" + m[1] + ".webp";
   };
   window.HENRY_LINKS = {
     home: "index.html",
@@ -79,385 +84,21 @@
 </template>
 </head>
 <body>
-  <div id="root"></div>
-  <!-- 圖片槽静態參照：讓打包器把已發佈圖片內嵌進單一檔案（由 window.A 讀取） -->
-  <div id="henry-assets" style="display:none" aria-hidden="true">
-    <img data-slot="photo-peak-mist" src="assets/slots/photo-peak-mist.jpg" alt="">
-    <img data-slot="photo-slope-dawn" src="assets/slots/photo-slope-dawn.jpg" alt="">
-    <img data-slot="photo-powder-run" src="assets/slots/photo-powder-run.jpg" alt="">
-    <img data-slot="photo-summit-blue" src="assets/slots/photo-summit-blue.jpg" alt="">
-    <img data-slot="photo-forest-valley" src="assets/slots/photo-forest-valley.jpg" alt="">
-    <img data-slot="photo-hero-ridge" src="assets/slots/photo-hero-ridge.jpg" alt="">
-    <img data-slot="story-mist-ridge-2" src="assets/slots/story-mist-ridge-2.jpg" alt="">
-    <img data-slot="story-mist-ridge-3" src="assets/slots/story-mist-ridge-3.jpg" alt="">
-    <img data-slot="story-slope-dawn-2" src="assets/slots/story-slope-dawn-2.jpg" alt="">
-    <img data-slot="story-slope-dawn-3" src="assets/slots/story-slope-dawn-3.jpg" alt="">
-    <img data-slot="story-gondola-2" src="assets/slots/story-gondola-2.jpg" alt="">
-    <img data-slot="story-gondola-3" src="assets/slots/story-gondola-3.jpg" alt="">
-    <img data-slot="story-penguin-2" src="assets/slots/story-penguin-2.jpg" alt="">
-    <img data-slot="story-penguin-3" src="assets/slots/story-penguin-3.jpg" alt="">
-    <img data-slot="story-gondola-view-2" src="assets/slots/story-gondola-view-2.jpg" alt="">
-    <img data-slot="story-gondola-view-3" src="assets/slots/story-gondola-view-3.jpg" alt="">
-    <img data-slot="story-summit-view-2" src="assets/slots/story-summit-view-2.jpg" alt="">
-    <img data-slot="story-summit-view-3" src="assets/slots/story-summit-view-3.jpg" alt="">
-    <img data-slot="story-dawn-line-1" src="assets/slots/story-dawn-line-1.jpg" alt="">
-    <img data-slot="story-dawn-line-2" src="assets/slots/story-dawn-line-2.jpg" alt="">
-    <img data-slot="story-dawn-line-3" src="assets/slots/story-dawn-line-3.jpg" alt="">
-    <img data-slot="story-after-mist-1" src="assets/slots/story-after-mist-1.jpg" alt="">
-    <img data-slot="story-after-mist-2" src="assets/slots/story-after-mist-2.jpg" alt="">
-    <img data-slot="story-after-mist-3" src="assets/slots/story-after-mist-3.jpg" alt="">
-    <img data-slot="story-first-day-1" src="assets/slots/story-first-day-1.jpg" alt="">
-    <img data-slot="story-first-day-2" src="assets/slots/story-first-day-2.jpg" alt="">
-    <img data-slot="story-first-day-3" src="assets/slots/story-first-day-3.jpg" alt="">
-    <img data-slot="story-night-snow-1" src="assets/slots/story-night-snow-1.jpg" alt="">
-    <img data-slot="story-night-snow-2" src="assets/slots/story-night-snow-2.jpg" alt="">
-    <img data-slot="story-night-snow-3" src="assets/slots/story-night-snow-3.jpg" alt="">
-    <img data-slot="niseko-yotei-xmqex3hbq" src="assets/slots/niseko-yotei-xmqex3hbq.jpg" alt="">
-    <img data-slot="niseko-yotei-xmqex3k66" src="assets/slots/niseko-yotei-xmqex3k66.jpg" alt="">
-    <img data-slot="ski-ride-mist-xmqex256k" src="assets/slots/ski-ride-mist-xmqex256k.jpg" alt="">
-  </div>
-  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
-  <script src="ds_bundle.js?v=20260701c"></script>
-  <script type="text/babel" data-src="../shared/EditableImage.jsx">
-// Shared — EditableImage：全站圖片槽
-// 前台（上架網頁／一般預覽）：只顯示已發佈的圖片檔（assets/slots/），完全不顯示任何編輯按鈕。
-// 後台模式（網址帶 ?admin=1，或被後台以 data-admin iframe 嵌入）：顯示「更換圖片／還原」。
-// 後台更換的圖片先暫存在瀏覽器 localStorage（狀態＝待發佈）；
-// 在對話中跟 Claude 說「發佈圖片」，才會真正寫進 assets/slots/ 並重新打包上架網頁。
-(function () {
-  var admin = false;
-  try {
-    if (/[?&]admin=1/.test(window.location.search)) admin = true;
-    else if (window.frameElement && window.frameElement.hasAttribute("data-admin")) admin = true;
-  } catch (e) {}
-  window.HENRY_ADMIN = admin;
-  if (!admin) return; // 前台不需要編輯樣式
-  if (document.getElementById("ei-styles")) return;
-  var st = document.createElement("style");
-  st.id = "ei-styles";
-  st.textContent = `
-    .ei-wrap { position: relative; overflow: hidden; }
-    .ei-controls { position: absolute; top: 10px; right: 10px; z-index: 6; display: flex; gap: 6px;
-      opacity: 0; transition: opacity 160ms ease; }
-    .ei-wrap:hover .ei-controls, .ei-wrap:focus-within .ei-controls,
-    figure:hover .ei-controls, .hs-card:hover .ei-controls { opacity: 1; }
-    @media (hover: none) { .ei-controls { opacity: 1; } }
-    .ei-btn { display: inline-flex; align-items: center; gap: 6px; height: 30px; padding: 0 11px;
-      border-radius: 999px; border: 1px solid rgba(251,251,250,0.35);
-      background: rgba(28,27,25,0.55); color: #fbfbfa; font-size: 12px; line-height: 1;
-      font-family: var(--font-sans, sans-serif); font-weight: 500; cursor: pointer;
-      backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
-      transition: background 160ms ease; white-space: nowrap; }
-    .ei-btn:hover { background: rgba(28,27,25,0.78); }
-    .ei-btn svg { width: 13px; height: 13px; flex-shrink: 0; }
-  `;
-  document.head.appendChild(st);
-})();
-
-// 讀取某個圖片槽目前的圖 — 給 Lightbox 等唯讀場景用。
-// 前台一律回傳已發佈的檔案；後台模式才會優先回傳 localStorage 裡的待發佈版本。
-window.henryImg = function (id, fallback) {
-  var fb = window.A ? window.A(fallback) : fallback;
-  if (!window.HENRY_ADMIN) return fb;
-  try { return localStorage.getItem("henry-img-" + id) || fb; } catch (e) { return fb; }
-};
-
-function EditableImage({ id, src, alt = "", style = {}, imgStyle = {}, maxEdge = 1600, label = "更換圖片", loading = "lazy", fetchpriority }) {
-  const admin = !!window.HENRY_ADMIN;
-  const key = "henry-img-" + id;
-  const [custom, setCustom] = React.useState(() => {
-    if (!admin) return null;
-    try { return localStorage.getItem(key); } catch (e) { return null; }
-  });
-  const inputRef = React.useRef(null);
-
-  // 後台：跨頁同步（在媒體管理頁更換圖片時，預覽 iframe 立即更新）
-  React.useEffect(() => {
-    if (!admin) return;
-    const onStorage = (e) => { if (e.key === key) setCustom(e.newValue); };
-    window.addEventListener("storage", onStorage);
-    return () => window.removeEventListener("storage", onStorage);
-  }, [key, admin]);
-
-  const onFile = (e) => {
-    const f = e.target.files && e.target.files[0];
-    e.target.value = "";
-    if (!f) return;
-    const url = URL.createObjectURL(f);
-    const img = new Image();
-    img.onload = () => {
-      const scale = Math.min(1, maxEdge / Math.max(img.width, img.height));
-      const w = Math.max(1, Math.round(img.width * scale));
-      const h = Math.max(1, Math.round(img.height * scale));
-      const c = document.createElement("canvas");
-      c.width = w; c.height = h;
-      c.getContext("2d").drawImage(img, 0, 0, w, h);
-      let q = 0.85;
-      let out = c.toDataURL("image/jpeg", q);
-      while (out.length > 700 * 1024 && q > 0.55) { q -= 0.08; out = c.toDataURL("image/jpeg", q); }
-      URL.revokeObjectURL(url);
-      try { localStorage.setItem(key, out); setCustom(out); }
-      catch (err) { alert("瀏覽器儲存空間不足：請先「還原」其他圖片，或改用較小的照片。"); }
-    };
-    img.onerror = () => { URL.revokeObjectURL(url); alert("無法讀取此圖片，請改用 JPG 或 PNG 檔。"); };
-    img.src = url;
-  };
-
-  const reset = (e) => {
-    e.stopPropagation();
-    try { localStorage.removeItem(key); } catch (err) {}
-    setCustom(null);
-  };
-
-  const resolved = (admin && custom) || (window.A ? window.A(src) : src);
-
-  return (
-    <div className="ei-wrap" style={style}>
-      <img src={resolved} alt={alt} loading={loading} decoding="async" fetchpriority={fetchpriority}
-        style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", ...imgStyle }} />
-      {admin && (
-        <div className="ei-controls" onClick={(e) => e.stopPropagation()}>
-          <button type="button" className="ei-btn" aria-label={label}
-            onClick={(e) => { e.stopPropagation(); inputRef.current && inputRef.current.click(); }}>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
-            {label}
-          </button>
-          {custom && (
-            <button type="button" className="ei-btn" onClick={reset} aria-label="還原已發佈版本">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"></path><polyline points="3 3 3 8 8 8"></polyline></svg>
-              還原
-            </button>
-          )}
-        </div>
-      )}
-      {admin && (
-        <input ref={inputRef} type="file" accept="image/*" style={{ display: "none" }}
-          onChange={onFile} onClick={(e) => e.stopPropagation()} />
-      )}
-    </div>
-  );
-}
-window.EditableImage = EditableImage;
-
-</script>
-  <script type="text/babel" data-src="../shared/Icon.jsx">
-// Shared — React 安全版 Lucide 圖示
-// 問題：lucide.createIcons() 會把 <i data-lucide> 直接換成 <svg>。若那個 <i> 是 React（JSX）
-// 渲染的，React 之後要移除/更新節點時會找不到原本的 <i>，丟出
-// "removeChild ... is not a child of this node" 錯誤（多步驟表單按上一步時最常見）。
-// 解法：React 只管理外層 <span>；內部的 <i>→<svg> 由命令式 DOM 操作處理，兩者互不干擾。
-function Icon({ name, size, style, className }) {
-  const ref = React.useRef(null);
-  React.useLayoutEffect(() => {
-    const span = ref.current;
-    if (!span || !name) return;
-    span.innerHTML = "";
-    const i = document.createElement("i");
-    i.setAttribute("data-lucide", name);
-    span.appendChild(i);
-    if (window.lucide && window.lucide.createIcons) {
-      try { window.lucide.createIcons(); } catch (e) {}
-    }
-    const svg = span.querySelector("svg");
-    if (svg) {
-      svg.style.display = "block";
-      if (size) { svg.setAttribute("width", size); svg.setAttribute("height", size); }
-    }
-    return () => { try { span.innerHTML = ""; } catch (e) {} };
-  }, [name, size]);
-  return (
-    <span ref={ref} className={className} aria-hidden="true"
-      style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", ...style }}></span>
-  );
-}
-window.Icon = Icon;
-
-</script>
-  <script type="text/babel" data-src="data.jsx">
-// Gallery — 故事資料集（每個故事含多張照片，shots[0] 為封面）
-// 所有 shots 的字串都是「圖片槽 id」，對應 assets/slots/<id>.jpg，可在媒體管理後台更換
-window.GALLERY_STORIES = [
-  { id: 1,  slug: "niseko-yotei",   title: "二世谷・羊蹄山",   loc: "NISEKO",   cat: "portrait", span: 2,
-    desc: "白色雪衣、HEAD雙板，羊蹄山在身後清晰矗立。藍天無雲，新雪還沒有腳印——這樣的早晨，最適合出發。",
-    shots: ["photo-peak-mist", "story-mist-ridge-2", "story-mist-ridge-3", "niseko-yotei-xmqex3hbq", "niseko-yotei-xmqex3k66", "niseko-yotei-xmqp3xlyn", "niseko-yotei-xmqp3ymll", "niseko-yotei-xmqp3yxtx"] },
-  { id: 2,  slug: "chairlift-pair", title: "雪場合影",         loc: "Annupuri", cat: "portrait", span: 1,
-    desc: "大雪紛飛的纜椅上，兩個人靠在一起。雪打在護目鏡上，但沒有人想撐傘。這段上山的路，比山頂更值得記住。",
-    shots: ["photo-slope-dawn", "story-slope-dawn-2", "story-slope-dawn-3", "chairlift-pair-xmqp40c49", "chairlift-pair-xmqp40z4w", "chairlift-pair-xmqp41lqf", "chairlift-pair-xmqp42rl2", "chairlift-pair-xmqp4332r", "chairlift-pair-xmqp43f7a"] },
-  { id: 3,  slug: "gondola-yotei",  title: "山頂纜車時刻",     loc: "Hirafu",   cat: "portrait", span: 2,
-    desc: "纜車鋼索拉成一條斜線，羊蹄山在遠方展開。單板懸在空中，人也懸在空中——這是屬於Hirafu的一張照片。",
-    shots: ["photo-powder-run", "story-gondola-2", "story-gondola-3", "gondola-yotei-xmqp448g5", "gondola-yotei-xmqp44o5s", "gondola-yotei-xmqp44utf"] },
-  { id: 4,  slug: "sb-jump",        title: "單板・跳台時刻",   loc: "Hanazono", cat: "powder",   span: 1,
-    desc: "橘色Capita板飛離地面，纜車箱在左下角靜靜駛過。跳台旁的樹還掛著雪，按下快門的瞬間，一切都定格了。",
-    shots: ["photo-summit-blue", "story-penguin-2", "story-penguin-3", "sb-jump-xmqp4hehu", "sb-jump-xmqp4j8id", "sb-jump-xmqp4jtqi", "sb-jump-xmqp4kmoa"] },
-  { id: 5,  slug: "sb-ride-yotei",  title: "單板・滑行時刻",   loc: "NISEKO",   cat: "portrait", span: 1,
-    desc: "Cosmic Surf板豎在身邊，羊蹄山佔滿了整個天空。這個位置，是二世谷最容易找到、最難忘記的地方。",
-    shots: ["photo-forest-valley", "story-gondola-view-2", "story-gondola-view-3", "sb-ride-yotei-xmqp490k9", "sb-ride-yotei-xmqp4d1np", "sb-ride-yotei-xmqp4dh6u", "sb-ride-yotei-xmqp4dqbr", "sb-ride-yotei-xmqp4ebr2", "sb-ride-yotei-xmqp4eqzq", "sb-ride-yotei-xmqp4f195"] },
-  { id: 6,  slug: "portrait-snow",  title: "人像特寫",         loc: "Rusutsu",  cat: "portrait", span: 2,
-    desc: "粉色雪衣、Burton板躺在旁邊，她閉上眼睛攤在雪地裡。是摔了，還是累了，還是兩者都有——答案不重要，這一刻才是。",
-    shots: ["photo-hero-ridge", "story-summit-view-2", "story-summit-view-3", "portrait-snow-xmqp4nzus", "portrait-snow-xmqp4o8zn", "portrait-snow-xmqp4omuj", "portrait-snow-xmqp4pt3t", "portrait-snow-xmqp4q24s", "portrait-snow-xmqp4qi60", "portrait-snow-xmqp4rd2l", "portrait-snow-xmqp4rrep", "portrait-snow-xmqp4s1rn", "portrait-snow-xmqp4t68h", "portrait-snow-xmqp4tntx", "portrait-snow-xmqp4wef8", "portrait-snow-xmqp4wjmo", "portrait-snow-xmqp4ws7a", "portrait-snow-xmqp4wz6a", "portrait-snow-xmqp4x2wi"] },
-  { id: 7,  slug: "ski-jump",       title: "雙板・跳台時刻",   loc: "Hanazono", cat: "powder",   span: 1,
-    desc: "雙板壓上鐵欄，滑桿在腳下一閃而過。雪場燈光、纜車、霧氣全在後面——跳台的這一秒，什麼都有了。",
-    shots: ["story-dawn-line-1", "story-dawn-line-2", "story-dawn-line-3", "ski-jump-xmqp4g8y2", "ski-jump-xmqp4gtwr"] },
-  { id: 8,  slug: "ski-ride-mist",  title: "雙板・滑行時刻",   loc: "NISEKO",   cat: "powder",   span: 1,
-    desc: "霧裡的山只剩輪廓，灰色壓著灰色。看不清前方的時候，反而更專注腳下的每一個轉彎。",
-    shots: ["ski-ride-mist-xmqex256k", "ski-ride-mist-xmqp3vxi4", "ski-ride-mist-xmqp4l07v", "ski-ride-mist-xmqp4lpq5", "ski-ride-mist-xmqp4m00y", "ski-ride-mist-xmqp4mih3"] },
-];
-
-</script>
-  <script type="text/babel" data-src="GalleryGrid.jsx">
-// Gallery — masonry grid：每個故事的「封面＋全部照片」都各自成為一張可點的圖卡
-// 點任一張 → 開啟該故事燈箱（行為不變，仍是完整故事）
-function GalleryGrid({ items, onOpen }) {
-  const { Badge, IconButton } = window.HenryStudioRemix_704588;
-  // 展平：每個故事的每一張 shot 都是一個 tile（si 為該故事內的索引，0 為封面）
-  const tiles = [];
-  items.forEach((it) => it.shots.forEach((shot, si) => tiles.push({ it, shot, si })));
-
-  return (
-    <div className="gallery-masonry" style={{
-      columnWidth: 300, columnGap: 18, padding: "0 clamp(20px, 4vw, 40px) 80px",
-    }}>
-      {tiles.map(({ it, shot, si }) => (
-        <figure key={it.id + "-" + shot + "-" + si} onClick={() => onOpen(it, si)}
-          style={{
-            breakInside: "avoid", margin: "0 0 18px", position: "relative",
-            borderRadius: "var(--radius-md)", overflow: "hidden", cursor: "pointer",
-            boxShadow: "var(--shadow-sm)", background: "var(--surface-card)",
-          }}
-          onMouseEnter={(e)=>{ e.currentTarget.style.boxShadow="var(--shadow-lg)"; e.currentTarget.querySelector(".gov").style.opacity=1; }}
-          onMouseLeave={(e)=>{ e.currentTarget.style.boxShadow="var(--shadow-sm)"; e.currentTarget.querySelector(".gov").style.opacity=0; }}>
-          <EditableImage id={shot} src={`assets/slots/${shot}.jpg`} alt={it.title}
-            imgStyle={{ aspectRatio: si === 0 && it.span === 2 ? "4 / 5" : "4 / 3", height: "auto" }} />
-
-          <figcaption className="gov" style={{
-            position: "absolute", inset: 0, opacity: 0, transition: "opacity var(--dur-base) var(--ease-out)",
-            background: "linear-gradient(180deg, rgba(28,27,25,0) 40%, rgba(28,27,25,0.72) 100%)",
-            display: "flex", flexDirection: "column", justifyContent: "flex-end", padding: 16, pointerEvents: "none",
-          }}>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
-              <div>
-                <div style={{ color: "var(--snow)", fontFamily: "var(--font-display)", fontWeight: 600, fontSize: "var(--text-lg)" }}>{it.title}</div>
-                <div className="ds-meta" style={{ color: "var(--stone-200)" }}>{it.loc} · 第 {si + 1} / {it.shots.length} 張</div>
-              </div>
-              <IconButton icon={<Icon name="images" />} label="打開故事" variant="frost" size="sm" />
-            </div>
-          </figcaption>
-        </figure>
-      ))}
-    </div>
-  );
-}
-window.GalleryGrid = GalleryGrid;
-
-</script>
-  <script type="text/babel" data-src="Lightbox.jsx">
-// Gallery — 故事燈箱：主圖 + 故事內縮圖列；左右鍵切換同故事照片
-function Lightbox({ item, onClose, onPrevStory, onNextStory, initialShot }) {
-  const { IconButton, Badge, Button } = window.HenryStudioRemix_704588;
-  const [shotIdx, setShotIdx] = React.useState(0);
-  React.useEffect(() => { setShotIdx(initialShot || 0); }, [item && item.id, initialShot]);
-  React.useEffect(() => {
-    if (!item) return;
-    const h = (e) => {
-      if (e.key === "Escape") onClose();
-      if (e.key === "ArrowLeft") setShotIdx((i) => (i - 1 + item.shots.length) % item.shots.length);
-      if (e.key === "ArrowRight") setShotIdx((i) => (i + 1) % item.shots.length);
-    };
-    window.addEventListener("keydown", h);
-    return () => window.removeEventListener("keydown", h);
-  }, [item]);
-  if (!item) return null;
-
-  const shots = item.shots;
-  const cur = shots[Math.min(shotIdx, shots.length - 1)];
-  const src = (id) => window.henryImg(id, `assets/slots/${id}.jpg`);
-
-  return (
-    <div className="lb-root" style={{
-      position: "fixed", inset: 0, zIndex: 100, display: "flex",
-      background: "rgba(18,17,16,0.86)", backdropFilter: "blur(8px)",
-    }} onClick={onClose}>
-      <div className="lb-stage" style={{ flex: 1, position: "relative", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 14, padding: "32px 40px 24px" }}
-        onClick={(e)=>e.stopPropagation()}>
-        <div style={{ position: "relative", flex: 1, minHeight: 0, width: "100%", display: "flex", alignItems: "center", justifyContent: "center" }}>
-          <IconButton icon={<Icon name="chevron-left" />} label="上一張" variant="frost" size="lg"
-            onClick={() => setShotIdx((i) => (i - 1 + shots.length) % shots.length)} style={{ position: "absolute", left: 0, zIndex: 2 }} />
-          <img src={src(cur)} alt={item.title}
-            style={{ maxWidth: "calc(100% - 96px)", maxHeight: "100%", borderRadius: "var(--radius-md)", boxShadow: "var(--shadow-xl)" }} />
-          <IconButton icon={<Icon name="chevron-right" />} label="下一張" variant="frost" size="lg"
-            onClick={() => setShotIdx((i) => (i + 1) % shots.length)} style={{ position: "absolute", right: 0, zIndex: 2 }} />
-        </div>
-        <div className="lb-strip" style={{ display: "flex", gap: 10, flexShrink: 0 }}>
-          {shots.map((id, i) => (
-            <button key={id} type="button" onClick={() => setShotIdx(i)} aria-label={`第 ${i + 1} 張`}
-              style={{
-                width: 76, height: 56, padding: 0, borderRadius: "var(--radius-sm)", overflow: "hidden", cursor: "pointer",
-                border: i === shotIdx ? "2px solid var(--snow)" : "2px solid transparent",
-                opacity: i === shotIdx ? 1 : 0.55, transition: "opacity var(--dur-base) var(--ease-out)",
-                background: "transparent",
-              }}>
-              <img src={src(id)} alt="" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
-            </button>
-          ))}
-        </div>
-      </div>
-      <aside className="lb-aside" style={{
-        width: 320, flexShrink: 0, background: "var(--surface-card)",
-        padding: "28px 26px", display: "flex", flexDirection: "column", gap: 20, overflowY: "auto",
-      }} onClick={(e)=>e.stopPropagation()}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <Badge tone="brand">故事</Badge>
-          <IconButton icon={<Icon name="x" />} label="關閉" variant="ghost" onClick={onClose} />
-        </div>
-        <div>
-          <h2 style={{ fontSize: "var(--text-2xl)" }}>{item.title}</h2>
-          <p style={{ color: "var(--text-muted)", fontSize: "var(--text-sm)", marginTop: 4 }}>{item.loc} · 2026 雪季</p>
-        </div>
-        <p style={{ fontSize: "var(--text-sm)", color: "var(--text-body)", lineHeight: 1.75, borderTop: "1px solid var(--divider)", paddingTop: 16 }}>
-          {item.desc}
-        </p>
-        <div className="ds-meta" style={{ color: "var(--text-muted)" }}>{shotIdx + 1} / {shots.length}</div>
-        <div style={{ marginTop: "auto", display: "flex", gap: 10 }}>
-          <Button variant="secondary" size="sm" fullWidth iconLeft={<Icon name="arrow-left" />} onClick={onPrevStory}>上一個故事</Button>
-          <Button variant="secondary" size="sm" fullWidth iconRight={<Icon name="arrow-right" />} onClick={onNextStory}>下一個故事</Button>
-        </div>
-      </aside>
-    </div>
-  );
-}
-window.Lightbox = Lightbox;
-
-</script>
-  <script type="text/babel">
-    const { } = window.HenryStudioRemix_704588;
-    function App(){
-      const all = window.GALLERY_STORIES.filter(function(s){ return s.shots && s.shots.length > 0; });
-      const [open, setOpen] = React.useState(null);
-      const [openShot, setOpenShot] = React.useState(0);
-      React.useEffect(() => { window.lucide && window.lucide.createIcons(); }, []);
-      const idx = open ? all.findIndex(i => i.id === open.id) : -1;
-      const handleOpen = (it, si) => { setOpen(it); setOpenShot(si || 0); };
-      const step = (d) => { if (idx < 0) return; setOpen(all[(idx + d + all.length) % all.length]); setOpenShot(0); };
-
-      return (
-        <>
-          <header style={{ padding: "44px clamp(20px, 4vw, 40px) 28px" }}>
-            <a href={window.HENRY_LINKS.home} style={{ display:"flex", width:"fit-content", alignItems:"center", gap:6, fontSize:"var(--text-sm)", color:"var(--text-muted)", marginBottom: 20 }}>
-              <Icon name="arrow-left" size={16} /> 回首頁
-            </a>
-            <span className="ds-eyebrow">PORTFOLIO · 2026 雪季</span>
-            <h1 style={{ fontSize: "clamp(30px, 5vw, var(--text-4xl))", margin: "10px 0 6px" }}>影像作品集</h1>
-            <p style={{ color: "var(--text-muted)", fontSize: "clamp(14px, 3.6vw, var(--text-lg))", lineHeight: 1.7, maxWidth: 520 }}>挑戰的汗水與登頂的笑容<br />逐格收藏的雪地故事。</p>
-          </header>
-          <GalleryGrid items={all} onOpen={handleOpen} />
-          <Lightbox item={open} initialShot={openShot} onClose={()=>setOpen(null)} onPrevStory={()=>step(-1)} onNextStory={()=>step(1)} />
-        </>
-      );
-    }
-    ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+  <div id="root"><div class="henry-boot" aria-hidden="true"><div class="henry-boot__mark"></div></div></div>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/lucide@1.22.0/dist/umd/lucide.min.js"></script>
+  <script src="ds_bundle.min.js?v=20260702"></script>
+  <script>
+  (function(){
+    function boot(){ window.GALLERY_STORIES = window.GALLERY_STORIES || []; window.SHOT_DIMS = window.SHOT_DIMS || {}; var s = document.createElement("script"); s.src = "js/gallery.min.js?v=20260702"; document.body.appendChild(s); }
+    fetch("data/projects.json?v=20260702").then(function(r){ return r.json(); }).then(function(d){
+      window.HENRY_DATA = d;
+      window.GALLERY_STORIES = d.projects.map(function(p){ return { id: p.id, slug: p.slug, title: p.title, loc: p.location, cat: p.category, span: p.span, desc: p.description, shots: p.shots.map(function(s){ return s.id; }) }; });
+      window.SHOT_DIMS = {};
+      d.projects.forEach(function(p){ p.shots.forEach(function(s){ window.SHOT_DIMS[s.id] = [s.width, s.height]; }); });
+    }).catch(function(){}).then(boot, boot);
+  })();
   </script>
 </body>
 </html>
