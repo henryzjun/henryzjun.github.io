@@ -15,11 +15,8 @@
   .henry-boot__mark { width: 44px; height: 44px; border-radius: 50%; border: 3px solid rgba(83,135,153,0.16); border-top-color: #538799; animation: henry-boot-spin 0.85s linear infinite; }
   @keyframes henry-boot-spin { to { transform: rotate(360deg); } }
   @media (max-width: 760px) {
-    .lb-root { flex-direction: column !important; }
-    .lb-stage { padding: 14px !important; min-height: 0; }
-    .lb-stage img { max-height: 46svh !important; }
-    .lb-strip button { width: 56px !important; height: 42px !important; }
-    .lb-aside { width: 100% !important; flex: 1 1 auto !important; }
+    .lb-stage { padding: 50px 6px 6px !important; }
+    .lb-strip button { width: 50px !important; height: 38px !important; }
   }
   /* 手機：作品集圖片依原檔比例顯示（不裁切成固定比例）、兩欄堆積木式縮圖，點圖放大 */
   @media (max-width: 640px) {
@@ -91,8 +88,8 @@
   <script src="ds_bundle.min.js?v=20260702"></script>
   <script>
   (function(){
-    function boot(){ window.GALLERY_STORIES = window.GALLERY_STORIES || []; window.SHOT_DIMS = window.SHOT_DIMS || {}; var s = document.createElement("script"); s.src = "js/gallery.min.js?v=20260702"; document.body.appendChild(s); }
-    fetch("data/projects.json?v=20260702").then(function(r){ return r.json(); }).then(function(d){
+    function boot(){ window.GALLERY_STORIES = window.GALLERY_STORIES || []; window.SHOT_DIMS = window.SHOT_DIMS || {}; var s = document.createElement("script"); s.src = "js/gallery.min.js?v=20260702b"; document.body.appendChild(s); }
+    fetch("data/projects.json?v=20260702b").then(function(r){ return r.json(); }).then(function(d){
       window.HENRY_DATA = d;
       window.GALLERY_STORIES = d.projects.map(function(p){ return { id: p.id, slug: p.slug, title: p.title, loc: p.location, cat: p.category, span: p.span, desc: p.description, shots: p.shots.map(function(s){ return s.id; }) }; });
       window.SHOT_DIMS = {};
